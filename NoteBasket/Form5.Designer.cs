@@ -50,7 +50,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.admindashboard_label);
             this.Name = "Form5";
-            this.Text = "Form5";
+            this.Text = "Admin Dashboard";
             this.ResumeLayout(false);
             this.PerformLayout();
 

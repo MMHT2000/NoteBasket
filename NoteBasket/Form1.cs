@@ -58,7 +58,8 @@ namespace NoteBasket
                 using (SqlConnection con = new SqlConnection("data source=DESKTOP-RS5QGMS\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     // Query to retrieve the user by either username or email
-                    string sql = "SELECT UserID, Username, PasswordHash, Role FROM Users WHERE Username = @UsernameOrEmail OR Email = @UsernameOrEmail";
+                    string sql = "SELECT UserID, Username, PasswordHash, Name, Email, DOB, Gender, Role, SubscriptionStartDate, LoyaltyPoints, CreatedAt " +
+                                 "FROM Users WHERE Username = @UsernameOrEmail OR Email = @UsernameOrEmail";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -74,38 +75,30 @@ namespace NoteBasket
                             // Check if a user was found
                             if (reader.Read())
                             {
-                                // Get the stored password hash and role
-                                string storedPasswordHash = reader["PasswordHash"].ToString();
-                                string userRole = reader["Role"].ToString();
+                                // Get the user details
+                                string username = reader["Username"].ToString();
+                                string name = reader["Name"].ToString();
+                                string email = reader["Email"].ToString();
+                                string dob = Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd");
+                                string gender = reader["Gender"].ToString();
+                                string role = reader["Role"].ToString();
 
-                                // Verify if the entered password matches the stored hash
+                                // Check if SubscriptionStartDate is NULL and assign default value if necessary
+                                int subscriptions = reader["SubscriptionStartDate"] != DBNull.Value ? Convert.ToInt32(reader["SubscriptionStartDate"]) : 0;
+
+                                // Get loyalty points and account creation date
+                                int loyaltyPoints = Convert.ToInt32(reader["LoyaltyPoints"]);
+                                DateTime accountCreationDate = Convert.ToDateTime(reader["CreatedAt"]);
+
+                                // Verify password
+                                string storedPasswordHash = reader["PasswordHash"].ToString();
                                 if (BCrypt.Net.BCrypt.Verify(password, storedPasswordHash))
                                 {
-                                    // Successful login, check the role and navigate to the appropriate form
-                                    if (userRole == "Free" || userRole == "Silver" || userRole == "Gold")
-                                    {
-                                        // Navigate to Form3 for Free/Silver/Gold users
-                                        Form3 form3 = new Form3();
-                                        form3.Show();
-                                    }
-                                    else if (userRole == "Notemaster")
-                                    {
-                                        // Navigate to Form4 for Notemaster users
-                                        Form4 form4 = new Form4();
-                                        form4.Show();
-                                    }
-                                    else if (userRole == "Admin")
-                                    {
-                                        // Navigate to Form5 for Admin users
-                                        Form5 form5 = new Form5();
-                                        form5.Show();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Invalid role for the user.");
-                                    }
+                                    // Navigate to Form3 (User Dashboard) and pass user data
+                                    Form3 form3 = new Form3(name, username, email, dob, gender, role, subscriptions, loyaltyPoints, accountCreationDate);
+                                    form3.Show();
 
-                                    // Hide the login form (optional)
+                                    // Hide the login form
                                     this.Hide();
                                 }
                                 else
@@ -128,6 +121,9 @@ namespace NoteBasket
                 // Handle exceptions (e.g., log errors or show user-friendly messages)
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
+
+
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

@@ -15,15 +15,26 @@ namespace NoteBasket
 {
     public partial class Form3 : Form
     {
-        public Form3(string name, string username, string email, string dob, string gender, string role, int subscriptions, int loyaltyPoints, DateTime accountCreationDate)
+        private int loggedInUserId;
+        private string name;
+        private string username;
+        private string email;
+        private string dob;
+        private string gender;
+
+
+
+        public Form3(int userId, string name, string username, string email, string dob, string gender, string role, int subscriptions, int loyaltyPoints, DateTime accountCreationDate)
         {
             InitializeComponent();
+            this.loggedInUserId = userId;
+            this.dob = dob;
 
             // Set the labels with the passed data
             name_label.Text = name;
             username_label.Text = "@" + username;
             emaildynamic_label.Text = email;
-            dobdynamic_label.Text = dob;
+            dobdynamic_label.Text = dob ?? "Not Available";
             genderdynamiclabel.Text = gender;
             roledynamic_label.Text = role;
 
@@ -65,6 +76,13 @@ namespace NoteBasket
             this.Hide();
             Form1 form1 = new Form1();
             form1.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Form8 editProfileForm = new Form8(loggedInUserId, name_label.Text, username_label.Text.TrimStart('@'), emaildynamic_label.Text, dob, genderdynamiclabel.Text);
+           
+            editProfileForm.Show();
         }
     }
 }

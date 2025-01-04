@@ -33,11 +33,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.createnewaccount_btn = new System.Windows.Forms.Button();
-            this.forgotpass_label = new System.Windows.Forms.Label();
             this.signin_btn = new System.Windows.Forms.Button();
             this.password_textbox = new System.Windows.Forms.TextBox();
             this.user_textbox = new System.Windows.Forms.TextBox();
             this.password_label = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,8 +76,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.createnewaccount_btn);
-            this.panel2.Controls.Add(this.forgotpass_label);
             this.panel2.Controls.Add(this.signin_btn);
             this.panel2.Controls.Add(this.password_textbox);
             this.panel2.Controls.Add(this.user_textbox);
@@ -96,23 +96,13 @@
             this.createnewaccount_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createnewaccount_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createnewaccount_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.createnewaccount_btn.Location = new System.Drawing.Point(432, 300);
+            this.createnewaccount_btn.Location = new System.Drawing.Point(432, 297);
             this.createnewaccount_btn.Name = "createnewaccount_btn";
             this.createnewaccount_btn.Size = new System.Drawing.Size(150, 34);
             this.createnewaccount_btn.TabIndex = 7;
             this.createnewaccount_btn.Text = "Create New Account";
             this.createnewaccount_btn.UseVisualStyleBackColor = false;
             this.createnewaccount_btn.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // forgotpass_label
-            // 
-            this.forgotpass_label.AutoSize = true;
-            this.forgotpass_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.forgotpass_label.Location = new System.Drawing.Point(429, 223);
-            this.forgotpass_label.Name = "forgotpass_label";
-            this.forgotpass_label.Size = new System.Drawing.Size(153, 16);
-            this.forgotpass_label.TabIndex = 6;
-            this.forgotpass_label.Text = "Forgotten Password?";
             // 
             // signin_btn
             // 
@@ -153,6 +143,18 @@
             this.password_label.TabIndex = 2;
             this.password_label.Text = "Password:";
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(439, 236);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(153, 16);
+            this.linkLabel1.TabIndex = 8;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Forgotten Password?";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,8 +183,8 @@
         private System.Windows.Forms.TextBox user_textbox;
         private System.Windows.Forms.Label password_label;
         private System.Windows.Forms.Button signin_btn;
-        private System.Windows.Forms.Label forgotpass_label;
         private System.Windows.Forms.Button createnewaccount_btn;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

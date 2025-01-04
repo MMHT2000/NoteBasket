@@ -76,10 +76,12 @@ namespace NoteBasket
                             if (reader.Read())
                             {
                                 // Get the user details
+                                int userId = Convert.ToInt32(reader["UserID"]);
                                 string username = reader["Username"].ToString();
                                 string name = reader["Name"].ToString();
                                 string email = reader["Email"].ToString();
-                                string dob = Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd");
+                                string dob = reader["DOB"] != DBNull.Value? Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd")
+    : null;
                                 string gender = reader["Gender"].ToString();
                                 string role = reader["Role"].ToString();
 
@@ -95,7 +97,7 @@ namespace NoteBasket
                                 if (BCrypt.Net.BCrypt.Verify(password, storedPasswordHash))
                                 {
                                     // Navigate to Form3 (User Dashboard) and pass user data
-                                    Form3 form3 = new Form3(name, username, email, dob, gender, role, subscriptions, loyaltyPoints, accountCreationDate);
+                                    Form3 form3 = new Form3(userId, name, username, email, dob, gender, role, subscriptions, loyaltyPoints, accountCreationDate);
                                     form3.Show();
 
                                     // Hide the login form
@@ -136,6 +138,13 @@ namespace NoteBasket
             this.Hide();
             Form2 f2 = new Form2();
             f2.Show();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            Form7 f7 = new Form7();
+            f7.Show();
         }
     }
 }

@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.welcome_label = new System.Windows.Forms.Label();
             this.username_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.createnewaccount_btn = new System.Windows.Forms.Button();
             this.signin_btn = new System.Windows.Forms.Button();
             this.password_textbox = new System.Windows.Forms.TextBox();
             this.user_textbox = new System.Windows.Forms.TextBox();
             this.password_label = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // welcome_label
@@ -46,7 +50,7 @@
             this.welcome_label.AutoSize = true;
             this.welcome_label.BackColor = System.Drawing.Color.LightSkyBlue;
             this.welcome_label.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcome_label.Location = new System.Drawing.Point(476, 55);
+            this.welcome_label.Location = new System.Drawing.Point(471, 88);
             this.welcome_label.Name = "welcome_label";
             this.welcome_label.Size = new System.Drawing.Size(307, 32);
             this.welcome_label.TabIndex = 0;
@@ -59,14 +63,16 @@
             this.username_label.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username_label.Location = new System.Drawing.Point(305, 70);
             this.username_label.Name = "username_label";
-            this.username_label.Size = new System.Drawing.Size(107, 24);
+            this.username_label.Size = new System.Drawing.Size(165, 24);
             this.username_label.TabIndex = 1;
-            this.username_label.Text = "Username:";
+            this.username_label.Text = "Username/Email:";
             this.username_label.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.welcome_label);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1264, 140);
@@ -89,6 +95,18 @@
             this.panel2.Size = new System.Drawing.Size(1016, 409);
             this.panel2.TabIndex = 3;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(439, 236);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(153, 16);
+            this.linkLabel1.TabIndex = 8;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Forgotten Password?";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // createnewaccount_btn
             // 
@@ -120,7 +138,7 @@
             // password_textbox
             // 
             this.password_textbox.BackColor = System.Drawing.Color.Azure;
-            this.password_textbox.Location = new System.Drawing.Point(461, 130);
+            this.password_textbox.Location = new System.Drawing.Point(501, 130);
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.Size = new System.Drawing.Size(207, 20);
             this.password_textbox.TabIndex = 4;
@@ -128,7 +146,7 @@
             // user_textbox
             // 
             this.user_textbox.BackColor = System.Drawing.Color.Azure;
-            this.user_textbox.Location = new System.Drawing.Point(461, 72);
+            this.user_textbox.Location = new System.Drawing.Point(501, 72);
             this.user_textbox.Name = "user_textbox";
             this.user_textbox.Size = new System.Drawing.Size(207, 20);
             this.user_textbox.TabIndex = 3;
@@ -143,17 +161,14 @@
             this.password_label.TabIndex = 2;
             this.password_label.Text = "Password:";
             // 
-            // linkLabel1
+            // pictureBox1
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(439, 236);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(153, 16);
-            this.linkLabel1.TabIndex = 8;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Forgotten Password?";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(557, -9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -161,15 +176,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.welcome_label);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "NoteBasket";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -185,6 +201,7 @@
         private System.Windows.Forms.Button signin_btn;
         private System.Windows.Forms.Button createnewaccount_btn;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

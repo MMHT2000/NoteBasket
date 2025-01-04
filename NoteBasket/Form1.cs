@@ -80,8 +80,7 @@ namespace NoteBasket
                                 string username = reader["Username"].ToString();
                                 string name = reader["Name"].ToString();
                                 string email = reader["Email"].ToString();
-                                string dob = reader["DOB"] != DBNull.Value? Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd")
-    : null;
+                                string dob = reader["DOB"] != DBNull.Value ? Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd") : null;
                                 string gender = reader["Gender"].ToString();
                                 string role = reader["Role"].ToString();
 
@@ -96,11 +95,36 @@ namespace NoteBasket
                                 string storedPasswordHash = reader["PasswordHash"].ToString();
                                 if (BCrypt.Net.BCrypt.Verify(password, storedPasswordHash))
                                 {
-                                    // Navigate to Form3 (User Dashboard) and pass user data
-                                    Form3 form3 = new Form3(userId, name, username, email, dob, gender, role, subscriptions, loyaltyPoints, accountCreationDate);
-                                    form3.Show();
+                                    // Redirect to different forms based on the role
+                                    switch (role)
+                                    {
+                                        case "Free":
+                                        case "Silver":
+                                        case "Gold":
+                                            // Navigate to Form3 (User Dashboard)
+                                            Form3 form3 = new Form3(userId, name, username, email, dob, gender, role, subscriptions, loyaltyPoints, accountCreationDate);
+                                            form3.Show();
+                                            break;
 
-                                    // Hide the login form
+                                        case "Notemaster":
+                                            // Navigate to Form4
+                                            Form4 form4 = new Form4();
+                                            form4.Show();
+                                            break;
+
+                                        case "Admin":
+                                            // Navigate to Form5
+                                            Form5 form5 = new Form5();
+                                            form5.Show();
+                                            break;
+
+                                        default:
+                                            // Handle unknown roles
+                                            MessageBox.Show("Unknown role. Please contact support.");
+                                            break;
+                                    }
+
+                                    // Hide the login form after navigation
                                     this.Hide();
                                 }
                                 else

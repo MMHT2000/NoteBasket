@@ -178,7 +178,7 @@
             this.dobdynamic_label.AutoSize = true;
             this.dobdynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.dobdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobdynamic_label.Location = new System.Drawing.Point(112, 222);
+            this.dobdynamic_label.Location = new System.Drawing.Point(112, 224);
             this.dobdynamic_label.Name = "dobdynamic_label";
             this.dobdynamic_label.Size = new System.Drawing.Size(29, 17);
             this.dobdynamic_label.TabIndex = 12;

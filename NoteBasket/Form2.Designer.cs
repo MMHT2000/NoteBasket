@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.beanotemaster_btn = new System.Windows.Forms.Button();
             this.haveanaccount_label = new System.Windows.Forms.Label();
             this.signin_btn = new System.Windows.Forms.Button();
             this.female_Btn = new System.Windows.Forms.RadioButton();
@@ -49,7 +50,6 @@
             this.name_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.createanaccount_label = new System.Windows.Forms.Label();
-            this.beanotemaster_btn = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +81,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1016, 409);
             this.panel2.TabIndex = 5;
+            // 
+            // beanotemaster_btn
+            // 
+            this.beanotemaster_btn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.beanotemaster_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.beanotemaster_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.beanotemaster_btn.ForeColor = System.Drawing.Color.Transparent;
+            this.beanotemaster_btn.Location = new System.Drawing.Point(603, 324);
+            this.beanotemaster_btn.Name = "beanotemaster_btn";
+            this.beanotemaster_btn.Size = new System.Drawing.Size(157, 32);
+            this.beanotemaster_btn.TabIndex = 17;
+            this.beanotemaster_btn.Text = "Be A NoteMaster";
+            this.beanotemaster_btn.UseVisualStyleBackColor = false;
+            this.beanotemaster_btn.Click += new System.EventHandler(this.beanotemaster_btn_Click);
             // 
             // haveanaccount_label
             // 
@@ -280,20 +294,6 @@
             this.createanaccount_label.TabIndex = 1;
             this.createanaccount_label.Text = "Create an Account";
             // 
-            // beanotemaster_btn
-            // 
-            this.beanotemaster_btn.BackColor = System.Drawing.SystemColors.Highlight;
-            this.beanotemaster_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.beanotemaster_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beanotemaster_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.beanotemaster_btn.Location = new System.Drawing.Point(603, 324);
-            this.beanotemaster_btn.Name = "beanotemaster_btn";
-            this.beanotemaster_btn.Size = new System.Drawing.Size(157, 32);
-            this.beanotemaster_btn.TabIndex = 17;
-            this.beanotemaster_btn.Text = "Be A NoteMaster";
-            this.beanotemaster_btn.UseVisualStyleBackColor = false;
-            this.beanotemaster_btn.Click += new System.EventHandler(this.beanotemaster_btn_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,7 +302,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Create an Account";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

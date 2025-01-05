@@ -14,11 +14,7 @@ namespace NoteBasket
     public partial class Form8 : Form
     {
         private int loggedInUserId;
-        private string name;
-        private string username;
-        private string email;
         private string dob;
-        private string gender;
 
         public Form8(int userId, string name, string username, string email, string dob, string gender)
         {

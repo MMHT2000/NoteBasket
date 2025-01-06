@@ -63,9 +63,10 @@
             this.userdashboard_label.AutoSize = true;
             this.userdashboard_label.BackColor = System.Drawing.Color.LightSkyBlue;
             this.userdashboard_label.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userdashboard_label.Location = new System.Drawing.Point(495, 38);
+            this.userdashboard_label.Location = new System.Drawing.Point(660, 47);
+            this.userdashboard_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.userdashboard_label.Name = "userdashboard_label";
-            this.userdashboard_label.Size = new System.Drawing.Size(211, 32);
+            this.userdashboard_label.Size = new System.Drawing.Size(275, 42);
             this.userdashboard_label.TabIndex = 2;
             this.userdashboard_label.Text = "User Dashboard";
             // 
@@ -75,8 +76,9 @@
             this.panel1.Controls.Add(this.logout_btn);
             this.panel1.Controls.Add(this.userdashboard_label);
             this.panel1.Location = new System.Drawing.Point(-1, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1264, 108);
+            this.panel1.Size = new System.Drawing.Size(1685, 133);
             this.panel1.TabIndex = 3;
             // 
             // logout_btn
@@ -85,9 +87,10 @@
             this.logout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logout_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logout_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.logout_btn.Location = new System.Drawing.Point(1047, 38);
+            this.logout_btn.Location = new System.Drawing.Point(1396, 47);
+            this.logout_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.logout_btn.Name = "logout_btn";
-            this.logout_btn.Size = new System.Drawing.Size(157, 32);
+            this.logout_btn.Size = new System.Drawing.Size(209, 39);
             this.logout_btn.TabIndex = 17;
             this.logout_btn.Text = "Log Out";
             this.logout_btn.UseVisualStyleBackColor = false;
@@ -99,9 +102,10 @@
             this.panel2.Controls.Add(this.name_label);
             this.panel2.Controls.Add(this.profilepicture_box);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(930, 124);
+            this.panel2.Location = new System.Drawing.Point(1240, 153);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(333, 558);
+            this.panel2.Size = new System.Drawing.Size(444, 687);
             this.panel2.TabIndex = 4;
             // 
             // name_label
@@ -109,9 +113,10 @@
             this.name_label.AutoSize = true;
             this.name_label.BackColor = System.Drawing.Color.LightBlue;
             this.name_label.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name_label.Location = new System.Drawing.Point(72, 160);
+            this.name_label.Location = new System.Drawing.Point(96, 197);
+            this.name_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.name_label.Name = "name_label";
-            this.name_label.Size = new System.Drawing.Size(45, 19);
+            this.name_label.Size = new System.Drawing.Size(55, 23);
             this.name_label.TabIndex = 1;
             this.name_label.Text = "name";
             this.name_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,9 +124,10 @@
             // profilepicture_box
             // 
             this.profilepicture_box.BackColor = System.Drawing.Color.SteelBlue;
-            this.profilepicture_box.Location = new System.Drawing.Point(100, 26);
+            this.profilepicture_box.Location = new System.Drawing.Point(133, 32);
+            this.profilepicture_box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.profilepicture_box.Name = "profilepicture_box";
-            this.profilepicture_box.Size = new System.Drawing.Size(128, 128);
+            this.profilepicture_box.Size = new System.Drawing.Size(171, 158);
             this.profilepicture_box.TabIndex = 0;
             this.profilepicture_box.TabStop = false;
             // 
@@ -145,10 +151,12 @@
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(13, 15);
+            this.panel3.Location = new System.Drawing.Point(17, 18);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(317, 393);
+            this.panel3.Size = new System.Drawing.Size(423, 484);
             this.panel3.TabIndex = 3;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // editprofile_btn
             // 
@@ -156,9 +164,10 @@
             this.editprofile_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editprofile_btn.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editprofile_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.editprofile_btn.Location = new System.Drawing.Point(233, 11);
+            this.editprofile_btn.Location = new System.Drawing.Point(311, 14);
+            this.editprofile_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.editprofile_btn.Name = "editprofile_btn";
-            this.editprofile_btn.Size = new System.Drawing.Size(76, 32);
+            this.editprofile_btn.Size = new System.Drawing.Size(101, 39);
             this.editprofile_btn.TabIndex = 18;
             this.editprofile_btn.Text = "Edit Profile";
             this.editprofile_btn.UseVisualStyleBackColor = false;
@@ -169,9 +178,10 @@
             this.accountcreationdynamic_label.AutoSize = true;
             this.accountcreationdynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.accountcreationdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountcreationdynamic_label.Location = new System.Drawing.Point(151, 359);
+            this.accountcreationdynamic_label.Location = new System.Drawing.Point(201, 442);
+            this.accountcreationdynamic_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.accountcreationdynamic_label.Name = "accountcreationdynamic_label";
-            this.accountcreationdynamic_label.Size = new System.Drawing.Size(58, 17);
+            this.accountcreationdynamic_label.Size = new System.Drawing.Size(74, 21);
             this.accountcreationdynamic_label.TabIndex = 18;
             this.accountcreationdynamic_label.Text = "Account";
             // 
@@ -180,9 +190,10 @@
             this.loyaltydynamic_label.AutoSize = true;
             this.loyaltydynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.loyaltydynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loyaltydynamic_label.Location = new System.Drawing.Point(120, 333);
+            this.loyaltydynamic_label.Location = new System.Drawing.Point(160, 410);
+            this.loyaltydynamic_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.loyaltydynamic_label.Name = "loyaltydynamic_label";
-            this.loyaltydynamic_label.Size = new System.Drawing.Size(92, 17);
+            this.loyaltydynamic_label.Size = new System.Drawing.Size(118, 21);
             this.loyaltydynamic_label.TabIndex = 17;
             this.loyaltydynamic_label.Text = "Loyalty Points";
             // 
@@ -191,9 +202,10 @@
             this.subscriptionsdynamic_label.AutoSize = true;
             this.subscriptionsdynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.subscriptionsdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subscriptionsdynamic_label.Location = new System.Drawing.Point(156, 306);
+            this.subscriptionsdynamic_label.Location = new System.Drawing.Point(208, 377);
+            this.subscriptionsdynamic_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.subscriptionsdynamic_label.Name = "subscriptionsdynamic_label";
-            this.subscriptionsdynamic_label.Size = new System.Drawing.Size(79, 17);
+            this.subscriptionsdynamic_label.Size = new System.Drawing.Size(105, 21);
             this.subscriptionsdynamic_label.TabIndex = 16;
             this.subscriptionsdynamic_label.Text = "Subscription";
             // 
@@ -202,9 +214,10 @@
             this.roledynamic_label.AutoSize = true;
             this.roledynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.roledynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roledynamic_label.Location = new System.Drawing.Point(72, 278);
+            this.roledynamic_label.Location = new System.Drawing.Point(96, 342);
+            this.roledynamic_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.roledynamic_label.Name = "roledynamic_label";
-            this.roledynamic_label.Size = new System.Drawing.Size(30, 17);
+            this.roledynamic_label.Size = new System.Drawing.Size(38, 21);
             this.roledynamic_label.TabIndex = 15;
             this.roledynamic_label.Text = "role";
             // 
@@ -213,9 +226,10 @@
             this.genderdynamiclabel.AutoSize = true;
             this.genderdynamiclabel.BackColor = System.Drawing.Color.LightBlue;
             this.genderdynamiclabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderdynamiclabel.Location = new System.Drawing.Point(81, 250);
+            this.genderdynamiclabel.Location = new System.Drawing.Point(108, 308);
+            this.genderdynamiclabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.genderdynamiclabel.Name = "genderdynamiclabel";
-            this.genderdynamiclabel.Size = new System.Drawing.Size(48, 17);
+            this.genderdynamiclabel.Size = new System.Drawing.Size(60, 21);
             this.genderdynamiclabel.TabIndex = 14;
             this.genderdynamiclabel.Text = "gender";
             // 
@@ -224,9 +238,10 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.LightBlue;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(75, 250);
+            this.label10.Location = new System.Drawing.Point(100, 308);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(0, 17);
+            this.label10.Size = new System.Drawing.Size(0, 21);
             this.label10.TabIndex = 13;
             // 
             // dobdynamic_label
@@ -234,9 +249,10 @@
             this.dobdynamic_label.AutoSize = true;
             this.dobdynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.dobdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobdynamic_label.Location = new System.Drawing.Point(112, 224);
+            this.dobdynamic_label.Location = new System.Drawing.Point(149, 276);
+            this.dobdynamic_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dobdynamic_label.Name = "dobdynamic_label";
-            this.dobdynamic_label.Size = new System.Drawing.Size(29, 17);
+            this.dobdynamic_label.Size = new System.Drawing.Size(40, 21);
             this.dobdynamic_label.TabIndex = 12;
             this.dobdynamic_label.Text = "dob";
             // 
@@ -245,9 +261,10 @@
             this.emaildynamic_label.AutoSize = true;
             this.emaildynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.emaildynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emaildynamic_label.Location = new System.Drawing.Point(69, 202);
+            this.emaildynamic_label.Location = new System.Drawing.Point(92, 249);
+            this.emaildynamic_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.emaildynamic_label.Name = "emaildynamic_label";
-            this.emaildynamic_label.Size = new System.Drawing.Size(44, 17);
+            this.emaildynamic_label.Size = new System.Drawing.Size(55, 21);
             this.emaildynamic_label.TabIndex = 11;
             this.emaildynamic_label.Text = "Email:";
             // 
@@ -256,9 +273,10 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.LightBlue;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(19, 359);
+            this.label7.Location = new System.Drawing.Point(25, 442);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 17);
+            this.label7.Size = new System.Drawing.Size(163, 21);
             this.label7.TabIndex = 10;
             this.label7.Text = "Account Created At:";
             // 
@@ -267,9 +285,10 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.LightBlue;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(19, 333);
+            this.label6.Location = new System.Drawing.Point(25, 410);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 17);
+            this.label6.Size = new System.Drawing.Size(122, 21);
             this.label6.TabIndex = 9;
             this.label6.Text = "Loyalty Points:";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -279,9 +298,10 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.LightBlue;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(19, 306);
+            this.label5.Location = new System.Drawing.Point(25, 377);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 17);
+            this.label5.Size = new System.Drawing.Size(174, 21);
             this.label5.TabIndex = 8;
             this.label5.Text = "Subscription Ends At:";
             // 
@@ -290,9 +310,10 @@
             this.username_label.AutoSize = true;
             this.username_label.BackColor = System.Drawing.Color.LightBlue;
             this.username_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username_label.Location = new System.Drawing.Point(109, 168);
+            this.username_label.Location = new System.Drawing.Point(145, 207);
+            this.username_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.username_label.Name = "username_label";
-            this.username_label.Size = new System.Drawing.Size(79, 17);
+            this.username_label.Size = new System.Drawing.Size(97, 21);
             this.username_label.TabIndex = 2;
             this.username_label.Text = "@username";
             // 
@@ -301,9 +322,10 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.LightBlue;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(19, 250);
+            this.label4.Location = new System.Drawing.Point(25, 308);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 17);
+            this.label4.Size = new System.Drawing.Size(69, 21);
             this.label4.TabIndex = 7;
             this.label4.Text = "Gender:";
             // 
@@ -312,9 +334,10 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.LightBlue;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 224);
+            this.label3.Location = new System.Drawing.Point(25, 276);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 17);
+            this.label3.Size = new System.Drawing.Size(110, 21);
             this.label3.TabIndex = 6;
             this.label3.Text = "Date of Birth:";
             // 
@@ -323,9 +346,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 278);
+            this.label2.Location = new System.Drawing.Point(25, 342);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 17);
+            this.label2.Size = new System.Drawing.Size(49, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "Role:";
             // 
@@ -334,20 +358,22 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.LightBlue;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 202);
+            this.label1.Location = new System.Drawing.Point(25, 249);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.Size = new System.Drawing.Size(55, 21);
             this.label1.TabIndex = 4;
             this.label1.Text = "Email:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form3";
             this.Text = "User Dashboard";
             this.panel1.ResumeLayout(false);

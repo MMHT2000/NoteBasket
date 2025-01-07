@@ -54,7 +54,7 @@ namespace NoteBasket
             try
             {
                 // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=DESKTOP-RS5QGMS\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     // Query to check if the username and email match
                     string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Email = @Email";

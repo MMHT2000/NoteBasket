@@ -12,9 +12,13 @@ namespace NoteBasket
 {
     public partial class Form4 : Form
     {
-        public Form4()
+        private int userId;
+
+        public Form4(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
+
         }
 
         private void logout_btn_Click(object sender, EventArgs e)

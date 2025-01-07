@@ -13,48 +13,79 @@ namespace NoteBasket
 {
     public partial class Form8 : Form
     {
-        private int loggedInUserId;
-        private string dob;
+        private int userId;
 
-        public Form8(int userId, string name, string username, string email, string dob, string gender)
+        public Form8(int userId)
         {
             InitializeComponent();
-            loggedInUserId = userId;
-            
+            this.userId = userId;
 
+            // Load user data when the form is initialized
+            LoadUserData();
 
-            // Load the current values into the textboxes
-            name_textbox.Text = name;
-            username_textbox.Text = username;
-            email_textbox.Text = email;
-            this.dob = dob;
+        }
 
-            // Parse and set the DOB
-            if (!string.IsNullOrEmpty(dob))
+        private void LoadUserData()
+        {
+            try
             {
-                try
+                // Establish the connection to the database
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    dob_picker.Value = DateTime.ParseExact(dob, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                }
-                catch (FormatException)
-                {
-                    MessageBox.Show("The date format for DOB is invalid.");
-                    dob_picker.Value = DateTime.Now; // Default to the current date
-                }
-            }
-            else
-            {
-                dob_picker.Value = DateTime.Now; // Default to the current date
-            }
+                    // SQL query to retrieve the user's details
+                    string sql = "SELECT Name, Username, Email, DOB, Gender FROM Users WHERE UserID = @UserID";
 
-            // Set gender radio buttons
-            if (gender == "Male")
-            {
-                male_Btn.Checked = true;
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        // Add parameter for SQL query
+                        cmd.Parameters.AddWithValue("@UserID", userId);
+
+                        // Open the database connection
+                        con.Open();
+
+                        // Execute the query and read the data
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Populate the form fields with the retrieved data
+                                name_textbox.Text = reader["Name"].ToString();
+                                username_textbox.Text = reader["Username"].ToString();
+                                email_textbox.Text = reader["Email"].ToString();
+
+                                // Parse and set the DOB
+                                if (reader["DOB"] != DBNull.Value)
+                                {
+                                    dob_picker.Value = Convert.ToDateTime(reader["DOB"]);
+                                }
+                                else
+                                {
+                                    dob_picker.Value = DateTime.Now; // Default to the current date if DOB is null
+                                }
+
+                                // Set gender radio buttons
+                                string gender = reader["Gender"].ToString();
+                                if (gender == "Male")
+                                {
+                                    male_Btn.Checked = true;
+                                }
+                                else if (gender == "Female")
+                                {
+                                    female_Btn.Checked = true;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("User data not found. Please try again.");
+                            }
+                        }
+                    }
+                }
             }
-            else if (gender == "Female")
+            catch (Exception ex)
             {
-                female_Btn.Checked = true;
+                // Handle any exceptions
+                MessageBox.Show("An error occurred while loading user data: " + ex.Message);
             }
         }
 
@@ -82,7 +113,7 @@ namespace NoteBasket
             try
             {
                 // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=DESKTOP-RS5QGMS\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     // SQL query to update user profile
                     string sql = "UPDATE Users SET Name = @Name, Username = @Username, Email = @Email, DOB = @DOB, Gender = @Gender WHERE UserID = @UserID";
@@ -95,7 +126,7 @@ namespace NoteBasket
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@DOB", dob);
                         cmd.Parameters.AddWithValue("@Gender", gender);
-                        cmd.Parameters.AddWithValue("@UserID", loggedInUserId);  // Use logged-in user ID for updating
+                        cmd.Parameters.AddWithValue("@UserID", userId);  // Use logged-in user ID for updating
 
                         // Open the database connection
                         con.Open();
@@ -121,6 +152,8 @@ namespace NoteBasket
         private void returntodashboard_btn_Click(object sender, EventArgs e)
         {
             this.Close();
+            Form3 f3 = new Form3(userId);
+            f3.Show();
         }
 
         private void changepassword_btn_Click(object sender, EventArgs e)

@@ -12,9 +12,12 @@ namespace NoteBasket
 {
     public partial class Form5 : Form
     {
-        public Form5()
+        private int userId;
+
+        public Form5(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
         }
 
         private void createanaccount_label_Click(object sender, EventArgs e)

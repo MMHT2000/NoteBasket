@@ -55,10 +55,10 @@ namespace NoteBasket
             try
             {
                 // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=DESKTOP-RS5QGMS\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    // Query to retrieve the user by either username or email
-                    string sql = "SELECT UserID, Username, PasswordHash, Name, Email, DOB, Gender, Role, SubscriptionStartDate, LoyaltyPoints, CreatedAt " +
+                    // Corrected query with proper column names
+                    string sql = "SELECT UserID, Username, PasswordHash, Role " +
                                  "FROM Users WHERE Username = @UsernameOrEmail OR Email = @UsernameOrEmail";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
@@ -77,19 +77,7 @@ namespace NoteBasket
                             {
                                 // Get the user details
                                 int userId = Convert.ToInt32(reader["UserID"]);
-                                string username = reader["Username"].ToString();
-                                string name = reader["Name"].ToString();
-                                string email = reader["Email"].ToString();
-                                string dob = reader["DOB"] != DBNull.Value ? Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd") : null;
-                                string gender = reader["Gender"].ToString();
                                 string role = reader["Role"].ToString();
-
-                                // Check if SubscriptionStartDate is NULL and assign default value if necessary
-                                int subscriptions = reader["SubscriptionStartDate"] != DBNull.Value ? Convert.ToInt32(reader["SubscriptionStartDate"]) : 0;
-
-                                // Get loyalty points and account creation date
-                                int loyaltyPoints = Convert.ToInt32(reader["LoyaltyPoints"]);
-                                DateTime accountCreationDate = Convert.ToDateTime(reader["CreatedAt"]);
 
                                 // Verify password
                                 string storedPasswordHash = reader["PasswordHash"].ToString();
@@ -101,20 +89,20 @@ namespace NoteBasket
                                         case "Free":
                                         case "Silver":
                                         case "Gold":
-                                            // Navigate to Form3 (User Dashboard)
-                                            Form3 form3 = new Form3(userId, name, username, email, dob, gender, role, subscriptions, loyaltyPoints, accountCreationDate);
+                                            // Navigate to Form3 (User Dashboard) by passing only userId
+                                            Form3 form3 = new Form3(userId);
                                             form3.Show();
                                             break;
 
                                         case "Notemaster":
                                             // Navigate to Form4
-                                            Form4 form4 = new Form4();
+                                            Form4 form4 = new Form4(userId);
                                             form4.Show();
                                             break;
 
                                         case "Admin":
                                             // Navigate to Form5
-                                            Form5 form5 = new Form5();
+                                            Form5 form5 = new Form5(userId);
                                             form5.Show();
                                             break;
 

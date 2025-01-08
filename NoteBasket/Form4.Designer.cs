@@ -346,6 +346,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.notemaster_label);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NoteMaster Dashboard";

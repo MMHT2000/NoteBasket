@@ -37,7 +37,7 @@ namespace NoteBasket
         private void signin_label_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 f1 = new Form1();
+            Form f1 = new Form1();
             f1.Show();
         }
 

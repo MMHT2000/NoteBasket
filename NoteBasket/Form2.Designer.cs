@@ -302,6 +302,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create an Account";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panel2.ResumeLayout(false);

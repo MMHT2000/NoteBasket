@@ -107,6 +107,7 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "Edit Profile";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // accountcreationdynamic_label
             // 
@@ -347,6 +348,7 @@
             this.Controls.Add(this.admindashboard_label);
             this.Controls.Add(this.panel1);
             this.Name = "Form5";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Dashboard";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

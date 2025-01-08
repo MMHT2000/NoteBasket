@@ -167,9 +167,10 @@
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "Form9";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form9";
+            this.Text = "Change Your Password";
             this.Load += new System.EventHandler(this.Form9_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

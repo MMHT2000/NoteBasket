@@ -347,6 +347,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.admindashboard_label);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "Form5";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Dashboard";

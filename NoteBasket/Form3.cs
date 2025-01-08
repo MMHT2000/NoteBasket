@@ -28,6 +28,7 @@ namespace NoteBasket
             this.userId = userId;
 
             LoadUserData();
+            
 
 
         }
@@ -136,6 +137,11 @@ namespace NoteBasket
         private void Form3_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

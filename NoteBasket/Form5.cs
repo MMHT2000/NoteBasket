@@ -31,5 +31,12 @@ namespace NoteBasket
             Form1 form1 = new Form1();
             form1.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form8 editProfileForm = new Form8(userId);
+            editProfileForm.Show();
+        }
     }
 }

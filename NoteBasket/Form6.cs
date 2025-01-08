@@ -119,7 +119,7 @@ namespace NoteBasket
         private void signin_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form1 = new Form1();
+            Form1 form1 = new Form1 ();
             form1.Show();
         }
     }

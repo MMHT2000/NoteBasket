@@ -137,8 +137,7 @@ namespace NoteBasket
                         // Inform the user that the profile has been updated
                         MessageBox.Show("Profile updated successfully.");
 
-                        // Optionally, close Form8
-                        this.Close();
+                
                     }
                 }
             }
@@ -151,14 +150,61 @@ namespace NoteBasket
 
         private void returntodashboard_btn_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form3 f3 = new Form3(userId);
-            f3.Show();
+
+            try
+            {
+                // Retrieve the role of the user from the database
+                string userRole = "";
+
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    string query = "SELECT Role FROM Users WHERE UserID = @UserId";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserId", userId);
+                        con.Open();
+
+                        // Execute the query
+                        object result = cmd.ExecuteScalar();
+                        userRole = result?.ToString();
+                    }
+                }
+
+                // Navigate to the appropriate form based on the role
+                this.Close();
+
+                if (userRole == "Free" || userRole == "Silver" || userRole == "Gold")
+                {
+                    Form3 f3 = new Form3(userId);
+                    f3.Show();
+                }
+                else if (userRole == "Notemaster")
+                {
+                    Form4 f4 = new Form4(userId);
+                    f4.Show();
+                }
+                else if (userRole == "Admin")
+                {
+                    Form5 f5 = new Form5(userId);
+                    f5.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid role. Unable to navigate to the dashboard.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
 
         private void changepassword_btn_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            Form9 f9 = new Form9(userId);
+            f9.Show();
         }
     }
 }

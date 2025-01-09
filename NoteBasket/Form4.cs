@@ -22,6 +22,7 @@ namespace NoteBasket
             InitializeComponent();
             this.userId = userId;
             LoadUserData();
+            
 
         }
 
@@ -113,5 +114,19 @@ namespace NoteBasket
 
             editProfileForm.Show();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form10 form10 = new Form10(userId);
+            form10.Show();
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
     }
 }

@@ -169,7 +169,7 @@
             this.accountcreationdynamic_label.AutoSize = true;
             this.accountcreationdynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.accountcreationdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountcreationdynamic_label.Location = new System.Drawing.Point(151, 359);
+            this.accountcreationdynamic_label.Location = new System.Drawing.Point(165, 361);
             this.accountcreationdynamic_label.Name = "accountcreationdynamic_label";
             this.accountcreationdynamic_label.Size = new System.Drawing.Size(58, 17);
             this.accountcreationdynamic_label.TabIndex = 18;
@@ -180,7 +180,7 @@
             this.loyaltydynamic_label.AutoSize = true;
             this.loyaltydynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.loyaltydynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loyaltydynamic_label.Location = new System.Drawing.Point(120, 333);
+            this.loyaltydynamic_label.Location = new System.Drawing.Point(122, 334);
             this.loyaltydynamic_label.Name = "loyaltydynamic_label";
             this.loyaltydynamic_label.Size = new System.Drawing.Size(92, 17);
             this.loyaltydynamic_label.TabIndex = 17;
@@ -191,7 +191,7 @@
             this.subscriptionsdynamic_label.AutoSize = true;
             this.subscriptionsdynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.subscriptionsdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subscriptionsdynamic_label.Location = new System.Drawing.Point(156, 306);
+            this.subscriptionsdynamic_label.Location = new System.Drawing.Point(175, 308);
             this.subscriptionsdynamic_label.Name = "subscriptionsdynamic_label";
             this.subscriptionsdynamic_label.Size = new System.Drawing.Size(79, 17);
             this.subscriptionsdynamic_label.TabIndex = 16;
@@ -202,7 +202,7 @@
             this.roledynamic_label.AutoSize = true;
             this.roledynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.roledynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roledynamic_label.Location = new System.Drawing.Point(72, 278);
+            this.roledynamic_label.Location = new System.Drawing.Point(72, 279);
             this.roledynamic_label.Name = "roledynamic_label";
             this.roledynamic_label.Size = new System.Drawing.Size(30, 17);
             this.roledynamic_label.TabIndex = 15;
@@ -234,7 +234,7 @@
             this.dobdynamic_label.AutoSize = true;
             this.dobdynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.dobdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobdynamic_label.Location = new System.Drawing.Point(112, 224);
+            this.dobdynamic_label.Location = new System.Drawing.Point(113, 225);
             this.dobdynamic_label.Name = "dobdynamic_label";
             this.dobdynamic_label.Size = new System.Drawing.Size(29, 17);
             this.dobdynamic_label.TabIndex = 12;
@@ -245,7 +245,7 @@
             this.emaildynamic_label.AutoSize = true;
             this.emaildynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.emaildynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emaildynamic_label.Location = new System.Drawing.Point(69, 202);
+            this.emaildynamic_label.Location = new System.Drawing.Point(70, 203);
             this.emaildynamic_label.Name = "emaildynamic_label";
             this.emaildynamic_label.Size = new System.Drawing.Size(44, 17);
             this.emaildynamic_label.TabIndex = 11;
@@ -255,10 +255,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.LightBlue;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(19, 359);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 17);
+            this.label7.Size = new System.Drawing.Size(143, 17);
             this.label7.TabIndex = 10;
             this.label7.Text = "Account Created At:";
             // 
@@ -266,10 +266,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.LightBlue;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(19, 333);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 17);
+            this.label6.Size = new System.Drawing.Size(106, 17);
             this.label6.TabIndex = 9;
             this.label6.Text = "Loyalty Points:";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -278,10 +278,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.LightBlue;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(19, 306);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 17);
+            this.label5.Size = new System.Drawing.Size(150, 17);
             this.label5.TabIndex = 8;
             this.label5.Text = "Subscription Ends At:";
             // 
@@ -300,10 +300,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.LightBlue;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(19, 250);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 17);
+            this.label4.Size = new System.Drawing.Size(62, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "Gender:";
             // 
@@ -311,10 +311,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.LightBlue;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(19, 224);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 17);
+            this.label3.Size = new System.Drawing.Size(98, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Date of Birth:";
             // 
@@ -322,10 +322,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.LightBlue;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(19, 278);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 17);
+            this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Role:";
             // 
@@ -333,10 +333,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.LightBlue;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(19, 202);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.Size = new System.Drawing.Size(50, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Email:";
             this.label1.Click += new System.EventHandler(this.label1_Click);

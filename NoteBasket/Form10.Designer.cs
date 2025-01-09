@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.returntodashboard_btn = new System.Windows.Forms.Button();
             this.changepassword_btn = new System.Windows.Forms.Button();
-            this.email_textbox = new System.Windows.Forms.TextBox();
-            this.username_textbox = new System.Windows.Forms.TextBox();
+            this.description_textbox = new System.Windows.Forms.TextBox();
             this.name_textbox = new System.Windows.Forms.TextBox();
             this.dob_label = new System.Windows.Forms.Label();
             this.email_label = new System.Windows.Forms.Label();
@@ -40,11 +43,8 @@
             this.name_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.editprofile_label = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -58,18 +58,70 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.returntodashboard_btn);
             this.panel2.Controls.Add(this.changepassword_btn);
-            this.panel2.Controls.Add(this.email_textbox);
-            this.panel2.Controls.Add(this.username_textbox);
+            this.panel2.Controls.Add(this.description_textbox);
             this.panel2.Controls.Add(this.name_textbox);
             this.panel2.Controls.Add(this.dob_label);
             this.panel2.Controls.Add(this.email_label);
             this.panel2.Controls.Add(this.username_label);
             this.panel2.Controls.Add(this.name_label);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel2.Location = new System.Drawing.Point(116, 205);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1016, 409);
             this.panel2.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Snow;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(677, 263);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(76, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Browse";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Free",
+            "Silver",
+            "Gold"});
+            this.comboBox2.Location = new System.Drawing.Point(491, 222);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(264, 21);
+            this.comboBox2.TabIndex = 21;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "CSE",
+            "EEE",
+            "Law",
+            "IPE",
+            "BBA",
+            "Economics",
+            "MMC"});
+            this.comboBox1.Location = new System.Drawing.Point(493, 179);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(262, 21);
+            this.comboBox1.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(277, 175);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 23);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Category:";
             // 
             // returntodashboard_btn
             // 
@@ -97,23 +149,15 @@
             this.changepassword_btn.TabIndex = 16;
             this.changepassword_btn.Text = "Upload";
             this.changepassword_btn.UseVisualStyleBackColor = false;
+            this.changepassword_btn.Click += new System.EventHandler(this.changepassword_btn_Click);
             // 
-            // email_textbox
+            // description_textbox
             // 
-            this.email_textbox.Location = new System.Drawing.Point(493, 88);
-            this.email_textbox.Multiline = true;
-            this.email_textbox.Name = "email_textbox";
-            this.email_textbox.Size = new System.Drawing.Size(262, 68);
-            this.email_textbox.TabIndex = 8;
-            // 
-            // username_textbox
-            // 
-            this.username_textbox.Location = new System.Drawing.Point(491, 263);
-            this.username_textbox.Multiline = true;
-            this.username_textbox.Name = "username_textbox";
-            this.username_textbox.ReadOnly = true;
-            this.username_textbox.Size = new System.Drawing.Size(262, 23);
-            this.username_textbox.TabIndex = 7;
+            this.description_textbox.Location = new System.Drawing.Point(493, 88);
+            this.description_textbox.Multiline = true;
+            this.description_textbox.Name = "description_textbox";
+            this.description_textbox.Size = new System.Drawing.Size(262, 68);
+            this.description_textbox.TabIndex = 8;
             // 
             // name_textbox
             // 
@@ -182,47 +226,17 @@
             this.editprofile_label.TabIndex = 6;
             this.editprofile_label.Text = "Upload a Note";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(277, 175);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 23);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Category:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(493, 179);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(262, 21);
-            this.comboBox1.TabIndex = 20;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(491, 222);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(264, 21);
-            this.comboBox2.TabIndex = 21;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Snow;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(677, 263);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Browse";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(492, 263);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(260, 23);
+            this.panel3.TabIndex = 23;
             // 
             // Form10
             // 
@@ -249,8 +263,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button returntodashboard_btn;
         private System.Windows.Forms.Button changepassword_btn;
-        private System.Windows.Forms.TextBox email_textbox;
-        private System.Windows.Forms.TextBox username_textbox;
+        private System.Windows.Forms.TextBox description_textbox;
         private System.Windows.Forms.TextBox name_textbox;
         private System.Windows.Forms.Label dob_label;
         private System.Windows.Forms.Label email_label;
@@ -262,5 +275,6 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Panel panel3;
     }
 }

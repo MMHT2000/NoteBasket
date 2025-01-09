@@ -96,7 +96,7 @@ namespace NoteBasket
                 loyaltydynamic_label.Text = "0";
                 accountcreationdynamic_label.Text = "Not Set";
 
-                profilepicture_box.ImageLocation = Path.Combine(imagePath, "DefaultProfileImage.png");
+                profilepicture_box.ImageLocation = Path.Combine(imagePath, "pngegg.png");
             }
         }
 

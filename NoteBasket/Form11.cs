@@ -13,19 +13,33 @@ namespace NoteBasket
     public partial class Form11 : Form
     {
         private int userId;
-        public Form11(int userId)
+        private int noteId;
+        public Form11(int userId, int noteID)
         {
             InitializeComponent();
             this.userId = userId;
+            this.noteId = noteID;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             
-            Form12 f12 = new Form12(userId);
+            Form12 f12 = new Form12(userId, noteId);
 
             f12.StartPosition = FormStartPosition.CenterParent;
             f12.ShowDialog();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form3 form3 = new Form3(userId);
+            form3.Show();
         }
     }
 }

@@ -143,6 +143,7 @@
             this.profilepicture_box.Size = new System.Drawing.Size(171, 158);
             this.profilepicture_box.TabIndex = 0;
             this.profilepicture_box.TabStop = false;
+            this.profilepicture_box.Click += new System.EventHandler(this.profilepicture_box_Click);
             // 
             // panel3
             // 

@@ -151,7 +151,6 @@
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.Size = new System.Drawing.Size(207, 20);
             this.password_textbox.TabIndex = 4;
-            this.password_textbox.UseSystemPasswordChar = true;
             // 
             // user_textbox
             // 
@@ -160,6 +159,9 @@
             this.user_textbox.Name = "user_textbox";
             this.user_textbox.Size = new System.Drawing.Size(207, 20);
             this.user_textbox.TabIndex = 3;
+
+            this.password_textbox.UseSystemPasswordChar = true;
+
             // 
             // password_label
             // 
@@ -179,6 +181,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+          
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -191,6 +194,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+
 
         }
 

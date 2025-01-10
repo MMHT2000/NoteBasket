@@ -12,11 +12,16 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Xml.Linq;
 using System.Data.SqlClient;
 
+using System.IO;
+
 namespace NoteBasket
 {
     public partial class Form3 : Form
     {
         private int userId;
+
+        string imagePath = Path.Combine(Application.StartupPath, "images");
+
 
 
         public Form3(int userId)
@@ -78,11 +83,13 @@ namespace NoteBasket
                                 // Set the profile picture based on gender
                                 if (gender == "Male")
                                 {
-                                    profilepicture_box.ImageLocation = @"F:\Project Files\NoteBasket\images\Iconarchive-Incognito-Animals-Giraffe-Avatar.128.png";
+
+                                    profilepicture_box.ImageLocation = Path.Combine(imagePath, "Iconarchive-Incognito-Animals-Giraffe-Avatar.128.png");
                                 }
                                 else if (gender == "Female")
                                 {
-                                    profilepicture_box.ImageLocation = @"F:\Project Files\NoteBasket\images\Hopstarter-Superhero-Avatar-Avengers-Giant-Man.128.png";
+                                    profilepicture_box.ImageLocation = Path.Combine(imagePath, "Hopstarter-Superhero-Avatar-Avengers-Giant-Man.128.png");
+
                                 }
                             }
                             else
@@ -133,6 +140,18 @@ namespace NoteBasket
         private void Form3_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form11 form11 = new Form11(userId);
+            form11.Show();
         }
     }
 }

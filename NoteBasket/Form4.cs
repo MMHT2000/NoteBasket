@@ -15,12 +15,14 @@ namespace NoteBasket
     public partial class Form4 : Form
     {
         private int userId;
+
         string imagePath = Path.Combine(Application.StartupPath, "images");
 
         public Form4(int userId)
         {
             InitializeComponent();
             this.userId = userId;
+
             LoadUserData();
             
 
@@ -98,6 +100,7 @@ namespace NoteBasket
 
                 profilepicture_box.ImageLocation = Path.Combine(imagePath, "pngegg.png");
             }
+
         }
 
         private void logout_btn_Click(object sender, EventArgs e)
@@ -115,6 +118,7 @@ namespace NoteBasket
             editProfileForm.Show();
         }
 
+
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -128,5 +132,6 @@ namespace NoteBasket
         }
 
         
+
     }
 }

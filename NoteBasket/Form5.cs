@@ -15,12 +15,15 @@ namespace NoteBasket
     public partial class Form5 : Form
     {
         private int userId;
+
         private string imagePath = Path.Combine(Application.StartupPath, "images");
+
 
         public Form5(int userId)
         {
             InitializeComponent();
             this.userId = userId;
+
             LoadUserData();
         }
 
@@ -96,6 +99,7 @@ namespace NoteBasket
 
                 profilepicture_box.ImageLocation = Path.Combine(imagePath, "DefaultProfileImage.png");
             }
+
         }
 
         private void createanaccount_label_Click(object sender, EventArgs e)

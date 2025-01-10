@@ -158,10 +158,10 @@ namespace NoteBasket
             Form7 f7 = new Form7();
             f7.Show();
         }
+private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+{
+    Application.Exit();
+}
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }

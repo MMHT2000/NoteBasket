@@ -12,9 +12,12 @@ namespace NoteBasket
 {
     public partial class Form5 : Form
     {
-        public Form5()
+        private int userId;
+
+        public Form5(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
         }
 
         private void createanaccount_label_Click(object sender, EventArgs e)
@@ -27,6 +30,13 @@ namespace NoteBasket
             this.Hide();
             Form1 form1 = new Form1();
             form1.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form8 editProfileForm = new Form8(userId);
+            editProfileForm.Show();
         }
     }
 }

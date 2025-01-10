@@ -10,50 +10,94 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Xml.Linq;
+using System.Data.SqlClient;
 
 namespace NoteBasket
 {
     public partial class Form3 : Form
     {
-        private int loggedInUserId;
-        private string name;
-        private string username;
-        private string email;
-        private string dob;
-        private string gender;
+        private int userId;
 
 
-
-        public Form3(int userId, string name, string username, string email, string dob, string gender, string role, int subscriptions, int loyaltyPoints, DateTime accountCreationDate)
+        public Form3(int userId)
         {
             InitializeComponent();
-            this.loggedInUserId = userId;
-            this.dob = dob;
+            this.userId = userId;
 
-            // Set the labels with the passed data
-            name_label.Text = name;
-            username_label.Text = "@" + username;
-            emaildynamic_label.Text = email;
-            dobdynamic_label.Text = dob ?? "Not Available";
-            genderdynamiclabel.Text = gender;
-            roledynamic_label.Text = role;
+            LoadUserData();
 
-            // Convert subscriptions and loyalty points to string before assigning to labels
-            subscriptionsdynamic_label.Text = subscriptions.ToString();  // subscriptions is an int
-            loyaltydynamic_label.Text = loyaltyPoints.ToString();       // loyaltyPoints is an int
 
-            accountcreationdynamic_label.Text = accountCreationDate.ToString("yyyy-MM-dd");
+        }
 
-            // Set the profile picture based on gender
-            if (gender == "Male")
+        private void LoadUserData()
+        {
+            try
             {
-                profilepicture_box.ImageLocation = @"F:\Project Files\NoteBasket\images\Iconarchive-Incognito-Animals-Giraffe-Avatar.128.png";
-            }
-            else if (gender == "Female")
-            {
-                profilepicture_box.ImageLocation = @"F:\Project Files\NoteBasket\images\Hopstarter-Superhero-Avatar-Avengers-Giant-Man.128.png";
-            }
+                // Connect to the database
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    // Query to retrieve user details
+                    string sql = "SELECT Name, Username, Email, DOB, Gender, Role, SubscriptionStartDate, LoyaltyPoints, CreatedAt " +
+                                 "FROM Users WHERE UserID = @UserId";
 
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        // Add the parameter for userId
+                        cmd.Parameters.AddWithValue("@UserId", userId);
+
+                        // Open the connection
+                        con.Open();
+
+                        // Execute the query and retrieve data
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Extract data from the reader
+                                string name = reader["Name"].ToString();
+                                string username = reader["Username"].ToString();
+                                string email = reader["Email"].ToString();
+                                string dob = reader["DOB"] != DBNull.Value ? Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd") : "Not Available";
+                                string gender = reader["Gender"].ToString();
+                                string role = reader["Role"].ToString();
+                                string subscriptions = reader["SubscriptionStartDate"] != DBNull.Value ? Convert.ToDateTime(reader["SubscriptionStartDate"]).ToString("yyyy-MM-dd") : "Not Subscribed";
+                                int loyaltyPoints = Convert.ToInt32(reader["LoyaltyPoints"]);
+                                string accountCreationDate = Convert.ToDateTime(reader["CreatedAt"]).ToString("yyyy-MM-dd");
+
+                                // Set the labels with retrieved data
+                                name_label.Text = name;
+                                username_label.Text = "@" + username;
+                                emaildynamic_label.Text = email;
+                                dobdynamic_label.Text = dob;
+                                genderdynamiclabel.Text = gender;
+                                roledynamic_label.Text = role;
+                                subscriptionsdynamic_label.Text = subscriptions;
+                                loyaltydynamic_label.Text = loyaltyPoints.ToString();
+                                accountcreationdynamic_label.Text = accountCreationDate;
+
+                                // Set the profile picture based on gender
+                                if (gender == "Male")
+                                {
+                                    profilepicture_box.ImageLocation = @"F:\Project Files\NoteBasket\images\Iconarchive-Incognito-Animals-Giraffe-Avatar.128.png";
+                                }
+                                else if (gender == "Female")
+                                {
+                                    profilepicture_box.ImageLocation = @"F:\Project Files\NoteBasket\images\Hopstarter-Superhero-Avatar-Avengers-Giant-Man.128.png";
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("User data not found.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,15 +118,21 @@ namespace NoteBasket
         private void logout_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form1 = new Form1();
-            form1.Show();
+            Form1 f1 = new Form1();
+            f1.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Form8 editProfileForm = new Form8(loggedInUserId, name_label.Text, username_label.Text.TrimStart('@'), emaildynamic_label.Text, dob, genderdynamiclabel.Text);
+            this.Hide();
+            Form8 editProfileForm = new Form8(userId);
            
             editProfileForm.Show();
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -47,7 +47,7 @@ namespace NoteBasket
                 }
 
                 // Check if username already exists in the database
-                using (SqlConnection con = new SqlConnection("data source=DESKTOP-RS5QGMS\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string checkUsernameQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
 
@@ -75,7 +75,7 @@ namespace NoteBasket
                 string role = "Notemaster";
 
                 // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=DESKTOP-RS5QGMS\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     // Use a parameterized query to prevent SQL injection
                     string sql = "INSERT INTO Users (Username, PasswordHash, Name, Role) " +
@@ -119,7 +119,7 @@ namespace NoteBasket
         private void signin_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form1 = new Form1();
+            Form1 form1 = new Form1 ();
             form1.Show();
         }
     }

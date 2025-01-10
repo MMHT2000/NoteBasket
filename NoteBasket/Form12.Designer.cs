@@ -13,6 +13,7 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
+
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -29,7 +30,7 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.bookmarkimage = new System.Windows.Forms.PictureBox();
             this.updateprofile_btn = new System.Windows.Forms.Button();
             this.profilepicture_box = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -49,11 +50,11 @@
             this.emaildynamic_label = new System.Windows.Forms.Label();
             this.username_label = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backtosignin_btn = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookmarkimage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -62,7 +63,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.LightBlue;
-            this.panel3.Controls.Add(this.pictureBox2);
+            this.panel3.Controls.Add(this.bookmarkimage);
             this.panel3.Controls.Add(this.updateprofile_btn);
             this.panel3.Controls.Add(this.profilepicture_box);
             this.panel3.Controls.Add(this.label7);
@@ -87,13 +88,16 @@
             this.panel3.Size = new System.Drawing.Size(317, 552);
             this.panel3.TabIndex = 4;
             // 
-            // pictureBox2
+            // bookmarkimage
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(13, 35);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox2.TabIndex = 29;
-            this.pictureBox2.TabStop = false;
+            this.bookmarkimage.Image = global::NoteBasket.Properties.Resources.bookmark_hollow;
+            this.bookmarkimage.InitialImage = null;
+            this.bookmarkimage.Location = new System.Drawing.Point(13, 35);
+            this.bookmarkimage.Name = "bookmarkimage";
+            this.bookmarkimage.Size = new System.Drawing.Size(50, 50);
+            this.bookmarkimage.TabIndex = 29;
+            this.bookmarkimage.TabStop = false;
+            this.bookmarkimage.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // updateprofile_btn
             // 
@@ -117,6 +121,7 @@
             this.profilepicture_box.Size = new System.Drawing.Size(128, 128);
             this.profilepicture_box.TabIndex = 26;
             this.profilepicture_box.TabStop = false;
+            this.profilepicture_box.Click += new System.EventHandler(this.profilepicture_box_Click);
             // 
             // label7
             // 
@@ -303,15 +308,6 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Chocolate;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(677, 552);
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
-            // 
             // backtosignin_btn
             // 
             this.backtosignin_btn.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -323,6 +319,15 @@
             this.backtosignin_btn.TabIndex = 27;
             this.backtosignin_btn.Text = "Download";
             this.backtosignin_btn.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Chocolate;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(677, 552);
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
             // 
             // Form12
             // 
@@ -338,7 +343,7 @@
             this.Text = "Form12";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookmarkimage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -370,7 +375,7 @@
         private System.Windows.Forms.Button backtosignin_btn;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button updateprofile_btn;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox bookmarkimage;
         private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

@@ -61,7 +61,17 @@ namespace NoteBasket
 
                 File.Copy(selectedFilePath, fullFilePath, true); // Overwrite if file exists
 
+                // Display the relative file path in the label and make it visible
+                label2.Text = $"{filepath}"; // Update the label text
+                label2.ForeColor = Color.Green; // Set label text color
+                label2.Visible = true; // Make the label visible
+
                 MessageBox.Show($"File successfully saved to: {fullFilePath}");
+            }
+            else
+            {
+                // If no file is selected, hide the label
+                label2.Visible = false;
             }
         }
 
@@ -97,8 +107,8 @@ namespace NoteBasket
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     // Use a parameterized query to prevent SQL injection
-                    string sql = "INSERT INTO Notes (Title, Description, Filepath, Category, UploadedBy, UploadDate, SubscriptionLevel) " +
-                                 "VALUES (@Title, @Description, @Filepath, @Category, @UploadedBy, @UploadDate, @SubscriptionLevel)";
+                    string sql = "INSERT INTO Notes (Title, Description, Filepath, Category, UploadedBy, UploadDate, SubscriptionLevel, Status) " +
+                                 "VALUES (@Title, @Description, @Filepath, @Category, @UploadedBy, @UploadDate, @SubscriptionLevel, @Status)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -110,6 +120,8 @@ namespace NoteBasket
                         cmd.Parameters.AddWithValue("@UploadedBy", userId); // Pass the userId of the logged-in user
                         cmd.Parameters.AddWithValue("@UploadDate", DateTime.Now); // Use current date and time
                         cmd.Parameters.AddWithValue("@SubscriptionLevel", subscription);
+                        cmd.Parameters.AddWithValue("@Status", "Pending");
+
 
                         // Open the connection
                         con.Open();

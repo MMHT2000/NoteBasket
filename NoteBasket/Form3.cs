@@ -21,7 +21,7 @@ namespace NoteBasket
         private int userId;
 
         string imagePath = Path.Combine(Application.StartupPath, "images");
-
+        private int noteID=2;
 
 
         public Form3(int userId)
@@ -150,8 +150,13 @@ namespace NoteBasket
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form11 form11 = new Form11(userId);
+            Form11 form11 = new Form11(userId, noteID);
             form11.Show();
+        }
+
+        private void profilepicture_box_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

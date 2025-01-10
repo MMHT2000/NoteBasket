@@ -148,11 +148,7 @@ namespace NoteBasket
             Application.Exit();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Form11 form11 = new Form11(userId, noteID);
-            form11.Show();
-        }
+        
 
         private void profilepicture_box_Click(object sender, EventArgs e)
         {
@@ -161,6 +157,13 @@ namespace NoteBasket
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Form11 form11 = new Form11(userId, noteID);
+            form11.Show();
 
         }
     }

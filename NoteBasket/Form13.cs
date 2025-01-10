@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace NoteBasket
 {
-    public partial class Form12 : Form
+    public partial class Form13 : Form
     {
         private int userId;
-        public Form12(int userId)
+        public Form13(int userId)
         {
             InitializeComponent();
             this.userId = userId;
@@ -21,10 +21,6 @@ namespace NoteBasket
 
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
-            
-            Form13 form13 = new Form13(userId);
-            form13.StartPosition = FormStartPosition.CenterParent;
-            form13.ShowDialog();
 
         }
 

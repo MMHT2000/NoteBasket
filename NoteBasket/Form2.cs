@@ -37,7 +37,7 @@ namespace NoteBasket
         private void signin_label_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 f1 = new Form1();
+            Form f1 = new Form1();
             f1.Show();
         }
 
@@ -76,7 +76,7 @@ namespace NoteBasket
                 }
 
                 // Check if username already exists in the database
-                using (SqlConnection con = new SqlConnection("data source=DESKTOP-RS5QGMS\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string checkUsernameQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
 
@@ -104,7 +104,7 @@ namespace NoteBasket
                 string role = "Free";
 
                 // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=DESKTOP-RS5QGMS\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     // Use a parameterized query to prevent SQL injection
                     string sql = "INSERT INTO Users (Username, PasswordHash, Name, Email, DOB, Gender, Role) " +
@@ -129,6 +129,10 @@ namespace NoteBasket
 
                         // Inform the user of success
                         MessageBox.Show("Details inserted successfully");
+
+                        this.Hide();
+                        Form1 f1 = new Form1();
+                        f1.Show();
                     }
                 }
             }

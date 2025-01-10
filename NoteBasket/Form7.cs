@@ -22,7 +22,7 @@ namespace NoteBasket
         private void backtosignin_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form1 = new Form1();
+            Form1 form1 = new Form1 ();
             form1.Show();
         }
 
@@ -54,7 +54,7 @@ namespace NoteBasket
             try
             {
                 // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=DESKTOP-RS5QGMS\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     // Query to check if the username and email match
                     string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Email = @Email";
@@ -95,6 +95,10 @@ namespace NoteBasket
 
                         // Inform the user of success
                         MessageBox.Show("Password changed successfully.");
+
+                        this.Hide();
+                        Form1 form1 = new Form1();
+                        form1.Show();
                     }
                 }
             }

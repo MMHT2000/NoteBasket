@@ -19,6 +19,7 @@ namespace NoteBasket
     public partial class Form3 : Form
     {
         private int userId;
+        private Form14 form14Instance;
 
         string imagePath = Path.Combine(Application.StartupPath, "images");
         private int noteID=2;
@@ -394,14 +395,23 @@ namespace NoteBasket
         }
         private void ShowForm14()
         {
-            // Get the screen coordinates of panel6
-            Point panel6LocationOnScreen = panel6.PointToScreen(Point.Empty);
+            if (form14Instance == null || form14Instance.IsDisposed)
+            {
+                // Get the screen coordinates of panel6
+                Point panel6LocationOnScreen = panel6.PointToScreen(Point.Empty);
 
-            // Create an instance of Form14 and position it at the same location as panel6
-            Form14 form14 = new Form14(userId);
-            form14.StartPosition = FormStartPosition.Manual; // Set the position manually
-            form14.Location = panel6LocationOnScreen; // Set Form14's location to panel6's position
-            form14.Show();
+                // Create a new instance of Form14 with the userId
+                form14Instance = new Form14(userId)
+                {
+                    StartPosition = FormStartPosition.Manual, // Set the position manually
+                    Location = panel6LocationOnScreen        // Position it at panel6's location
+                };
+                form14Instance.Show();
+            }
+            else
+            {
+                form14Instance.BringToFront(); // Bring the existing instance to the front
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)

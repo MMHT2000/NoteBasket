@@ -245,6 +245,8 @@
     <Content Include="images\*.webp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\rating_hollow.png" />
+    <None Include="Resources\rating_filled.png" />
     <None Include="images\icons8-close-window-48.png" />
     <Content Include="images\pngegg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

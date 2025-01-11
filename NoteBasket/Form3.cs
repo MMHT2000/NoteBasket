@@ -166,5 +166,23 @@ namespace NoteBasket
             form11.Show();
 
         }
+        private void ShowForm14()
+        {
+            // Get the screen coordinates of panel6
+            Point panel6LocationOnScreen = panel6.PointToScreen(Point.Empty);
+
+            // Create an instance of Form14 and position it at the same location as panel6
+            Form14 form14 = new Form14(userId);
+            form14.StartPosition = FormStartPosition.Manual; // Set the position manually
+            form14.Location = panel6LocationOnScreen; // Set Form14's location to panel6's position
+            form14.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+            ShowForm14();
+
+        }
     }
 }

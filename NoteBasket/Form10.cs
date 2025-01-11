@@ -66,7 +66,7 @@ namespace NoteBasket
                 label2.ForeColor = Color.Green; // Set label text color
                 label2.Visible = true; // Make the label visible
 
-                MessageBox.Show($"File successfully saved to: {fullFilePath}");
+                MessageBox.Show($"File successfully saved to: {fullFilePath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -99,7 +99,7 @@ namespace NoteBasket
                     string.IsNullOrEmpty(subscription) ||
                     string.IsNullOrEmpty(filepath))
                 {
-                    MessageBox.Show("Please fill in all the fields.");
+                    MessageBox.Show("Please fill in all the fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -130,7 +130,7 @@ namespace NoteBasket
                         cmd.ExecuteNonQuery();
 
                         // Inform the user of success
-                        MessageBox.Show("Details inserted successfully");
+                        MessageBox.Show("Details inserted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Navigate to the relevant form (e.g., dashboard or another form)
                         this.Hide();
@@ -142,7 +142,7 @@ namespace NoteBasket
             catch (Exception ex)
             {
                 // Handle exceptions and display an error message
-                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

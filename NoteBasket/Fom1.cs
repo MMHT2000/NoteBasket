@@ -118,7 +118,9 @@ namespace NoteBasket
                                 else
                                 {
                                     // Incorrect password
-                                    MessageBox.Show("Incorrect password. Please try again.");
+                                    MessageBox.Show("Incorrect password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
                                 }
                             }
                             else

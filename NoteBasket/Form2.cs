@@ -64,14 +64,14 @@ namespace NoteBasket
                     string.IsNullOrEmpty(confirmPassword) ||
                     string.IsNullOrEmpty(gender))
                 {
-                    MessageBox.Show("Please fill in all the fields.");
+                    MessageBox.Show("Please fill in all the fields.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 // Validate if password and confirm password match
                 if (password != confirmPassword)
                 {
-                    MessageBox.Show("Password and Confirm Password do not match.");
+                    MessageBox.Show("Password and Confirm Password do not match.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -91,7 +91,7 @@ namespace NoteBasket
                         // If the user count is greater than 0, the username already exists
                         if (userCount > 0)
                         {
-                            MessageBox.Show("A user/NoteMaster with this username already exists.");
+                            MessageBox.Show("A user/NoteMaster with this username already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                     }
@@ -128,7 +128,7 @@ namespace NoteBasket
                         cmd.ExecuteNonQuery();
 
                         // Inform the user of success
-                        MessageBox.Show("Details inserted successfully");
+                        MessageBox.Show("Details inserted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         this.Hide();
                         Form1 f1 = new Form1();
@@ -139,7 +139,7 @@ namespace NoteBasket
             catch (Exception ex)
             {
                 // Handle exceptions and display an error message
-                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

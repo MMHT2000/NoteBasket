@@ -85,7 +85,7 @@ namespace NoteBasket
             catch (Exception ex)
             {
                 // Handle any exceptions
-                MessageBox.Show("An error occurred while loading user data: " + ex.Message);
+                MessageBox.Show("An error occurred while loading user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -106,7 +106,7 @@ namespace NoteBasket
             // Check if all fields are filled
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email))
             {
-                MessageBox.Show("Please fill in all the fields.");
+                MessageBox.Show("Please fill in all the fields.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -135,16 +135,16 @@ namespace NoteBasket
                         cmd.ExecuteNonQuery();
 
                         // Inform the user that the profile has been updated
-                        MessageBox.Show("Profile updated successfully.");
+                        MessageBox.Show("Profile updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                
+
                     }
                 }
             }
             catch (Exception ex)
             {
                 // Handle any exceptions
-                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -191,12 +191,12 @@ namespace NoteBasket
                 }
                 else
                 {
-                    MessageBox.Show("Invalid role. Unable to navigate to the dashboard.");
+                    MessageBox.Show("Invalid role. Unable to navigate to the dashboard.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -35,14 +35,14 @@ namespace NoteBasket
                     string.IsNullOrEmpty(password) ||
                     string.IsNullOrEmpty(confirmPassword))
                 {
-                    MessageBox.Show("Please fill in all the fields.");
+                    MessageBox.Show("Please fill in all the fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 // Validate if password and confirm password match
                 if (password != confirmPassword)
                 {
-                    MessageBox.Show("Password and Confirm Password do not match.");
+                    MessageBox.Show("Password and Confirm Password do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -62,7 +62,7 @@ namespace NoteBasket
                         // If the user count is greater than 0, the username already exists
                         if (userCount > 0)
                         {
-                            MessageBox.Show("A user/NoteMaster with this username already exists.");
+                            MessageBox.Show("A user/NoteMaster with this username already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                     }
@@ -96,7 +96,7 @@ namespace NoteBasket
                         cmd.ExecuteNonQuery();
 
                         // Inform the user of success
-                        MessageBox.Show("Notemaster registered successfully.");
+                        MessageBox.Show("Notemaster registered successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

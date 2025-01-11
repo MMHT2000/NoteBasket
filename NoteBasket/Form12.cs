@@ -43,6 +43,34 @@ namespace NoteBasket
 
                 }
             }
+
+            using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+            {
+                // Use parameterized query to prevent syntax errors and SQL injection
+                string sql = "SELECT Role FROM Users WHERE UserID = @UserID";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@UserID", userId);
+
+
+
+                    con.Open();
+                    
+
+                    string role = (string)cmd.ExecuteScalar();
+
+                    if (role == "Free")
+                    {
+                        backtosignin_btn.Visible = false;
+                    }
+                    else
+                    {
+                        backtosignin_btn.Visible = true;
+                    }
+
+
+                }
+            }
         }
        
 
@@ -108,6 +136,11 @@ namespace NoteBasket
         {
             
            
+        }
+
+        private void backtosignin_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

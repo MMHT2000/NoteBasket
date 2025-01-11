@@ -319,6 +319,7 @@
             this.backtosignin_btn.TabIndex = 27;
             this.backtosignin_btn.Text = "Download";
             this.backtosignin_btn.UseVisualStyleBackColor = false;
+            this.backtosignin_btn.Click += new System.EventHandler(this.backtosignin_btn_Click);
             // 
             // pictureBox1
             // 

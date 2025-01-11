@@ -77,7 +77,7 @@ namespace NoteBasket
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
             
-            Form13 form13 = new Form13(userId);
+            Form13 form13 = new Form13(userId, noteId);
             form13.StartPosition = FormStartPosition.CenterParent;
             form13.ShowDialog();
 
@@ -102,6 +102,7 @@ namespace NoteBasket
                         cmd.ExecuteNonQuery();
                         isBookmarked = false;
                         bookmarkimage.Image = Properties.Resources.bookmark_hollow;
+                        
                     }
                 }
             }
@@ -131,6 +132,8 @@ namespace NoteBasket
 
 
         }
+
+
 
         private void profilepicture_box_Click(object sender, EventArgs e)
         {

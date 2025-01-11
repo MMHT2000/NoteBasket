@@ -33,6 +33,7 @@
             this.logout_btn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.name_label = new System.Windows.Forms.Label();
+            this.profilepicture_box = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.editprofile_btn = new System.Windows.Forms.Button();
             this.accountcreationdynamic_label = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -61,14 +63,12 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
-            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
-            this.profilepicture_box = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).BeginInit();
             this.SuspendLayout();
             // 
             // userdashboard_label
@@ -128,6 +128,16 @@
             this.name_label.TabIndex = 1;
             this.name_label.Text = "name";
             this.name_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // profilepicture_box
+            // 
+            this.profilepicture_box.BackColor = System.Drawing.Color.SteelBlue;
+            this.profilepicture_box.Location = new System.Drawing.Point(100, 26);
+            this.profilepicture_box.Name = "profilepicture_box";
+            this.profilepicture_box.Size = new System.Drawing.Size(128, 128);
+            this.profilepicture_box.TabIndex = 0;
+            this.profilepicture_box.TabStop = false;
+            this.profilepicture_box.Click += new System.EventHandler(this.profilepicture_box_Click);
             // 
             // panel3
             // 
@@ -370,6 +380,13 @@
             this.panel6.Size = new System.Drawing.Size(563, 558);
             this.panel6.TabIndex = 10;
             // 
+            // vScrollBar2
+            // 
+            this.vScrollBar2.Location = new System.Drawing.Point(539, 0);
+            this.vScrollBar2.Name = "vScrollBar2";
+            this.vScrollBar2.Size = new System.Drawing.Size(24, 558);
+            this.vScrollBar2.TabIndex = 1;
+            // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.LightBlue;
@@ -483,23 +500,6 @@
             this.button14.Text = "All Notes";
             this.button14.UseVisualStyleBackColor = false;
             // 
-            // vScrollBar2
-            // 
-            this.vScrollBar2.Location = new System.Drawing.Point(539, 0);
-            this.vScrollBar2.Name = "vScrollBar2";
-            this.vScrollBar2.Size = new System.Drawing.Size(24, 558);
-            this.vScrollBar2.TabIndex = 1;
-            // 
-            // profilepicture_box
-            // 
-            this.profilepicture_box.BackColor = System.Drawing.Color.SteelBlue;
-            this.profilepicture_box.Location = new System.Drawing.Point(100, 26);
-            this.profilepicture_box.Name = "profilepicture_box";
-            this.profilepicture_box.Size = new System.Drawing.Size(128, 128);
-            this.profilepicture_box.TabIndex = 0;
-            this.profilepicture_box.TabStop = false;
-            this.profilepicture_box.Click += new System.EventHandler(this.profilepicture_box_Click);
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -520,12 +520,12 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).EndInit();
             this.ResumeLayout(false);
 
         }

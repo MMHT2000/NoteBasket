@@ -95,7 +95,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while loading bookmarks: {ex.Message}");
+                MessageBox.Show($"An error occurred while loading bookmarks: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

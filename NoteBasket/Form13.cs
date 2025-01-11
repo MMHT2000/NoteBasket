@@ -16,6 +16,45 @@ namespace NoteBasket
             this.userId = userId;
             this.noteId = noteId;
             InitializeRatings();
+            LoadData();
+        }
+        private void LoadData()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    con.Open();
+
+                    // Query to check if the user has already reviewed this note
+                    string sql = "SELECT Rating, Review FROM Ratings WHERE NoteID = @NoteID AND UserID = @UserID";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@NoteID", noteId);
+                        cmd.Parameters.AddWithValue("@UserID", userId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // User has already reviewed this note
+                                int existingRating = reader.GetInt32(0); // Existing rating
+                                string existingReview = reader.GetString(1); // Existing review
+
+                                // Update the UI with existing data
+                                UpdateRating(existingRating);
+                                textBox1.Text = existingReview;
+
+                                MessageBox.Show("You have already reviewed this note. Feel free to update your review.", "Existing Review", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void InitializeRatings()

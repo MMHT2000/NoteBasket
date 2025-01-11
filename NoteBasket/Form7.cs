@@ -40,14 +40,14 @@ namespace NoteBasket
                 string.IsNullOrEmpty(password) ||
                 string.IsNullOrEmpty(confirmPassword))
             {
-                MessageBox.Show("Please fill in all the fields.");
+                MessageBox.Show("Please fill in all the fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Validate if password and confirm password match
             if (password != confirmPassword)
             {
-                MessageBox.Show("Password and Confirm Password do not match.");
+                MessageBox.Show("Password and Confirm Password do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -74,7 +74,7 @@ namespace NoteBasket
                         if (matchCount == 0)
                         {
                             // Username and email do not match
-                            MessageBox.Show("Email and Username do not match.");
+                            MessageBox.Show("Email and Username do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
@@ -94,7 +94,7 @@ namespace NoteBasket
                         cmdUpdate.ExecuteNonQuery();
 
                         // Inform the user of success
-                        MessageBox.Show("Password changed successfully.");
+                        MessageBox.Show("Password changed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         this.Hide();
                         Form1 form1 = new Form1();
@@ -105,7 +105,7 @@ namespace NoteBasket
             catch (Exception ex)
             {
                 // Handle exceptions and display an error message
-                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -85,7 +85,7 @@ namespace NoteBasket
             catch (Exception ex)
             {
                 // Handle exceptions and set default values inline
-                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message);
+                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 name_label.Text = "Not Set";
                 username_label.Text = "Not Set";

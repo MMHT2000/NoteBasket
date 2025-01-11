@@ -79,7 +79,7 @@ namespace NoteBasket
             catch (Exception ex)
             {
                 // Handle exceptions
-                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message);
+                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
@@ -150,7 +150,7 @@ namespace NoteBasket
                             }
                             else
                             {
-                                MessageBox.Show("User data not found.");
+                                MessageBox.Show("User data not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -159,7 +159,7 @@ namespace NoteBasket
             catch (Exception ex)
             {
                 // Handle exceptions
-                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message);
+                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -197,7 +197,7 @@ namespace NoteBasket
                             {
                                 if (!string.IsNullOrEmpty(searchQuery))
                                 {
-                                    MessageBox.Show("No notes found for the given search query.");
+                                    MessageBox.Show("No notes found for the given search query.", "No Notes Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 return;
                             }
@@ -297,7 +297,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while loading notes: {ex.Message}");
+                MessageBox.Show($"An error occurred while loading notes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

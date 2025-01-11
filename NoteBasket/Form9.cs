@@ -36,13 +36,13 @@ namespace NoteBasket
             // Validate inputs
             if (string.IsNullOrEmpty(currentPasswordInput) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
             {
-                MessageBox.Show("Please fill in all fields.");
+                MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (newPassword != confirmPassword)
             {
-                MessageBox.Show("New password and confirm password do not match.");
+                MessageBox.Show("New password and confirm password do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -66,7 +66,7 @@ namespace NoteBasket
                     // Verify the entered current password using BCrypt
                     if (!BCrypt.Net.BCrypt.Verify(currentPasswordInput, storedPasswordHash))
                     {
-                        MessageBox.Show("Current password is incorrect.");
+                        MessageBox.Show("Current password is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -83,7 +83,7 @@ namespace NoteBasket
                         cmdUpdate.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Password changed successfully.");
+                    MessageBox.Show("Password changed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Navigate to Form8
                     NavigateToForm8();

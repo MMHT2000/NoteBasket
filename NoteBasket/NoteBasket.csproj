@@ -245,8 +245,10 @@
     <Content Include="images\*.webp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\bookmark_filled.png" />
+    <Content Include="Resources\bookmark_hollow.png" />
     <None Include="Resources\icons8-search-50.png" />
-    <None Include="Resources\icons8-search-48.png" />
+    <EmbeddedResource Include="Resources\icons8-search-48.png" />
     <None Include="Resources\rating_hollow.png" />
     <None Include="Resources\rating_filled.png" />
     <None Include="images\icons8-close-window-48.png" />

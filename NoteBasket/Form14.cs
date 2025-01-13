@@ -60,9 +60,9 @@ namespace NoteBasket
                                 {
                                     Text = $"You have bookmarked '{noteTitle}' on {bookmarkDate.ToShortDateString()}",
                                     AutoSize = false,
-                                    Size = new Size(480, 40),
+                                    Size = new Size(480, 70),
                                     Location = new Point(10, 10),
-                                    Font = new Font("Arial", 10, FontStyle.Regular),
+                                    Font = new Font("Times New Roman", 14, FontStyle.Regular),
                                     ForeColor = Color.Black
                                 };
 

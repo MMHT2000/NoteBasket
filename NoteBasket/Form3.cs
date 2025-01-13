@@ -420,5 +420,15 @@ namespace NoteBasket
             ShowForm14();
 
         }
+
+        private void textBox2_TextChanged_1(object sender, EventArgs e)
+        {
+            label8.Visible = false;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            label8.Visible = false;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Form13
+    partial class Ratings_Review
     {
         /// <summary>
         /// Required designer variable.

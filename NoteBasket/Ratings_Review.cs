@@ -4,13 +4,13 @@ using System.Windows.Forms;
 
 namespace NoteBasket
 {
-    public partial class Form13 : Form
+    public partial class Ratings_Review : Form
     {
         private int userId;
         private int noteId;
         private int selectedRating = 0; // Variable to store the selected rating
 
-        public Form13(int userId, int noteId)
+        public Ratings_Review(int userId, int noteId)
         {
             InitializeComponent();
             this.userId = userId;

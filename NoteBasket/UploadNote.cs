@@ -14,13 +14,13 @@ using System.Windows.Forms;
 
 namespace NoteBasket
 {
-    public partial class Form10 : Form
+    public partial class UploadNote : Form
     {
 
         private int userId;
         private string filepath; // To store the relative file path
 
-        public Form10(int userId)
+        public UploadNote(int userId)
         {
             InitializeComponent();
             this.userId = userId;
@@ -78,7 +78,7 @@ namespace NoteBasket
         private void returntodashboard_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form4 form4 = new Form4(userId);
+            NoteMaster_Dashboard form4 = new NoteMaster_Dashboard(userId);
             form4.Show();
         }
 
@@ -134,7 +134,7 @@ namespace NoteBasket
 
                         // Navigate to the relevant form (e.g., dashboard or another form)
                         this.Hide();
-                        Form4 dashboard = new Form4(userId); // Pass userId to maintain session
+                        NoteMaster_Dashboard dashboard = new NoteMaster_Dashboard(userId); // Pass userId to maintain session
                         dashboard.Show();
                     }
                 }

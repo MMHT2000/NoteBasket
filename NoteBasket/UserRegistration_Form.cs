@@ -12,9 +12,9 @@ using BCrypt.Net;
 
 namespace NoteBasket
 {
-    public partial class Form2 : Form
+    public partial class UserRegistration_Form : Form
     {
-        public Form2()
+        public UserRegistration_Form()
         {
             InitializeComponent();
         }
@@ -37,7 +37,7 @@ namespace NoteBasket
         private void signin_label_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form f1 = new Form1();
+            Form f1 = new Login_Form();
             f1.Show();
         }
 
@@ -131,7 +131,7 @@ namespace NoteBasket
                         MessageBox.Show("Details inserted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         this.Hide();
-                        Form1 f1 = new Form1();
+                        Login_Form f1 = new Login_Form();
                         f1.Show();
                     }
                 }
@@ -164,7 +164,7 @@ namespace NoteBasket
         private void beanotemaster_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form6 form6 = new Form6();
+            NoteMasterRegistration_Form form6 = new NoteMasterRegistration_Form();
             form6.Show();
         }
     }

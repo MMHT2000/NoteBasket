@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace NoteBasket
 {
-    public partial class Form14 : Form
+    public partial class BookMarks : Form
     {
         private int userId;
 
-        public Form14(int userId)
+        public BookMarks(int userId)
         {
             InitializeComponent();
             this.userId = userId;
@@ -69,14 +69,14 @@ namespace NoteBasket
                                 // Attach a click event to the panel
                                 dynamicPanel.Click += (s, e) =>
                                 {
-                                    Form11 form11 = new Form11(userId, noteId);
+                                    NoteDetails form11 = new NoteDetails(userId, noteId);
                                     this.Hide();
                                     form11.Show();
                                 };
 
                                 detailsLabel.Click += (s, e) =>
                                 {
-                                    Form11 form11 = new Form11(userId, noteId);
+                                    NoteDetails form11 = new NoteDetails(userId, noteId);
                                     this.Hide();
                                     form11.Show();
                                 };

@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace NoteBasket
 {
-    public partial class Form8 : Form
+    public partial class EditProfile : Form
     {
         private int userId;
 
-        public Form8(int userId)
+        public EditProfile(int userId)
         {
             InitializeComponent();
             this.userId = userId;
@@ -179,17 +179,17 @@ namespace NoteBasket
 
                 if (userRole == "Free" || userRole == "Silver" || userRole == "Gold")
                 {
-                    Form3 f3 = new Form3(userId);
+                    User_Dashboard f3 = new User_Dashboard(userId);
                     f3.Show();
                 }
                 else if (userRole == "Notemaster")
                 {
-                    Form4 f4 = new Form4(userId);
+                    NoteMaster_Dashboard f4 = new NoteMaster_Dashboard(userId);
                     f4.Show();
                 }
                 else if (userRole == "Admin")
                 {
-                    Form5 f5 = new Form5(userId);
+                    Admin_Dashboard f5 = new Admin_Dashboard(userId);
                     f5.Show();
                 }
                 else
@@ -206,7 +206,7 @@ namespace NoteBasket
         private void changepassword_btn_Click(object sender, EventArgs e)
         {
             this.Close();
-            Form9 f9 = new Form9(userId);
+            ChangePassword f9 = new ChangePassword(userId);
             f9.Show();
         }
 
@@ -243,7 +243,7 @@ namespace NoteBasket
                     MessageBox.Show("Your account has been deleted successfully.", "Account Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Redirect to Form1
-                    Form1 form1 = new Form1();
+                    Login_Form form1 = new Login_Form();
                     this.Hide();
                     form1.Show();
                 }

@@ -16,16 +16,16 @@ using System.IO;
 
 namespace NoteBasket
 {
-    public partial class Form3 : Form
+    public partial class User_Dashboard : Form
     {
         private int userId;
-        private Form14 form14Instance;
+        private BookMarks form14Instance;
 
         string imagePath = Path.Combine(Application.StartupPath, "images");
         private int noteID=2;
 
 
-        public Form3(int userId)
+        public User_Dashboard(int userId)
         {
             InitializeComponent();
             this.userId = userId;
@@ -307,7 +307,7 @@ WHERE
                                 // Attach click event for the View button
                                 viewButton.Click += (s, e) =>
                                 {
-                                    Form11 form11 = new Form11(userId, noteId);
+                                    NoteDetails form11 = new NoteDetails(userId, noteId);
                                     this.Hide();
                                     form11.Show();
                                 };
@@ -386,14 +386,14 @@ WHERE
         private void logout_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 f1 = new Form1();
+            Login_Form f1 = new Login_Form();
             f1.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Form8 editProfileForm = new Form8(userId);
+            EditProfile editProfileForm = new EditProfile(userId);
            
             editProfileForm.Show();
         }
@@ -434,7 +434,7 @@ WHERE
                 Point panel6LocationOnScreen = panel6.PointToScreen(Point.Empty);
 
                 // Create a new instance of Form14 with the userId
-                form14Instance = new Form14(userId)
+                form14Instance = new BookMarks(userId)
                 {
                     StartPosition = FormStartPosition.Manual, // Set the position manually
                     Location = panel6LocationOnScreen        // Position it at panel6's location

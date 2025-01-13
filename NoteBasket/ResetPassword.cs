@@ -12,9 +12,9 @@ using BCrypt.Net;
 
 namespace NoteBasket
 {
-    public partial class Form7 : Form
+    public partial class ResetPassword : Form
     {
-        public Form7()
+        public ResetPassword()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace NoteBasket
         private void backtosignin_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form1 = new Form1 ();
+            Login_Form form1 = new Login_Form ();
             form1.Show();
         }
 
@@ -97,7 +97,7 @@ namespace NoteBasket
                         MessageBox.Show("Password changed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         this.Hide();
-                        Form1 form1 = new Form1();
+                        Login_Form form1 = new Login_Form();
                         form1.Show();
                     }
                 }

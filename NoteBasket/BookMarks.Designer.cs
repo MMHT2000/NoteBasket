@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Form14
+    partial class BookMarks
     {
         /// <summary>
         /// Required designer variable.

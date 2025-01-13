@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace NoteBasket
 {
-    public partial class Form12 : Form
+    public partial class NotePreview : Form
     {
         private bool isBookmarked;
         private int userId;
         private int noteId;
-        public Form12(int userId, int noteId)
+        public NotePreview(int userId, int noteId)
         {
             InitializeComponent();
             this.userId = userId;
@@ -77,7 +77,7 @@ namespace NoteBasket
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
             
-            Form13 form13 = new Form13(userId, noteId);
+            Ratings_Review form13 = new Ratings_Review(userId, noteId);
             form13.StartPosition = FormStartPosition.CenterParent;
             form13.ShowDialog();
 

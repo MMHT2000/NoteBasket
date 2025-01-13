@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Form12
+    partial class NotePreview
     {
         /// <summary>
         /// Required designer variable.

@@ -12,9 +12,9 @@ using BCrypt.Net;
 
 namespace NoteBasket
 {
-    public partial class Form6 : Form
+    public partial class NoteMasterRegistration_Form : Form
     {
-        public Form6()
+        public NoteMasterRegistration_Form()
         {
             InitializeComponent();
         }
@@ -112,14 +112,14 @@ namespace NoteBasket
         private void beanotemaster_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form2 form2 = new Form2();
+            UserRegistration_Form form2 = new UserRegistration_Form();
             form2.Show();
         }
 
         private void signin_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form1 = new Form1 ();
+            Login_Form form1 = new Login_Form ();
             form1.Show();
         }
     }

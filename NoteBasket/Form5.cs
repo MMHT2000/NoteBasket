@@ -120,5 +120,12 @@ namespace NoteBasket
             Form8 editProfileForm = new Form8(userId);
             editProfileForm.Show();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Note_Approval note_Approval = new Note_Approval(userId);
+            note_Approval.Show();
+        }
     }
 }

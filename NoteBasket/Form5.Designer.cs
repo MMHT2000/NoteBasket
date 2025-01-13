@@ -416,6 +416,7 @@
             this.button7.TabIndex = 5;
             this.button7.Text = "Note Approval";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 

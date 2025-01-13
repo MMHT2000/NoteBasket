@@ -45,6 +45,7 @@
             this.email_label = new System.Windows.Forms.Label();
             this.username_label = new System.Windows.Forms.Label();
             this.name_label = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +74,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.returntodashboard_btn);
             this.panel2.Controls.Add(this.changepassword_btn);
             this.panel2.Controls.Add(this.female_Btn);
@@ -99,7 +101,7 @@
             this.returntodashboard_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.returntodashboard_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returntodashboard_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.returntodashboard_btn.Location = new System.Drawing.Point(518, 324);
+            this.returntodashboard_btn.Location = new System.Drawing.Point(610, 324);
             this.returntodashboard_btn.Name = "returntodashboard_btn";
             this.returntodashboard_btn.Size = new System.Drawing.Size(157, 32);
             this.returntodashboard_btn.TabIndex = 17;
@@ -113,7 +115,7 @@
             this.changepassword_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changepassword_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changepassword_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.changepassword_btn.Location = new System.Drawing.Point(346, 324);
+            this.changepassword_btn.Location = new System.Drawing.Point(265, 324);
             this.changepassword_btn.Name = "changepassword_btn";
             this.changepassword_btn.Size = new System.Drawing.Size(157, 32);
             this.changepassword_btn.TabIndex = 16;
@@ -235,6 +237,20 @@
             this.name_label.TabIndex = 0;
             this.name_label.Text = "Name:";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(435, 324);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(157, 32);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Delete Profile";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,5 +288,6 @@
         private System.Windows.Forms.Label email_label;
         private System.Windows.Forms.Label username_label;
         private System.Windows.Forms.Label name_label;
+        private System.Windows.Forms.Button button1;
     }
 }

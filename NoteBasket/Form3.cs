@@ -164,7 +164,7 @@ namespace NoteBasket
             }
         }
 
-        private void LoadNotes(string searchQuery = "")
+        private void LoadNotes(string searchQuery = "", string subscriptionLevel = null)
         {
             try
             {
@@ -176,20 +176,51 @@ namespace NoteBasket
 
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    string userRole = GetUserRole(userId); // Get the user's role (Free, Silver, or Gold)
+                    // Get the user's role from the database
+                    string userRole = GetUserRole(userId);
 
-                    // Build the SQL query with filtering based on the user's role
+                    // Define the allowed subscription levels based on the user's role
+                    string allowedSubscriptionLevels = "";
+                    switch (userRole)
+                    {
+                        case "Gold":
+                            allowedSubscriptionLevels = "'Free', 'Silver', 'Gold'";
+                            break;
+                        case "Silver":
+                            allowedSubscriptionLevels = "'Free', 'Silver'";
+                            break;
+                        default: // Free users
+                            allowedSubscriptionLevels = "'Free'";
+                            break;
+                    }
+
+                    // Base SQL query
                     string sql = @"
-            SELECT NoteID, Title, FilePath, Category, SubscriptionLevel 
-            FROM Notes 
-            WHERE 
-                (@SearchQuery = '' OR Title LIKE '%' + @SearchQuery + '%' OR Category LIKE '%' + @SearchQuery + '%')
-                AND Status = 'Approved'
-                AND SubscriptionLevel IN (" + GetAllowedSubscriptionLevels(userRole) + ")";
+SELECT NoteID, Title, FilePath, Category, SubscriptionLevel 
+FROM Notes 
+WHERE 
+    (@SearchQuery = '' OR Title LIKE '%' + @SearchQuery + '%' OR Category LIKE '%' + @SearchQuery + '%')
+    AND Status = 'Approved'";
+
+                    // Add condition for subscription level filtering
+                    if (!string.IsNullOrEmpty(subscriptionLevel))
+                    {
+                        sql += " AND SubscriptionLevel = @SubscriptionLevel";
+                    }
+                    else
+                    {
+                        sql += $" AND SubscriptionLevel IN ({allowedSubscriptionLevels})";
+                    }
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@SearchQuery", searchQuery);
+
+                        if (!string.IsNullOrEmpty(subscriptionLevel))
+                        {
+                            cmd.Parameters.AddWithValue("@SubscriptionLevel", subscriptionLevel);
+                        }
+
                         con.Open();
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -203,7 +234,7 @@ namespace NoteBasket
                                 return;
                             }
 
-                            int yPosition = 50; // Start below the search box
+                            int yPosition = 60; // Start below the search box
 
                             while (reader.Read())
                             {
@@ -302,6 +333,9 @@ namespace NoteBasket
             }
         }
 
+
+
+
         private string GetUserRole(int userId)
         {
             // Fetch the user's role from the database
@@ -389,8 +423,7 @@ namespace NoteBasket
 
         private void button13_Click(object sender, EventArgs e)
         {
-            Form11 form11 = new Form11(userId, noteID);
-            form11.Show();
+            LoadNotes(subscriptionLevel: "Free");
 
         }
         private void ShowForm14()
@@ -429,6 +462,28 @@ namespace NoteBasket
         private void label8_Click(object sender, EventArgs e)
         {
             label8.Visible = false;
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoadNotes();
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            LoadNotes(subscriptionLevel: "Silver");
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            LoadNotes(subscriptionLevel: "Gold");
         }
     }
 }

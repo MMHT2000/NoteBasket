@@ -22,7 +22,7 @@ namespace NoteBasket
         private void returntodashboard_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form5 form5 = new Form5(userId);
+            Admin_Dashboard form5 = new Admin_Dashboard(userId);
             form5.Show();
         }
     }

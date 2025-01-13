@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Form10
+    partial class UploadNote
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Form3
+    partial class User_Dashboard
     {
         /// <summary>
         /// Required designer variable.

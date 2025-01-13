@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace NoteBasket
 {
-    public partial class Form11 : Form
+    public partial class NoteDetails : Form
     {
         private int userId;
         private int noteId;
-        public Form11(int userId, int noteID)
+        public NoteDetails(int userId, int noteID)
         {
             InitializeComponent();
             this.userId = userId;
@@ -24,7 +24,7 @@ namespace NoteBasket
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             
-            Form12 f12 = new Form12(userId, noteId);
+            NotePreview f12 = new NotePreview(userId, noteId);
 
             f12.StartPosition = FormStartPosition.CenterParent;
             f12.ShowDialog();
@@ -38,7 +38,7 @@ namespace NoteBasket
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            Form3 form3 = new Form3(userId);
+            User_Dashboard form3 = new User_Dashboard(userId);
             form3.Show();
         }
     }

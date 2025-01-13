@@ -12,9 +12,9 @@ using BCrypt.Net;
 
 namespace NoteBasket
 {
-    public partial class Form1 : Form
+    public partial class Login_Form : Form
     {
-        public Form1()
+        public Login_Form()
         {
             InitializeComponent();
             panel2.Paint += panel2_Paint;
@@ -90,19 +90,19 @@ namespace NoteBasket
                                         case "Silver":
                                         case "Gold":
                                             // Navigate to Form3 (User Dashboard) by passing only userId
-                                            Form3 form3 = new Form3(userId);
+                                            User_Dashboard form3 = new User_Dashboard(userId);
                                             form3.Show();
                                             break;
 
                                         case "Notemaster":
                                             // Navigate to Form4
-                                            Form4 form4 = new Form4(userId);
+                                            NoteMaster_Dashboard form4 = new NoteMaster_Dashboard(userId);
                                             form4.Show();
                                             break;
 
                                         case "Admin":
                                             // Navigate to Form5
-                                            Form5 form5 = new Form5(userId);
+                                            Admin_Dashboard form5 = new Admin_Dashboard(userId);
                                             form5.Show();
                                             break;
 
@@ -150,14 +150,14 @@ namespace NoteBasket
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Form2 f2 = new Form2();
+            UserRegistration_Form f2 = new UserRegistration_Form();
             f2.Show();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
-            Form7 f7 = new Form7();
+            ResetPassword f7 = new ResetPassword();
             f7.Show();
         }
 private void Form1_FormClosing(object sender, FormClosingEventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Form6
+    partial class UserRegistration_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -32,13 +32,20 @@
             this.beanotemaster_btn = new System.Windows.Forms.Button();
             this.haveanaccount_label = new System.Windows.Forms.Label();
             this.signin_btn = new System.Windows.Forms.Button();
+            this.female_Btn = new System.Windows.Forms.RadioButton();
+            this.male_Btn = new System.Windows.Forms.RadioButton();
+            this.gender_label = new System.Windows.Forms.Label();
             this.createaccount_btn = new System.Windows.Forms.Button();
             this.confirmpassword_textbox = new System.Windows.Forms.TextBox();
             this.password_textbox = new System.Windows.Forms.TextBox();
+            this.dob_picker = new System.Windows.Forms.DateTimePicker();
+            this.email_textbox = new System.Windows.Forms.TextBox();
             this.username_textbox = new System.Windows.Forms.TextBox();
             this.name_textbox = new System.Windows.Forms.TextBox();
             this.confirmpassword_label = new System.Windows.Forms.Label();
             this.password_label = new System.Windows.Forms.Label();
+            this.dob_label = new System.Windows.Forms.Label();
+            this.email_label = new System.Windows.Forms.Label();
             this.username_label = new System.Windows.Forms.Label();
             this.name_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,20 +60,27 @@
             this.panel2.Controls.Add(this.beanotemaster_btn);
             this.panel2.Controls.Add(this.haveanaccount_label);
             this.panel2.Controls.Add(this.signin_btn);
+            this.panel2.Controls.Add(this.female_Btn);
+            this.panel2.Controls.Add(this.male_Btn);
+            this.panel2.Controls.Add(this.gender_label);
             this.panel2.Controls.Add(this.createaccount_btn);
             this.panel2.Controls.Add(this.confirmpassword_textbox);
             this.panel2.Controls.Add(this.password_textbox);
+            this.panel2.Controls.Add(this.dob_picker);
+            this.panel2.Controls.Add(this.email_textbox);
             this.panel2.Controls.Add(this.username_textbox);
             this.panel2.Controls.Add(this.name_textbox);
             this.panel2.Controls.Add(this.confirmpassword_label);
             this.panel2.Controls.Add(this.password_label);
+            this.panel2.Controls.Add(this.dob_label);
+            this.panel2.Controls.Add(this.email_label);
             this.panel2.Controls.Add(this.username_label);
             this.panel2.Controls.Add(this.name_label);
             this.panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel2.Location = new System.Drawing.Point(115, 209);
+            this.panel2.Location = new System.Drawing.Point(115, 207);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1016, 409);
-            this.panel2.TabIndex = 7;
+            this.panel2.TabIndex = 5;
             // 
             // beanotemaster_btn
             // 
@@ -78,7 +92,7 @@
             this.beanotemaster_btn.Name = "beanotemaster_btn";
             this.beanotemaster_btn.Size = new System.Drawing.Size(157, 32);
             this.beanotemaster_btn.TabIndex = 17;
-            this.beanotemaster_btn.Text = "Sign Up as User";
+            this.beanotemaster_btn.Text = "Be A NoteMaster";
             this.beanotemaster_btn.UseVisualStyleBackColor = false;
             this.beanotemaster_btn.Click += new System.EventHandler(this.beanotemaster_btn_Click);
             // 
@@ -105,7 +119,41 @@
             this.signin_btn.TabIndex = 16;
             this.signin_btn.Text = "SIgn In";
             this.signin_btn.UseVisualStyleBackColor = false;
-            this.signin_btn.Click += new System.EventHandler(this.signin_btn_Click);
+            this.signin_btn.Click += new System.EventHandler(this.signin_label_Click);
+            // 
+            // female_Btn
+            // 
+            this.female_Btn.AutoSize = true;
+            this.female_Btn.Location = new System.Drawing.Point(672, 136);
+            this.female_Btn.Name = "female_Btn";
+            this.female_Btn.Size = new System.Drawing.Size(59, 17);
+            this.female_Btn.TabIndex = 15;
+            this.female_Btn.TabStop = true;
+            this.female_Btn.Text = "Female";
+            this.female_Btn.UseVisualStyleBackColor = true;
+            this.female_Btn.CheckedChanged += new System.EventHandler(this.female_Btn_CheckedChanged);
+            // 
+            // male_Btn
+            // 
+            this.male_Btn.AutoSize = true;
+            this.male_Btn.Location = new System.Drawing.Point(606, 137);
+            this.male_Btn.Name = "male_Btn";
+            this.male_Btn.Size = new System.Drawing.Size(48, 17);
+            this.male_Btn.TabIndex = 14;
+            this.male_Btn.TabStop = true;
+            this.male_Btn.Text = "Male";
+            this.male_Btn.UseVisualStyleBackColor = true;
+            this.male_Btn.CheckedChanged += new System.EventHandler(this.male_Btn_CheckedChanged);
+            // 
+            // gender_label
+            // 
+            this.gender_label.AutoSize = true;
+            this.gender_label.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gender_label.Location = new System.Drawing.Point(512, 135);
+            this.gender_label.Name = "gender_label";
+            this.gender_label.Size = new System.Drawing.Size(76, 23);
+            this.gender_label.TabIndex = 13;
+            this.gender_label.Text = "Gender:";
             // 
             // createaccount_btn
             // 
@@ -113,27 +161,42 @@
             this.createaccount_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createaccount_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createaccount_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.createaccount_btn.Location = new System.Drawing.Point(434, 141);
+            this.createaccount_btn.Location = new System.Drawing.Point(434, 221);
             this.createaccount_btn.Name = "createaccount_btn";
             this.createaccount_btn.Size = new System.Drawing.Size(157, 32);
             this.createaccount_btn.TabIndex = 12;
             this.createaccount_btn.Text = "Create Account";
             this.createaccount_btn.UseVisualStyleBackColor = false;
-            this.createaccount_btn.Click += new System.EventHandler(this.createaccount_btn_Click);
+            this.createaccount_btn.Click += new System.EventHandler(this.button1_Click);
             // 
             // confirmpassword_textbox
             // 
-            this.confirmpassword_textbox.Location = new System.Drawing.Point(661, 96);
+            this.confirmpassword_textbox.Location = new System.Drawing.Point(661, 176);
             this.confirmpassword_textbox.Name = "confirmpassword_textbox";
             this.confirmpassword_textbox.Size = new System.Drawing.Size(199, 20);
             this.confirmpassword_textbox.TabIndex = 11;
+            this.confirmpassword_textbox.TextChanged += new System.EventHandler(this.confirmpassword_textbox_TextChanged);
             // 
             // password_textbox
             // 
-            this.password_textbox.Location = new System.Drawing.Point(298, 97);
+            this.password_textbox.Location = new System.Drawing.Point(298, 177);
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.Size = new System.Drawing.Size(180, 20);
             this.password_textbox.TabIndex = 10;
+            // 
+            // dob_picker
+            // 
+            this.dob_picker.Location = new System.Drawing.Point(298, 135);
+            this.dob_picker.Name = "dob_picker";
+            this.dob_picker.Size = new System.Drawing.Size(200, 20);
+            this.dob_picker.TabIndex = 9;
+            // 
+            // email_textbox
+            // 
+            this.email_textbox.Location = new System.Drawing.Point(298, 92);
+            this.email_textbox.Name = "email_textbox";
+            this.email_textbox.Size = new System.Drawing.Size(562, 20);
+            this.email_textbox.TabIndex = 8;
             // 
             // username_textbox
             // 
@@ -153,7 +216,7 @@
             // 
             this.confirmpassword_label.AutoSize = true;
             this.confirmpassword_label.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmpassword_label.Location = new System.Drawing.Point(483, 95);
+            this.confirmpassword_label.Location = new System.Drawing.Point(483, 175);
             this.confirmpassword_label.Name = "confirmpassword_label";
             this.confirmpassword_label.Size = new System.Drawing.Size(172, 23);
             this.confirmpassword_label.TabIndex = 5;
@@ -163,11 +226,32 @@
             // 
             this.password_label.AutoSize = true;
             this.password_label.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password_label.Location = new System.Drawing.Point(152, 97);
+            this.password_label.Location = new System.Drawing.Point(152, 177);
             this.password_label.Name = "password_label";
             this.password_label.Size = new System.Drawing.Size(96, 23);
             this.password_label.TabIndex = 4;
             this.password_label.Text = "Password:";
+            this.password_label.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // dob_label
+            // 
+            this.dob_label.AutoSize = true;
+            this.dob_label.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dob_label.Location = new System.Drawing.Point(152, 135);
+            this.dob_label.Name = "dob_label";
+            this.dob_label.Size = new System.Drawing.Size(126, 23);
+            this.dob_label.TabIndex = 3;
+            this.dob_label.Text = "Date of Birth:";
+            // 
+            // email_label
+            // 
+            this.email_label.AutoSize = true;
+            this.email_label.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email_label.Location = new System.Drawing.Point(152, 88);
+            this.email_label.Name = "email_label";
+            this.email_label.Size = new System.Drawing.Size(79, 23);
+            this.email_label.TabIndex = 2;
+            this.email_label.Text = "E-maill:";
             // 
             // username_label
             // 
@@ -193,10 +277,11 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panel1.Controls.Add(this.createanaccount_label);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1264, 140);
-            this.panel1.TabIndex = 6;
+            this.panel1.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // createanaccount_label
             // 
@@ -205,11 +290,11 @@
             this.createanaccount_label.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createanaccount_label.Location = new System.Drawing.Point(513, 44);
             this.createanaccount_label.Name = "createanaccount_label";
-            this.createanaccount_label.Size = new System.Drawing.Size(223, 32);
+            this.createanaccount_label.Size = new System.Drawing.Size(240, 32);
             this.createanaccount_label.TabIndex = 1;
-            this.createanaccount_label.Text = "Be A NoteMaster";
+            this.createanaccount_label.Text = "Create an Account";
             // 
-            // Form6
+            // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -217,9 +302,10 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
-            this.Name = "Form6";
+            this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Be A NoteMaster";
+            this.Text = "Create an Account";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -231,19 +317,26 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button beanotemaster_btn;
-        private System.Windows.Forms.Label haveanaccount_label;
-        private System.Windows.Forms.Button signin_btn;
-        private System.Windows.Forms.Button createaccount_btn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label name_label;
+        private System.Windows.Forms.Label createanaccount_label;
+        private System.Windows.Forms.Label username_label;
+        private System.Windows.Forms.Label password_label;
+        private System.Windows.Forms.Label dob_label;
+        private System.Windows.Forms.Label email_label;
+        private System.Windows.Forms.Label confirmpassword_label;
         private System.Windows.Forms.TextBox confirmpassword_textbox;
         private System.Windows.Forms.TextBox password_textbox;
+        private System.Windows.Forms.DateTimePicker dob_picker;
+        private System.Windows.Forms.TextBox email_textbox;
         private System.Windows.Forms.TextBox username_textbox;
         private System.Windows.Forms.TextBox name_textbox;
-        private System.Windows.Forms.Label confirmpassword_label;
-        private System.Windows.Forms.Label password_label;
-        private System.Windows.Forms.Label username_label;
-        private System.Windows.Forms.Label name_label;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label createanaccount_label;
+        private System.Windows.Forms.Button createaccount_btn;
+        private System.Windows.Forms.Label haveanaccount_label;
+        private System.Windows.Forms.Button signin_btn;
+        private System.Windows.Forms.RadioButton female_Btn;
+        private System.Windows.Forms.RadioButton male_Btn;
+        private System.Windows.Forms.Label gender_label;
+        private System.Windows.Forms.Button beanotemaster_btn;
     }
 }

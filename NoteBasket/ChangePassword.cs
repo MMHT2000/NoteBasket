@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace NoteBasket
 {
-    public partial class Form9 : Form
+    public partial class ChangePassword : Form
     {
         private int userId;
 
-        public Form9(int userId)
+        public ChangePassword(int userId)
         {
             InitializeComponent();
             this.userId = userId;
@@ -102,7 +102,7 @@ namespace NoteBasket
             this.Hide();
 
             // Open Form8 and pass the userId
-            Form8 editProfileForm = new Form8(userId);
+            EditProfile editProfileForm = new EditProfile(userId);
             editProfileForm.Show();
 
         }
@@ -110,7 +110,7 @@ namespace NoteBasket
         private void Back_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form8 f8 = new Form8(userId);
+            EditProfile f8 = new EditProfile(userId);
             f8.Show();
 
         }

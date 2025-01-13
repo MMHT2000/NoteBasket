@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace NoteBasket
 {
-    public partial class Form4 : Form
+    public partial class NoteMaster_Dashboard : Form
     {
         private int userId;
 
         string imagePath = Path.Combine(Application.StartupPath, "images");
 
-        public Form4(int userId)
+        public NoteMaster_Dashboard(int userId)
         {
             InitializeComponent();
             this.userId = userId;
@@ -106,14 +106,14 @@ namespace NoteBasket
         private void logout_btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form1 = new Form1();
+            Login_Form form1 = new Login_Form();
             form1.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form8 editProfileForm = new Form8(userId);
+            EditProfile editProfileForm = new EditProfile(userId);
 
             editProfileForm.Show();
         }
@@ -122,7 +122,7 @@ namespace NoteBasket
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form10 form10 = new Form10(userId);
+            UploadNote form10 = new UploadNote(userId);
             form10.Show();
         }
 

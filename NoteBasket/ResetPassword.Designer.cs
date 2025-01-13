@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Form7
+    partial class ResetPassword
     {
         /// <summary>
         /// Required designer variable.

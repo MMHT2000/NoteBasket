@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Form1
+    partial class Login_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login_Form));
             this.welcome_label = new System.Windows.Forms.Label();
             this.username_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -151,6 +151,7 @@
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.Size = new System.Drawing.Size(207, 20);
             this.password_textbox.TabIndex = 4;
+            this.password_textbox.UseSystemPasswordChar = true;
             // 
             // user_textbox
             // 
@@ -159,9 +160,6 @@
             this.user_textbox.Name = "user_textbox";
             this.user_textbox.Size = new System.Drawing.Size(207, 20);
             this.user_textbox.TabIndex = 3;
-
-            this.password_textbox.UseSystemPasswordChar = true;
-
             // 
             // password_label
             // 
@@ -173,7 +171,7 @@
             this.password_label.TabIndex = 2;
             this.password_label.Text = "Password:";
             // 
-            // Form1
+            // Login_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -181,9 +179,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-          
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Login_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NoteBasket";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -194,7 +191,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
-
 
         }
 

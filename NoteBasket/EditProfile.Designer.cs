@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Form8
+    partial class EditProfile
     {
         /// <summary>
         /// Required designer variable.

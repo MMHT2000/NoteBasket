@@ -33,7 +33,7 @@ namespace NoteBasket
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     // SQL query to retrieve the user's details
-                    string sql = "SELECT Name, Username, Email, DOB, Gender FROM Users WHERE UserID = @UserID";
+                    string sql = "SELECT Name, Username, Email, DOB, Gender, Role FROM Users WHERE UserID = @UserID";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -73,6 +73,9 @@ namespace NoteBasket
                                 {
                                     female_Btn.Checked = true;
                                 }
+
+                                string role = reader["Role"].ToString();
+                                button1.Visible = role != "Admin";
                             }
                             else
                             {
@@ -206,5 +209,51 @@ namespace NoteBasket
             Form9 f9 = new Form9(userId);
             f9.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Show a confirmation dialog box
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete your account? This action cannot be undone.",
+                "Confirm Deletion",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            // Check if the user confirmed the deletion
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    // Delete the user from the database
+                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    {
+                        string sql = "DELETE FROM Users WHERE UserID = @UserID";
+
+                        using (SqlCommand cmd = new SqlCommand(sql, con))
+                        {
+                            // Replace `userId` with the actual variable holding the logged-in user's ID
+                            cmd.Parameters.AddWithValue("@UserID", userId);
+                            con.Open();
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Show success message
+                    MessageBox.Show("Your account has been deleted successfully.", "Account Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Redirect to Form1
+                    Form1 form1 = new Form1();
+                    this.Hide();
+                    form1.Show();
+                }
+                catch (Exception ex)
+                {
+                    // Show error message if something goes wrong
+                    MessageBox.Show($"An error occurred while deleting your account: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

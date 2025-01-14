@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -43,10 +42,10 @@
             this.username_label = new System.Windows.Forms.Label();
             this.name_label = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.editprofile_label = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -106,11 +105,16 @@
             this.comboBox1.Items.AddRange(new object[] {
             "CSE",
             "EEE",
-            "Law",
+            "LAW",
             "IPE",
             "BBA",
             "Economics",
-            "MMC"});
+            "MMC",
+            "ENGLISH",
+            "PHARMACY",
+            "ARCHITECTURE",
+            "CNCS",
+            "DS"});
             this.comboBox1.Location = new System.Drawing.Point(493, 179);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(262, 21);
@@ -218,6 +222,17 @@
             this.panel3.Size = new System.Drawing.Size(260, 23);
             this.panel3.TabIndex = 23;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(5, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 14);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "filepath";
+            this.label2.Visible = false;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -242,18 +257,7 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 14);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "filepath";
-            this.label2.Visible = false;
-            // 
-            // Form10
+            // UploadNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -261,7 +265,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
-            this.Name = "Form10";
+            this.Name = "UploadNote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form10";
             this.panel2.ResumeLayout(false);

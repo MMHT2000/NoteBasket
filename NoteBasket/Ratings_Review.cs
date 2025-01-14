@@ -163,5 +163,10 @@ namespace NoteBasket
         {
             this.Close(); // Close the form
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

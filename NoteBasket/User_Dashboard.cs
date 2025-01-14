@@ -22,7 +22,6 @@ namespace NoteBasket
         private BookMarks form14Instance;
 
         string imagePath = Path.Combine(Application.StartupPath, "images");
-        private int noteID=2;
 
 
         public User_Dashboard(int userId)

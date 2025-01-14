@@ -30,52 +30,50 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.bookmarkimage = new System.Windows.Forms.PictureBox();
             this.updateprofile_btn = new System.Windows.Forms.Button();
-            this.profilepicture_box = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.accountcreationdynamic_label = new System.Windows.Forms.Label();
-            this.loyaltydynamic_label = new System.Windows.Forms.Label();
-            this.subscriptionsdynamic_label = new System.Windows.Forms.Label();
             this.roledynamic_label = new System.Windows.Forms.Label();
             this.genderdynamiclabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dobdynamic_label = new System.Windows.Forms.Label();
             this.emaildynamic_label = new System.Windows.Forms.Label();
             this.username_label = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.backtosignin_btn = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bookmarkimage = new System.Windows.Forms.PictureBox();
+            this.profilepicture_box = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.number_ofNotes = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkimage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.LightBlue;
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.number_ofNotes);
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.bookmarkimage);
             this.panel3.Controls.Add(this.updateprofile_btn);
             this.panel3.Controls.Add(this.profilepicture_box);
             this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.accountcreationdynamic_label);
-            this.panel3.Controls.Add(this.loyaltydynamic_label);
-            this.panel3.Controls.Add(this.subscriptionsdynamic_label);
             this.panel3.Controls.Add(this.roledynamic_label);
             this.panel3.Controls.Add(this.genderdynamiclabel);
             this.panel3.Controls.Add(this.label10);
@@ -87,17 +85,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(317, 552);
             this.panel3.TabIndex = 4;
-            // 
-            // bookmarkimage
-            // 
-            this.bookmarkimage.Image = global::NoteBasket.Properties.Resources.bookmark_hollow;
-            this.bookmarkimage.InitialImage = null;
-            this.bookmarkimage.Location = new System.Drawing.Point(13, 35);
-            this.bookmarkimage.Name = "bookmarkimage";
-            this.bookmarkimage.Size = new System.Drawing.Size(50, 50);
-            this.bookmarkimage.TabIndex = 29;
-            this.bookmarkimage.TabStop = false;
-            this.bookmarkimage.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // updateprofile_btn
             // 
@@ -113,55 +100,23 @@
             this.updateprofile_btn.UseVisualStyleBackColor = false;
             this.updateprofile_btn.Click += new System.EventHandler(this.updateprofile_btn_Click);
             // 
-            // profilepicture_box
-            // 
-            this.profilepicture_box.BackColor = System.Drawing.Color.SteelBlue;
-            this.profilepicture_box.Location = new System.Drawing.Point(94, 44);
-            this.profilepicture_box.Name = "profilepicture_box";
-            this.profilepicture_box.Size = new System.Drawing.Size(128, 128);
-            this.profilepicture_box.TabIndex = 26;
-            this.profilepicture_box.TabStop = false;
-            this.profilepicture_box.Click += new System.EventHandler(this.profilepicture_box_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.LightBlue;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 367);
+            this.label7.Location = new System.Drawing.Point(10, 350);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(143, 17);
             this.label7.TabIndex = 25;
             this.label7.Text = "Account Created At:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.LightBlue;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(10, 341);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 17);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Loyalty Points:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.LightBlue;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(10, 314);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 17);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Subscription Ends At:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.LightBlue;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(10, 258);
+            this.label4.Location = new System.Drawing.Point(10, 301);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 17);
             this.label4.TabIndex = 22;
@@ -172,7 +127,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.LightBlue;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 232);
+            this.label3.Location = new System.Drawing.Point(10, 275);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 17);
             this.label3.TabIndex = 21;
@@ -183,7 +138,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 286);
+            this.label2.Location = new System.Drawing.Point(10, 329);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 20;
@@ -194,7 +149,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.LightBlue;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 210);
+            this.label1.Location = new System.Drawing.Point(10, 253);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 17);
             this.label1.TabIndex = 19;
@@ -205,40 +160,18 @@
             this.accountcreationdynamic_label.AutoSize = true;
             this.accountcreationdynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.accountcreationdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountcreationdynamic_label.Location = new System.Drawing.Point(151, 368);
+            this.accountcreationdynamic_label.Location = new System.Drawing.Point(151, 351);
             this.accountcreationdynamic_label.Name = "accountcreationdynamic_label";
             this.accountcreationdynamic_label.Size = new System.Drawing.Size(58, 17);
             this.accountcreationdynamic_label.TabIndex = 18;
             this.accountcreationdynamic_label.Text = "Account";
-            // 
-            // loyaltydynamic_label
-            // 
-            this.loyaltydynamic_label.AutoSize = true;
-            this.loyaltydynamic_label.BackColor = System.Drawing.Color.LightBlue;
-            this.loyaltydynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loyaltydynamic_label.Location = new System.Drawing.Point(120, 342);
-            this.loyaltydynamic_label.Name = "loyaltydynamic_label";
-            this.loyaltydynamic_label.Size = new System.Drawing.Size(92, 17);
-            this.loyaltydynamic_label.TabIndex = 17;
-            this.loyaltydynamic_label.Text = "Loyalty Points";
-            // 
-            // subscriptionsdynamic_label
-            // 
-            this.subscriptionsdynamic_label.AutoSize = true;
-            this.subscriptionsdynamic_label.BackColor = System.Drawing.Color.LightBlue;
-            this.subscriptionsdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subscriptionsdynamic_label.Location = new System.Drawing.Point(156, 315);
-            this.subscriptionsdynamic_label.Name = "subscriptionsdynamic_label";
-            this.subscriptionsdynamic_label.Size = new System.Drawing.Size(79, 17);
-            this.subscriptionsdynamic_label.TabIndex = 16;
-            this.subscriptionsdynamic_label.Text = "Subscription";
             // 
             // roledynamic_label
             // 
             this.roledynamic_label.AutoSize = true;
             this.roledynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.roledynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roledynamic_label.Location = new System.Drawing.Point(72, 287);
+            this.roledynamic_label.Location = new System.Drawing.Point(72, 330);
             this.roledynamic_label.Name = "roledynamic_label";
             this.roledynamic_label.Size = new System.Drawing.Size(30, 17);
             this.roledynamic_label.TabIndex = 15;
@@ -249,7 +182,7 @@
             this.genderdynamiclabel.AutoSize = true;
             this.genderdynamiclabel.BackColor = System.Drawing.Color.LightBlue;
             this.genderdynamiclabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderdynamiclabel.Location = new System.Drawing.Point(81, 259);
+            this.genderdynamiclabel.Location = new System.Drawing.Point(81, 302);
             this.genderdynamiclabel.Name = "genderdynamiclabel";
             this.genderdynamiclabel.Size = new System.Drawing.Size(48, 17);
             this.genderdynamiclabel.TabIndex = 14;
@@ -270,7 +203,7 @@
             this.dobdynamic_label.AutoSize = true;
             this.dobdynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.dobdynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobdynamic_label.Location = new System.Drawing.Point(112, 233);
+            this.dobdynamic_label.Location = new System.Drawing.Point(112, 276);
             this.dobdynamic_label.Name = "dobdynamic_label";
             this.dobdynamic_label.Size = new System.Drawing.Size(29, 17);
             this.dobdynamic_label.TabIndex = 12;
@@ -281,7 +214,7 @@
             this.emaildynamic_label.AutoSize = true;
             this.emaildynamic_label.BackColor = System.Drawing.Color.LightBlue;
             this.emaildynamic_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emaildynamic_label.Location = new System.Drawing.Point(69, 211);
+            this.emaildynamic_label.Location = new System.Drawing.Point(69, 254);
             this.emaildynamic_label.Name = "emaildynamic_label";
             this.emaildynamic_label.Size = new System.Drawing.Size(44, 17);
             this.emaildynamic_label.TabIndex = 11;
@@ -292,21 +225,11 @@
             this.username_label.AutoSize = true;
             this.username_label.BackColor = System.Drawing.Color.LightBlue;
             this.username_label.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username_label.Location = new System.Drawing.Point(109, 177);
+            this.username_label.Location = new System.Drawing.Point(109, 220);
             this.username_label.Name = "username_label";
             this.username_label.Size = new System.Drawing.Size(79, 17);
             this.username_label.TabIndex = 2;
             this.username_label.Text = "@username";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::NoteBasket.Properties.Resources.icons8_close_window_48;
-            this.pictureBox3.Location = new System.Drawing.Point(259, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 48);
-            this.pictureBox3.TabIndex = 30;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // backtosignin_btn
             // 
@@ -330,7 +253,71 @@
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
-            // Form12
+            // bookmarkimage
+            // 
+            this.bookmarkimage.Image = global::NoteBasket.Properties.Resources.bookmark_hollow;
+            this.bookmarkimage.InitialImage = null;
+            this.bookmarkimage.Location = new System.Drawing.Point(13, 35);
+            this.bookmarkimage.Name = "bookmarkimage";
+            this.bookmarkimage.Size = new System.Drawing.Size(50, 50);
+            this.bookmarkimage.TabIndex = 29;
+            this.bookmarkimage.TabStop = false;
+            this.bookmarkimage.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // profilepicture_box
+            // 
+            this.profilepicture_box.BackColor = System.Drawing.Color.SteelBlue;
+            this.profilepicture_box.Location = new System.Drawing.Point(94, 87);
+            this.profilepicture_box.Name = "profilepicture_box";
+            this.profilepicture_box.Size = new System.Drawing.Size(128, 128);
+            this.profilepicture_box.TabIndex = 26;
+            this.profilepicture_box.TabStop = false;
+            this.profilepicture_box.Click += new System.EventHandler(this.profilepicture_box_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::NoteBasket.Properties.Resources.icons8_close_window_48;
+            this.pictureBox3.Location = new System.Drawing.Point(259, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(50, 48);
+            this.pictureBox3.TabIndex = 30;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(122, 60);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "NoteMaster";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.LightBlue;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(10, 375);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 17);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Total Notes:";
+            // 
+            // number_ofNotes
+            // 
+            this.number_ofNotes.AutoSize = true;
+            this.number_ofNotes.BackColor = System.Drawing.Color.LightBlue;
+            this.number_ofNotes.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.number_ofNotes.Location = new System.Drawing.Point(103, 376);
+            this.number_ofNotes.Name = "number_ofNotes";
+            this.number_ofNotes.Size = new System.Drawing.Size(43, 17);
+            this.number_ofNotes.TabIndex = 32;
+            this.number_ofNotes.Text = "Notes";
+            // 
+            // NotePreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -339,15 +326,16 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form12";
+            this.Name = "NotePreview";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form12";
+            this.Load += new System.EventHandler(this.NotePreview_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkimage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -356,15 +344,11 @@
 
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label accountcreationdynamic_label;
-        private System.Windows.Forms.Label loyaltydynamic_label;
-        private System.Windows.Forms.Label subscriptionsdynamic_label;
         private System.Windows.Forms.Label roledynamic_label;
         private System.Windows.Forms.Label genderdynamiclabel;
         private System.Windows.Forms.Label label10;
@@ -378,5 +362,8 @@
         private System.Windows.Forms.Button updateprofile_btn;
         private System.Windows.Forms.PictureBox bookmarkimage;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label number_ofNotes;
     }
 }

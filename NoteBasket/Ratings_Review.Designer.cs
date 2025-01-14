@@ -44,23 +44,23 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.rating_image1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.rating_image2 = new System.Windows.Forms.PictureBox();
-            this.rating_image3 = new System.Windows.Forms.PictureBox();
-            this.rating_image4 = new System.Windows.Forms.PictureBox();
             this.rating_image5 = new System.Windows.Forms.PictureBox();
+            this.rating_image4 = new System.Windows.Forms.PictureBox();
+            this.rating_image3 = new System.Windows.Forms.PictureBox();
+            this.rating_image2 = new System.Windows.Forms.PictureBox();
+            this.rating_image1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating_image1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating_image2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating_image3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating_image4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rating_image5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating_image4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating_image3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating_image2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating_image1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // userdashboard_label
@@ -192,6 +192,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(616, 203);
             this.panel3.TabIndex = 18;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label8
             // 
@@ -250,54 +251,15 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Feedback Form";
             // 
-            // pictureBox2
+            // rating_image5
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.SteelBlue;
-            this.pictureBox2.Location = new System.Drawing.Point(24, 10);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(97, 92);
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
-            // rating_image1
-            // 
-            this.rating_image1.Image = global::NoteBasket.Properties.Resources.rating_hollow;
-            this.rating_image1.Location = new System.Drawing.Point(220, 16);
-            this.rating_image1.Name = "rating_image1";
-            this.rating_image1.Size = new System.Drawing.Size(48, 48);
-            this.rating_image1.TabIndex = 31;
-            this.rating_image1.TabStop = false;
-            this.rating_image1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::NoteBasket.Properties.Resources.icons8_close_window_48;
-            this.pictureBox3.Location = new System.Drawing.Point(552, 10);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 48);
-            this.pictureBox3.TabIndex = 31;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // rating_image2
-            // 
-            this.rating_image2.Image = global::NoteBasket.Properties.Resources.rating_hollow;
-            this.rating_image2.Location = new System.Drawing.Point(274, 16);
-            this.rating_image2.Name = "rating_image2";
-            this.rating_image2.Size = new System.Drawing.Size(48, 48);
-            this.rating_image2.TabIndex = 32;
-            this.rating_image2.TabStop = false;
-            this.rating_image2.Click += new System.EventHandler(this.rating_image2_Click);
-            // 
-            // rating_image3
-            // 
-            this.rating_image3.Image = global::NoteBasket.Properties.Resources.rating_hollow;
-            this.rating_image3.Location = new System.Drawing.Point(328, 16);
-            this.rating_image3.Name = "rating_image3";
-            this.rating_image3.Size = new System.Drawing.Size(48, 48);
-            this.rating_image3.TabIndex = 33;
-            this.rating_image3.TabStop = false;
-            this.rating_image3.Click += new System.EventHandler(this.rating_image3_Click);
+            this.rating_image5.Image = global::NoteBasket.Properties.Resources.rating_hollow;
+            this.rating_image5.Location = new System.Drawing.Point(436, 16);
+            this.rating_image5.Name = "rating_image5";
+            this.rating_image5.Size = new System.Drawing.Size(48, 48);
+            this.rating_image5.TabIndex = 35;
+            this.rating_image5.TabStop = false;
+            this.rating_image5.Click += new System.EventHandler(this.rating_image5_Click);
             // 
             // rating_image4
             // 
@@ -309,17 +271,56 @@
             this.rating_image4.TabStop = false;
             this.rating_image4.Click += new System.EventHandler(this.rating_image4_Click);
             // 
-            // rating_image5
+            // rating_image3
             // 
-            this.rating_image5.Image = global::NoteBasket.Properties.Resources.rating_hollow;
-            this.rating_image5.Location = new System.Drawing.Point(436, 16);
-            this.rating_image5.Name = "rating_image5";
-            this.rating_image5.Size = new System.Drawing.Size(48, 48);
-            this.rating_image5.TabIndex = 35;
-            this.rating_image5.TabStop = false;
-            this.rating_image5.Click += new System.EventHandler(this.rating_image5_Click);
+            this.rating_image3.Image = global::NoteBasket.Properties.Resources.rating_hollow;
+            this.rating_image3.Location = new System.Drawing.Point(328, 16);
+            this.rating_image3.Name = "rating_image3";
+            this.rating_image3.Size = new System.Drawing.Size(48, 48);
+            this.rating_image3.TabIndex = 33;
+            this.rating_image3.TabStop = false;
+            this.rating_image3.Click += new System.EventHandler(this.rating_image3_Click);
             // 
-            // Form13
+            // rating_image2
+            // 
+            this.rating_image2.Image = global::NoteBasket.Properties.Resources.rating_hollow;
+            this.rating_image2.Location = new System.Drawing.Point(274, 16);
+            this.rating_image2.Name = "rating_image2";
+            this.rating_image2.Size = new System.Drawing.Size(48, 48);
+            this.rating_image2.TabIndex = 32;
+            this.rating_image2.TabStop = false;
+            this.rating_image2.Click += new System.EventHandler(this.rating_image2_Click);
+            // 
+            // rating_image1
+            // 
+            this.rating_image1.Image = global::NoteBasket.Properties.Resources.rating_hollow;
+            this.rating_image1.Location = new System.Drawing.Point(220, 16);
+            this.rating_image1.Name = "rating_image1";
+            this.rating_image1.Size = new System.Drawing.Size(48, 48);
+            this.rating_image1.TabIndex = 31;
+            this.rating_image1.TabStop = false;
+            this.rating_image1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox2.Location = new System.Drawing.Point(24, 10);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(97, 92);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::NoteBasket.Properties.Resources.icons8_close_window_48;
+            this.pictureBox3.Location = new System.Drawing.Point(552, 10);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(50, 48);
+            this.pictureBox3.TabIndex = 31;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // Ratings_Review
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -329,7 +330,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
-            this.Name = "Form13";
+            this.Name = "Ratings_Review";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form13";
             this.panel1.ResumeLayout(false);
@@ -338,13 +339,13 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating_image1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating_image2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating_image3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating_image4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rating_image5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating_image4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating_image3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating_image2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating_image1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -15,9 +15,45 @@ namespace NoteBasket
             this.userId = userId;
             this.noteId = noteId;
             InitializeRatings();
-            
+            LoadData();
+
         }
-        
+
+        private void LoadData()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    con.Open();
+
+                    string sql = "SELECT Rating, Review FROM Ratings WHERE NoteID = @NoteID AND UserID = @UserID";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@NoteID", noteId);
+                        cmd.Parameters.AddWithValue("@UserID", userId);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int existingRating = reader.GetInt32(0);
+                                string existingReview = reader.GetString(1);
+                                UpdateRating(existingRating);
+                                textBox1.Text = existingReview;
+
+                                MessageBox.Show("You have already reviewed this note. Feel free to update your review.", "Existing Review", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void InitializeRatings()
         {
@@ -62,35 +98,43 @@ namespace NoteBasket
 
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
+            if (selectedRating == 0)
+            {
+                MessageBox.Show("Please select a rating before submitting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string review = textBox1.Text.Trim();
+            if (string.IsNullOrEmpty(review))
+            {
+                MessageBox.Show("Please provide a review before submitting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    con.Open();
+                    string sql = "INSERT INTO Ratings (NoteID, UserID, Rating, Review, RatingDate) " +
+                                 "VALUES (@NoteID, @UserID, @Rating, @Review, @RatingDate)";
 
-                    string sql = "SELECT Rating, Review FROM Ratings WHERE NoteID = @NoteID AND UserID = @UserID";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@NoteID", noteId);
-                        cmd.Parameters.AddWithValue("@UserID", userId);
-
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                int existingRating = reader.GetInt32(0); string existingReview = reader.GetString(1);
-                                UpdateRating(existingRating);
-                                textBox1.Text = existingReview;
-
-                                MessageBox.Show("You have already reviewed this note. Feel free to update your review.", "Existing Review", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
+                        cmd.Parameters.AddWithValue("@NoteID", noteId); cmd.Parameters.AddWithValue("@UserID", userId); cmd.Parameters.AddWithValue("@Rating", selectedRating); cmd.Parameters.AddWithValue("@Review", review); cmd.Parameters.AddWithValue("@RatingDate", DateTime.Now);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
                     }
                 }
+
+                MessageBox.Show("Rating and review submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                InitializeRatings();
+                textBox1.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while submitting the rating: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

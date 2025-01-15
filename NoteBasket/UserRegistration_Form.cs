@@ -45,19 +45,16 @@ namespace NoteBasket
         {
             try
             {
-                // Retrieve data from input fields
-                string name = name_textbox.Text.Trim();
+                                string name = name_textbox.Text.Trim();
                 string username = username_textbox.Text.Trim();
                 string email = email_textbox.Text.Trim();
                 string dob = dob_picker.Value.ToString("yyyy-MM-dd");
                 string password = password_textbox.Text.Trim();
                 string confirmPassword = confirmpassword_textbox.Text.Trim();
 
-                // Determine gender based on radio button selection
-                string gender = male_Btn.Checked ? "Male" : female_Btn.Checked ? "Female" : null;
+                                string gender = male_Btn.Checked ? "Male" : female_Btn.Checked ? "Female" : null;
 
-                // Check if all fields are filled
-                if (string.IsNullOrEmpty(name) ||
+                                if (string.IsNullOrEmpty(name) ||
                     string.IsNullOrEmpty(username) ||
                     string.IsNullOrEmpty(email) ||
                     string.IsNullOrEmpty(password) ||
@@ -68,15 +65,13 @@ namespace NoteBasket
                     return;
                 }
 
-                // Validate if password and confirm password match
-                if (password != confirmPassword)
+                                if (password != confirmPassword)
                 {
                     MessageBox.Show("Password and Confirm Password do not match.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                // Check if username already exists in the database
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string checkUsernameQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
 
@@ -88,8 +83,7 @@ namespace NoteBasket
                         int userCount = (int)cmd.ExecuteScalar();
                         con.Close();
 
-                        // If the user count is greater than 0, the username already exists
-                        if (userCount > 0)
+                                                if (userCount > 0)
                         {
                             MessageBox.Show("A user/NoteMaster with this username already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
@@ -97,38 +91,29 @@ namespace NoteBasket
                     }
                 }
 
-                // Hash the password
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+                                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-                // Define default role as "Free"
-                string role = "Free";
+                                string role = "Free";
 
-                // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    // Use a parameterized query to prevent SQL injection
-                    string sql = "INSERT INTO Users (Username, PasswordHash, Name, Email, DOB, Gender, Role) " +
+                                        string sql = "INSERT INTO Users (Username, PasswordHash, Name, Email, DOB, Gender, Role) " +
                                  "VALUES (@Username, @PasswordHash, @Name, @Email, @DOB, @Gender, @Role)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        // Add parameters with their values
-                        cmd.Parameters.AddWithValue("@Username", username);
+                                                cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword);
                         cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@DOB", dob);
                         cmd.Parameters.AddWithValue("@Gender", gender);
-                        cmd.Parameters.AddWithValue("@Role", role);  // Insert "Free" as the role
+                        cmd.Parameters.AddWithValue("@Role", role);  
+                                                con.Open();
 
-                        // Open the connection
-                        con.Open();
+                                                cmd.ExecuteNonQuery();
 
-                        // Execute the query
-                        cmd.ExecuteNonQuery();
-
-                        // Inform the user of success
-                        MessageBox.Show("Details inserted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                MessageBox.Show("Details inserted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         this.Hide();
                         Login_Form f1 = new Login_Form();
@@ -138,8 +123,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                // Handle exceptions and display an error message
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

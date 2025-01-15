@@ -15,11 +15,9 @@ namespace NoteBasket
             InitializeComponent();
             this.userId = userId;
 
-            // Event for dynamic search
-            textBox1.TextChanged += TextBox1_TextChanged;
+                        textBox1.TextChanged += TextBox1_TextChanged;
 
-            // Load pending notes when the form loads
-            LoadPendingNotes();
+                        LoadPendingNotes();
         }
 
         private void returntodashboard_btn_Click(object sender, EventArgs e)
@@ -31,14 +29,12 @@ namespace NoteBasket
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
-            // Dynamically update notes as we type
-            LoadPendingNotes();
+                        LoadPendingNotes();
         }
 
         private void LoadPendingNotes()
         {
-            // Preserve label2, textBox1, and button2
-            panel2.Controls.OfType<Control>().Where(c => c != label2 && c != textBox1 && c != button2).ToList()
+                        panel2.Controls.OfType<Control>().Where(c => c != label2 && c != textBox1 && c != button2).ToList()
                   .ForEach(c => panel2.Controls.Remove(c));
 
             try
@@ -48,8 +44,7 @@ namespace NoteBasket
                     string searchQuery = textBox1.Text.Trim();
                     string query = "SELECT NoteID, Title, Status FROM Notes WHERE Status = 'Pending'";
 
-                    // Add search filter if a query exists
-                    if (!string.IsNullOrEmpty(searchQuery))
+                                        if (!string.IsNullOrEmpty(searchQuery))
                     {
                         query += " AND Title LIKE @SearchText";
                     }
@@ -64,16 +59,14 @@ namespace NoteBasket
                         con.Open();
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            int y = 106; // Y-coordinate starting from 106 for dynamic panels
-
+                            int y = 106; 
                             while (reader.Read())
                             {
                                 int noteId = Convert.ToInt32(reader["NoteID"]);
                                 string title = reader["Title"].ToString();
                                 string status = reader["Status"].ToString();
 
-                                // Create a dynamic panel
-                                Panel notePanel = new Panel
+                                                                Panel notePanel = new Panel
                                 {
                                     Size = new Size(530, 25),
                                     Location = new Point(38, y),
@@ -81,49 +74,39 @@ namespace NoteBasket
                                     BorderStyle = BorderStyle.FixedSingle
                                 };
 
-                                // Create a label for the note title
-                                Label titleLabel = new Label
+                                                                Label titleLabel = new Label
                                 {
                                     Text = title,
                                     Font = new Font("Arial", 9, FontStyle.Regular),
                                     AutoSize = true,
-                                    Location = new Point(10, 5), // Inside the panel
-                                    ForeColor = Color.Black
+                                    Location = new Point(10, 5),                                     ForeColor = Color.Black
                                 };
 
-                                // Create a label for the status
-                                Label statusLabel = new Label
+                                                                Label statusLabel = new Label
                                 {
                                     Text = status,
                                     Font = new Font("Arial", 9, FontStyle.Regular),
                                     AutoSize = true,
-                                    Location = new Point(470, 5), // Inside the panel
-                                    ForeColor = Color.Goldenrod
+                                    Location = new Point(470, 5),                                     ForeColor = Color.Goldenrod
                                 };
 
-                                // Create a clickable "Manage" label
-                                Label manageLabel = new Label
+                                                                Label manageLabel = new Label
                                 {
                                     Text = "Manage",
                                     Font = new Font("Arial", 9, FontStyle.Bold),
                                     AutoSize = true,
-                                    Location = new Point(390, 5), // Inside the panel
-                                    ForeColor = Color.Red,
+                                    Location = new Point(390, 5),                                     ForeColor = Color.Red,
                                     Cursor = Cursors.Hand,
-                                    Tag = noteId // Store NoteID for later use
-                                };
+                                    Tag = noteId                                 };
                                 manageLabel.Click += ManageLabel_Click;
 
-                                // Add controls to the dynamic panel
-                                notePanel.Controls.Add(titleLabel);
+                                                                notePanel.Controls.Add(titleLabel);
                                 notePanel.Controls.Add(statusLabel);
                                 notePanel.Controls.Add(manageLabel);
 
-                                // Add the dynamic panel to panel2
-                                panel2.Controls.Add(notePanel);
+                                                                panel2.Controls.Add(notePanel);
 
-                                y += 30; // Adjust Y-coordinate for the next panel
-                            }
+                                y += 30;                             }
                         }
                     }
                 }
@@ -136,23 +119,19 @@ namespace NoteBasket
 
         private void ManageLabel_Click(object sender, EventArgs e)
         {
-            // Get the NoteID from the label's Tag property
-            Label clickedLabel = sender as Label;
+                        Label clickedLabel = sender as Label;
             int noteId = (int)clickedLabel.Tag;
 
-            // Open the ManageNotes form for the selected NoteID
-            ManageNotes manageForm = new ManageNotes(userId, noteId);
+                        ManageNotes manageForm = new ManageNotes(userId, noteId);
             manageForm.StartPosition = FormStartPosition.CenterParent;
             manageForm.ShowDialog();
 
-            // Reload the pending notes after the ManageNotes form closes
-            LoadPendingNotes();
+                        LoadPendingNotes();
         }
 
         private void Note_Approval_Load(object sender, EventArgs e)
         {
-            // Load the pending notes when the form loads
-            LoadPendingNotes();
+                        LoadPendingNotes();
         }
     }
 }

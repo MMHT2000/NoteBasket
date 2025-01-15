@@ -23,14 +23,12 @@ namespace NoteBasket
         {
             try
             {
-                // Retrieve data from input fields
-                string name = name_textbox.Text.Trim();
+                                string name = name_textbox.Text.Trim();
                 string username = username_textbox.Text.Trim();
                 string password = password_textbox.Text.Trim();
                 string confirmPassword = confirmpassword_textbox.Text.Trim();
 
-                // Check if all fields are filled
-                if (string.IsNullOrEmpty(name) ||
+                                if (string.IsNullOrEmpty(name) ||
                     string.IsNullOrEmpty(username) ||
                     string.IsNullOrEmpty(password) ||
                     string.IsNullOrEmpty(confirmPassword))
@@ -39,15 +37,13 @@ namespace NoteBasket
                     return;
                 }
 
-                // Validate if password and confirm password match
-                if (password != confirmPassword)
+                                if (password != confirmPassword)
                 {
                     MessageBox.Show("Password and Confirm Password do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Check if username already exists in the database
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string checkUsernameQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
 
@@ -59,8 +55,7 @@ namespace NoteBasket
                         int userCount = (int)cmd.ExecuteScalar();
                         con.Close();
 
-                        // If the user count is greater than 0, the username already exists
-                        if (userCount > 0)
+                                                if (userCount > 0)
                         {
                             MessageBox.Show("A user/NoteMaster with this username already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
@@ -68,42 +63,32 @@ namespace NoteBasket
                     }
                 }
 
-                // Hash the password
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+                                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-                // Define role as "Notemaster"
-                string role = "Notemaster";
+                                string role = "Notemaster";
 
-                // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    // Use a parameterized query to prevent SQL injection
-                    string sql = "INSERT INTO Users (Username, PasswordHash, Name, Role) " +
+                                        string sql = "INSERT INTO Users (Username, PasswordHash, Name, Role) " +
                                  "VALUES (@Username, @PasswordHash, @Name, @Role)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        // Add parameters with their values
-                        cmd.Parameters.AddWithValue("@Username", username);
+                                                cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword);
                         cmd.Parameters.AddWithValue("@Name", name);
-                        cmd.Parameters.AddWithValue("@Role", role);  // Insert "Notemaster" as the role
+                        cmd.Parameters.AddWithValue("@Role", role);  
+                                                con.Open();
 
-                        // Open the connection
-                        con.Open();
+                                                cmd.ExecuteNonQuery();
 
-                        // Execute the query
-                        cmd.ExecuteNonQuery();
-
-                        // Inform the user of success
-                        MessageBox.Show("Notemaster registered successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                MessageBox.Show("Notemaster registered successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Handle exceptions and display an error message
-                MessageBox.Show("An error occurred: " + ex.Message);
+                                MessageBox.Show("An error occurred: " + ex.Message);
             }
 
 

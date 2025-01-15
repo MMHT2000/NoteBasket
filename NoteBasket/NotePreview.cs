@@ -325,20 +325,58 @@ namespace NoteBasket
 
         private void NotePreview_Load(object sender, EventArgs e)
         {
-            // Code to execute when the form loads
-            // You can add any initialization logic here
+            
         }
 
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
-            // Code to execute when the update profile button is clicked
-            MessageBox.Show("Update Profile button clicked!");
+            try
+            {
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    string sql = "SELECT COUNT(*) FROM Ratings WHERE UserID = @UserID AND NoteID = @NoteID";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", userId);
+                        cmd.Parameters.AddWithValue("@NoteID", noteId);
+
+                        con.Open();
+                        int reviewCount = (int)cmd.ExecuteScalar();
+
+                        if (reviewCount > 0)
+                        {
+                            DialogResult result = MessageBox.Show(
+                                "You have already reviewed this note. Would you like to update your review?",
+                                "Review Exists",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Information);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                Ratings_Review form14 = new Ratings_Review(userId, noteId);
+                                form14.StartPosition = FormStartPosition.CenterParent;
+                                form14.ShowDialog();
+                            }
+                        }
+                        else
+                        {
+                            Ratings_Review form14 = new Ratings_Review(userId, noteId);
+                            form14.StartPosition = FormStartPosition.CenterParent;
+                            form14.ShowDialog();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void profilepicture_box_Click(object sender, EventArgs e)
         {
-            // Code to execute when the profile picture box is clicked
-            MessageBox.Show("Profile picture clicked!");
+            
+           
         }
 
     }

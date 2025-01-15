@@ -87,6 +87,12 @@
     <Compile Include="Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageNotes.Designer.cs">
+      <DependentUpon>ManageNotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="UploadNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageNotes.resx">
+      <DependentUpon>ManageNotes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UploadNote.resx">
       <DependentUpon>UploadNote.cs</DependentUpon>

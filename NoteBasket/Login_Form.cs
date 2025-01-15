@@ -45,8 +45,7 @@ namespace NoteBasket
             string usernameOrEmail = user_textbox.Text.Trim();
             string password = password_textbox.Text.Trim();
 
-            // Check if both fields are filled
-            if (string.IsNullOrEmpty(usernameOrEmail) || string.IsNullOrEmpty(password))
+                        if (string.IsNullOrEmpty(usernameOrEmail) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter both username/email and password.");
                 return;
@@ -54,79 +53,63 @@ namespace NoteBasket
 
             try
             {
-                // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    // Corrected query with proper column names
-                    string sql = "SELECT UserID, Username, PasswordHash, Role " +
+                                        string sql = "SELECT UserID, Username, PasswordHash, Role " +
                                  "FROM Users WHERE Username = @UsernameOrEmail OR Email = @UsernameOrEmail";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        // Add parameters with their values
-                        cmd.Parameters.AddWithValue("@UsernameOrEmail", usernameOrEmail);
+                                                cmd.Parameters.AddWithValue("@UsernameOrEmail", usernameOrEmail);
 
-                        // Open the connection
-                        con.Open();
+                                                con.Open();
 
-                        // Execute the query
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                                                using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            // Check if a user was found
-                            if (reader.Read())
+                                                        if (reader.Read())
                             {
-                                // Get the user details
-                                int userId = Convert.ToInt32(reader["UserID"]);
+                                                                int userId = Convert.ToInt32(reader["UserID"]);
                                 string role = reader["Role"].ToString();
 
-                                // Verify password
-                                string storedPasswordHash = reader["PasswordHash"].ToString();
+                                                                string storedPasswordHash = reader["PasswordHash"].ToString();
                                 if (BCrypt.Net.BCrypt.Verify(password, storedPasswordHash))
                                 {
-                                    // Redirect to different forms based on the role
-                                    switch (role)
+                                                                        switch (role)
                                     {
                                         case "Free":
                                         case "Silver":
                                         case "Gold":
-                                            // Navigate to Form3 (User Dashboard) by passing only userId
-                                            User_Dashboard form3 = new User_Dashboard(userId);
+                                                                                        User_Dashboard form3 = new User_Dashboard(userId);
                                             form3.Show();
                                             break;
 
                                         case "Notemaster":
-                                            // Navigate to Form4
-                                            NoteMaster_Dashboard form4 = new NoteMaster_Dashboard(userId);
+                                                                                        NoteMaster_Dashboard form4 = new NoteMaster_Dashboard(userId);
                                             form4.Show();
                                             break;
 
                                         case "Admin":
-                                            // Navigate to Form5
-                                            Admin_Dashboard form5 = new Admin_Dashboard(userId);
+                                                                                        Admin_Dashboard form5 = new Admin_Dashboard(userId);
                                             form5.Show();
                                             break;
 
                                         default:
-                                            // Handle unknown roles
-                                            MessageBox.Show("Unknown role. Please contact support.");
+                                                                                        MessageBox.Show("Unknown role. Please contact support.");
                                             break;
                                     }
 
-                                    // Hide the login form after navigation
-                                    this.Hide();
+                                                                        this.Hide();
                                 }
                                 else
                                 {
-                                    // Incorrect password
-                                    MessageBox.Show("Incorrect password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                        MessageBox.Show("Incorrect password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
                                 }
                             }
                             else
                             {
-                                // User not found
-                                MessageBox.Show("User not found. Please check your username/email and try again.");
+                                                                MessageBox.Show("User not found. Please check your username/email and try again.");
                             }
                         }
                     }
@@ -134,8 +117,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                // Handle exceptions (e.g., log errors or show user-friendly messages)
-                MessageBox.Show("An error occurred: " + ex.Message);
+                                MessageBox.Show("An error occurred: " + ex.Message);
             }
 
 

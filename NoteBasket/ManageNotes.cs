@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace NoteBasket
@@ -16,13 +17,11 @@ namespace NoteBasket
             this.userId = userId;
             this.noteId = noteId;
 
-            // Load the note details when the form loads
             LoadNoteDetails();
         }
 
         private void ManageNotes_Load(object sender, EventArgs e)
         {
-
         }
 
         private void LoadNoteDetails()
@@ -31,7 +30,7 @@ namespace NoteBasket
             {
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    string query = "SELECT Title, Category, UploadedBy FROM Notes WHERE NoteID = @NoteID";
+                    string query = "SELECT Title, Category, FilePath, UploadedBy FROM Notes WHERE NoteID = @NoteID";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@NoteID", noteId);
@@ -41,12 +40,19 @@ namespace NoteBasket
                         {
                             if (reader.Read())
                             {
-                                // Populate the labels with note details
                                 label2.Text = reader["Title"].ToString(); // Note Title
-                                label4.Text = reader["Category"].ToString(); // Category
-                                int uploadedBy = Convert.ToInt32(reader["UploadedBy"]);
+                                label4.Text = reader["Category"].ToString(); // Note Category
 
-                                // Fetch uploader's username
+                                // Set category image in pictureBox2
+                                string categoryName = reader["Category"].ToString();
+                                pictureBox2.Image = GetCategoryImage(categoryName);
+
+                                // Set note image in pictureBox3 using FilePath
+                                string filePath = reader["FilePath"].ToString();
+                                pictureBox3.Image = GetNoteImage(filePath);
+
+                                // Display uploader name
+                                int uploadedBy = Convert.ToInt32(reader["UploadedBy"]);
                                 label6.Text = GetUploaderName(uploadedBy);
                             }
                         }
@@ -56,6 +62,39 @@ namespace NoteBasket
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading note details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Image GetCategoryImage(string categoryName)
+        {
+            // Dynamically fetch an image from the resources based on category name
+            try
+            {
+                return (Image)Properties.Resources.ResourceManager.GetObject(categoryName) ?? Properties.Resources.NF;
+            }
+            catch
+            {
+                return Properties.Resources.NF;
+            }
+        }
+
+        private Image GetNoteImage(string filePath)
+        {
+            // Load image from FilePath or show a default placeholder
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(filePath) && File.Exists(filePath))
+                {
+                    return Image.FromFile(filePath);
+                }
+                else
+                {
+                    return Properties.Resources.NF;
+                }
+            }
+            catch
+            {
+                return Properties.Resources.NF;
             }
         }
 
@@ -81,38 +120,43 @@ namespace NoteBasket
             }
         }
 
-   
-
         private void label7_Click_1(object sender, EventArgs e)
         {
-            // Approve the note
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                var confirmation = MessageBox.Show(
+                    "Are you sure you want to approve this note?",
+                    "Confirm Approval",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmation == DialogResult.Yes)
                 {
-                    string query = "UPDATE Notes SET Status = 'Approved' WHERE NoteID = @NoteID";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                     {
-                        cmd.Parameters.AddWithValue("@NoteID", noteId);
-                        con.Open();
-                        cmd.ExecuteNonQuery();
+                        string query = "UPDATE Notes SET Status = 'Approved' WHERE NoteID = @NoteID";
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@NoteID", noteId);
+                            con.Open();
+                            cmd.ExecuteNonQuery();
 
-                        MessageBox.Show("Note approved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Note approved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
-                }
 
-                // Close this form and refresh the previous form
-                this.Close();
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error approving note: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void label8_Click_1(object sender, EventArgs e)
         {
-            // Delete the note
             var confirmation = MessageBox.Show("Are you sure you want to delete this note?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
@@ -131,7 +175,6 @@ namespace NoteBasket
                         }
                     }
 
-                    // Close this form and refresh the previous form
                     this.Close();
                 }
                 catch (Exception ex)
@@ -143,7 +186,7 @@ namespace NoteBasket
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Close(); // Close the form
+            this.Close();
         }
     }
 }

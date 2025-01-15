@@ -28,13 +28,11 @@ namespace NoteBasket
 
         private void changepassword_btn_Click(object sender, EventArgs e)
         {
-            // Retrieve input values
-            string currentPasswordInput = currentpassword_textbox.Text.Trim();
+                        string currentPasswordInput = currentpassword_textbox.Text.Trim();
             string newPassword = password_textbox.Text.Trim();
             string confirmPassword = confirmpassword_textbox.Text.Trim();
 
-            // Validate inputs
-            if (string.IsNullOrEmpty(currentPasswordInput) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
+                        if (string.IsNullOrEmpty(currentPasswordInput) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
             {
                 MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -48,11 +46,9 @@ namespace NoteBasket
 
             try
             {
-                // Connect to the database
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    // Query to retrieve the current password hash
-                    string selectQuery = "SELECT PasswordHash FROM Users WHERE UserID = @UserId";
+                                        string selectQuery = "SELECT PasswordHash FROM Users WHERE UserID = @UserId";
                     con.Open();
 
                     string storedPasswordHash = null;
@@ -63,18 +59,15 @@ namespace NoteBasket
                         storedPasswordHash = cmdSelect.ExecuteScalar()?.ToString();
                     }
 
-                    // Verify the entered current password using BCrypt
-                    if (!BCrypt.Net.BCrypt.Verify(currentPasswordInput, storedPasswordHash))
+                                        if (!BCrypt.Net.BCrypt.Verify(currentPasswordInput, storedPasswordHash))
                     {
                         MessageBox.Show("Current password is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    // Hash the new password using BCrypt
-                    string newPasswordHash = BCrypt.Net.BCrypt.HashPassword(newPassword);
+                                        string newPasswordHash = BCrypt.Net.BCrypt.HashPassword(newPassword);
 
-                    // Update the password in the database
-                    string updateQuery = "UPDATE Users SET PasswordHash = @NewPasswordHash WHERE UserID = @UserId";
+                                        string updateQuery = "UPDATE Users SET PasswordHash = @NewPasswordHash WHERE UserID = @UserId";
 
                     using (SqlCommand cmdUpdate = new SqlCommand(updateQuery, con))
                     {
@@ -85,8 +78,7 @@ namespace NoteBasket
 
                     MessageBox.Show("Password changed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Navigate to Form8
-                    NavigateToForm8();
+                                        NavigateToForm8();
                 }
             }
             catch (Exception ex)
@@ -95,14 +87,11 @@ namespace NoteBasket
             }
         }
 
-        // Method to navigate to Form8
-        private void NavigateToForm8()
+                private void NavigateToForm8()
         {
-            // Close Form9
-            this.Hide();
+                        this.Hide();
 
-            // Open Form8 and pass the userId
-            EditProfile editProfileForm = new EditProfile(userId);
+                        EditProfile editProfileForm = new EditProfile(userId);
             editProfileForm.Show();
 
         }

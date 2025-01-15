@@ -20,8 +20,7 @@ namespace NoteBasket
         {
             try
             {
-                panel2.Controls.Clear(); // Clear existing controls before adding new ones
-
+                panel2.Controls.Clear(); 
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string sql = @"
@@ -41,12 +40,8 @@ namespace NoteBasket
 
                             while (reader.Read())
                             {
-                                int noteId = reader.GetInt32(2); // NoteID
-                                string noteTitle = reader.GetString(3); // Title
-                                DateTime bookmarkDate = reader.GetDateTime(1); // BookmarkDate
-
-                                // Create a new panel for the bookmark
-                                Panel dynamicPanel = new Panel
+                                int noteId = reader.GetInt32(2);                                 string noteTitle = reader.GetString(3);                                 DateTime bookmarkDate = reader.GetDateTime(1); 
+                                                                Panel dynamicPanel = new Panel
                                 {
                                     Size = new Size(540, 80),
                                     Location = new Point(10, yPosition),
@@ -55,8 +50,7 @@ namespace NoteBasket
 
                                 };
 
-                                // Create a label to display bookmark details
-                                Label detailsLabel = new Label
+                                                                Label detailsLabel = new Label
                                 {
                                     Text = $"You have bookmarked '{noteTitle}' on {bookmarkDate.ToShortDateString()}",
                                     AutoSize = false,
@@ -66,8 +60,7 @@ namespace NoteBasket
                                     ForeColor = Color.Black
                                 };
 
-                                // Attach a click event to the panel
-                                dynamicPanel.Click += (s, e) =>
+                                                                dynamicPanel.Click += (s, e) =>
                                 {
                                     NoteDetails form11 = new NoteDetails(userId, noteId);
                                     this.Hide();
@@ -81,14 +74,11 @@ namespace NoteBasket
                                     form11.Show();
                                 };
 
-                                // Add the label to the panel
-                                dynamicPanel.Controls.Add(detailsLabel);
+                                                                dynamicPanel.Controls.Add(detailsLabel);
 
-                                // Add the panel to panel2
-                                panel2.Controls.Add(dynamicPanel);
+                                                                panel2.Controls.Add(dynamicPanel);
 
-                                yPosition += 90; // Adjust yPosition for the next panel
-                            }
+                                yPosition += 90;                             }
                         }
                     }
                 }
@@ -101,8 +91,7 @@ namespace NoteBasket
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            // Optional: Customize the appearance of panel2
-        }
+                    }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NoteBasket
@@ -20,52 +17,69 @@ namespace NoteBasket
             this.userId = userId;
             this.noteId = noteId;
 
-            // Original code logic
-            using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
-            {
-                string sql = $"select count(*) from Bookmarks where USERID = {userId} and NoteID ={noteId}";
-
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    con.Open();
-                    int x = (int)cmd.ExecuteScalar();
-                    if (x == 1)
-                    {
-                        bookmarkimage.Image = Properties.Resources.bookmark_filled;
-                        isBookmarked = true;
-                    }
-                    else
-                    {
-                        bookmarkimage.Image = Properties.Resources.bookmark_hollow;
-                        isBookmarked = false;
-                    }
-                }
-            }
-
-            using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
-            {
-                string sql = "SELECT Role FROM Users WHERE UserID = @UserID";
-                using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
-                    cmd.Parameters.AddWithValue("@UserID", userId);
-
-                    con.Open();
-                    string role = (string)cmd.ExecuteScalar();
-
-                    if (role == "Free")
-                    {
-                        backtosignin_btn.Visible = false;
-                    }
-                    else
-                    {
-                        backtosignin_btn.Visible = true;
-                    }
-                }
-            }
-
-            
+            CheckBookmarkStatus();
+            CheckUserRole();
             LoadNoteDetails();
-            LoadUploaderDetails();
+        }
+
+        private void CheckBookmarkStatus()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    string sql = "SELECT COUNT(*) FROM Bookmarks WHERE UserID = @UserID AND NoteID = @NoteID";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", userId);
+                        cmd.Parameters.AddWithValue("@NoteID", noteId);
+
+                        con.Open();
+                        int count = (int)cmd.ExecuteScalar();
+
+                        if (count == 1)
+                        {
+                            bookmarkimage.Image = Properties.Resources.bookmark_filled;
+                            isBookmarked = true;
+                        }
+                        else
+                        {
+                            bookmarkimage.Image = Properties.Resources.bookmark_hollow;
+                            isBookmarked = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking bookmark status: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CheckUserRole()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    string sql = "SELECT Role FROM Users WHERE UserID = @UserID";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", userId);
+
+                        con.Open();
+                        string role = cmd.ExecuteScalar()?.ToString();
+
+                        backtosignin_btn.Visible = role != "Free";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking user role: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadNoteDetails()
@@ -75,17 +89,24 @@ namespace NoteBasket
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string sql = "SELECT Title, Description, FilePath, UploadedBy FROM Notes WHERE NoteID = @NoteID";
+
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@NoteID", noteId);
-                        con.Open();
 
+                        con.Open();
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
                                 string filePath = reader["FilePath"].ToString();
-                                int uploadedBy = Convert.ToInt32(reader["UploadedBy"]);
+                                int uploadedBy = reader["UploadedBy"] != DBNull.Value ? Convert.ToInt32(reader["UploadedBy"]) : 0;
+
+                                if (uploadedBy == 0)
+                                {
+                                    MessageBox.Show("Invalid uploader for this note.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return;
+                                }
 
                                 if (!string.IsNullOrEmpty(filePath) && System.IO.File.Exists(filePath))
                                 {
@@ -111,7 +132,7 @@ namespace NoteBasket
             }
         }
 
-        private void LoadUploaderDetails(int uploadedBy = 0)
+        private void LoadUploaderDetails(int uploadedBy)
         {
             try
             {
@@ -126,8 +147,8 @@ namespace NoteBasket
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@UserID", uploadedBy);
-                        con.Open();
 
+                        con.Open();
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -162,16 +183,18 @@ namespace NoteBasket
             {
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    string sql = "SELECT COUNT(*) FROM Notes WHERE UploadedBy = @UploadedBy";
+                    string sql = "SELECT COUNT(*) FROM Notes WHERE UploadedBy = @UploadedBy AND Status = 'Approved'";
+
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@UploadedBy", uploadedBy);
-                        con.Open();
 
+                        con.Open();
                         int totalNotes = (int)cmd.ExecuteScalar();
                         number_ofNotes.Text = totalNotes.ToString();
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -239,19 +262,17 @@ namespace NoteBasket
         {
             if (isBookmarked)
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
-                {
-                    string sql = $"DELETE FROM Bookmarks WHERE UserID = {userId} AND NoteID = {noteId}";
-                    using (SqlCommand cmd = new SqlCommand(sql, con))
-                    {
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        isBookmarked = false;
-                        bookmarkimage.Image = Properties.Resources.bookmark_hollow;
-                    }
-                }
+                RemoveBookmark();
             }
             else
+            {
+                AddBookmark();
+            }
+        }
+
+        private void AddBookmark()
+        {
+            try
             {
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
@@ -270,25 +291,55 @@ namespace NoteBasket
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding bookmark: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void profilepicture_box_Click(object sender, EventArgs e)
+        private void RemoveBookmark()
         {
-            // Logic for handling the click event
+            try
+            {
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    string sql = "DELETE FROM Bookmarks WHERE UserID = @UserID AND NoteID = @NoteID";
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", userId);
+                        cmd.Parameters.AddWithValue("@NoteID", noteId);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+
+                        isBookmarked = false;
+                        bookmarkimage.Image = Properties.Resources.bookmark_hollow;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error removing bookmark: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void NotePreview_Load(object sender, EventArgs e)
         {
-            // Event handling logic (if any)
+            // Code to execute when the form loads
+            // You can add any initialization logic here
         }
+
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
-            Ratings_Review form13 = new Ratings_Review(userId, noteId);
-            form13.StartPosition = FormStartPosition.CenterParent;
-            form13.ShowDialog();
-
+            // Code to execute when the update profile button is clicked
+            MessageBox.Show("Update Profile button clicked!");
         }
 
+        private void profilepicture_box_Click(object sender, EventArgs e)
+        {
+            // Code to execute when the profile picture box is clicked
+            MessageBox.Show("Profile picture clicked!");
+        }
 
     }
 }

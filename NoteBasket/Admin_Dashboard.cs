@@ -65,8 +65,7 @@ namespace NoteBasket
                             }
                             else
                             {
-                                // Inline default values
-                                name_label.Text = "Not Set";
+                                                                name_label.Text = "Not Set";
                                 username_label.Text = "Not Set";
                                 emaildynamic_label.Text = "Not Set";
                                 dobdynamic_label.Text = "Not Set";
@@ -84,8 +83,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                // Handle exceptions and set default values inline
-                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 name_label.Text = "Not Set";
                 username_label.Text = "Not Set";

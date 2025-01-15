@@ -16,7 +16,9 @@ namespace NoteBasket
             this.noteId = noteId;
             InitializeRatings();
             LoadData();
+
         }
+
         private void LoadData()
         {
             try
@@ -25,7 +27,7 @@ namespace NoteBasket
                 {
                     con.Open();
 
-                                        string sql = "SELECT Rating, Review FROM Ratings WHERE NoteID = @NoteID AND UserID = @UserID";
+                    string sql = "SELECT Rating, Review FROM Ratings WHERE NoteID = @NoteID AND UserID = @UserID";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@NoteID", noteId);
@@ -35,8 +37,9 @@ namespace NoteBasket
                         {
                             if (reader.Read())
                             {
-                                                                int existingRating = reader.GetInt32(0);                                 string existingReview = reader.GetString(1); 
-                                                                UpdateRating(existingRating);
+                                int existingRating = reader.GetInt32(0);
+                                string existingReview = reader.GetString(1);
+                                UpdateRating(existingRating);
                                 textBox1.Text = existingReview;
 
                                 MessageBox.Show("You have already reviewed this note. Feel free to update your review.", "Existing Review", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -51,9 +54,10 @@ namespace NoteBasket
             }
         }
 
+
         private void InitializeRatings()
         {
-                        rating_image1.Image = Properties.Resources.rating_hollow;
+            rating_image1.Image = Properties.Resources.rating_hollow;
             rating_image2.Image = Properties.Resources.rating_hollow;
             rating_image3.Image = Properties.Resources.rating_hollow;
             rating_image4.Image = Properties.Resources.rating_hollow;
@@ -63,9 +67,9 @@ namespace NoteBasket
 
         private void UpdateRating(int rating)
         {
-                        selectedRating = rating;
+            selectedRating = rating;
 
-                        rating_image1.Image = rating >= 1 ? Properties.Resources.rating_filled : Properties.Resources.rating_hollow;
+            rating_image1.Image = rating >= 1 ? Properties.Resources.rating_filled : Properties.Resources.rating_hollow;
             rating_image2.Image = rating >= 2 ? Properties.Resources.rating_filled : Properties.Resources.rating_hollow;
             rating_image3.Image = rating >= 3 ? Properties.Resources.rating_filled : Properties.Resources.rating_hollow;
             rating_image4.Image = rating >= 4 ? Properties.Resources.rating_filled : Properties.Resources.rating_hollow;
@@ -94,13 +98,13 @@ namespace NoteBasket
 
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
-                        if (selectedRating == 0)
+            if (selectedRating == 0)
             {
                 MessageBox.Show("Please select a rating before submitting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string review = textBox1.Text.Trim(); 
+            string review = textBox1.Text.Trim();
             if (string.IsNullOrEmpty(review))
             {
                 MessageBox.Show("Please provide a review before submitting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -109,23 +113,23 @@ namespace NoteBasket
 
             try
             {
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string sql = "INSERT INTO Ratings (NoteID, UserID, Rating, Review, RatingDate) " +
                                  "VALUES (@NoteID, @UserID, @Rating, @Review, @RatingDate)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@NoteID", noteId);                                cmd.Parameters.AddWithValue("@UserID", userId);                                cmd.Parameters.AddWithValue("@Rating", selectedRating);                         cmd.Parameters.AddWithValue("@Review", review);                                cmd.Parameters.AddWithValue("@RatingDate", DateTime.Now); 
+                        cmd.Parameters.AddWithValue("@NoteID", noteId); cmd.Parameters.AddWithValue("@UserID", userId); cmd.Parameters.AddWithValue("@Rating", selectedRating); cmd.Parameters.AddWithValue("@Review", review); cmd.Parameters.AddWithValue("@RatingDate", DateTime.Now);
                         con.Open();
                         cmd.ExecuteNonQuery();
                         con.Close();
                     }
                 }
 
-                                MessageBox.Show("Rating and review submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Rating and review submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                InitializeRatings();
+                InitializeRatings();
                 textBox1.Clear();
             }
             catch (Exception ex)

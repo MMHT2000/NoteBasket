@@ -34,7 +34,7 @@ namespace NoteBasket
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog()
             {
-                Filter = "Image Files (*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp",
+                Filter = "Image Files (*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png",
                 Title = "Select an Image",
                 CheckFileExists = true,
                 CheckPathExists = true

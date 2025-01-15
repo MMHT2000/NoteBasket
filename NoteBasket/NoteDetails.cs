@@ -23,36 +23,25 @@ namespace NoteBasket
         {
             try
             {
-                // Establish the connection to the database
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    // SQL query to retrieve note details
-                    string sql = @"
+                                        string sql = @"
                     SELECT Title, Description, FilePath, Category, SubscriptionLevel 
                     FROM Notes 
                     WHERE NoteID = @NoteID";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        // Add parameter for the SQL query
-                        cmd.Parameters.AddWithValue("@NoteID", noteId);
+                                                cmd.Parameters.AddWithValue("@NoteID", noteId);
 
-                        // Open the connection
-                        con.Open();
+                                                con.Open();
 
-                        // Execute the query and read the data
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                                                using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                // Populate the labels
-                                label1.Text = reader["Title"].ToString(); // Course Title
-                                label2.Text = reader["Description"].ToString(); // Description
-                                label4.Text = reader["Category"].ToString(); // Category
-                                label5.Text = reader["SubscriptionLevel"].ToString(); // Subscription Level
-
-                                // Show category-wise image in pictureBox2
-                                string category = reader["Category"].ToString();
+                                                                label1.Text = reader["Title"].ToString();                                 label2.Text = reader["Description"].ToString();                                 label4.Text = reader["Category"].ToString();                                 label5.Text = reader["SubscriptionLevel"].ToString(); 
+                                                                string category = reader["Category"].ToString();
                                 switch (category)
                                 {
                                     case "CSE":
@@ -94,12 +83,10 @@ namespace NoteBasket
 
 
                                     default:
-                                        pictureBox2.Image = Properties.Resources.NF; // Fallback image
-                                        break;
+                                        pictureBox2.Image = Properties.Resources.NF;                                         break;
                                 }
 
-                                // Load the note image from FilePath into pictureBox1
-                                string filePath = reader["FilePath"].ToString();
+                                                                string filePath = reader["FilePath"].ToString();
                                 string imagePath = Path.Combine(Application.StartupPath, filePath);
                                 if (File.Exists(imagePath))
                                 {
@@ -120,14 +107,12 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                // Handle exceptions
-                MessageBox.Show("An error occurred while loading note details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("An error occurred while loading note details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            // Leave this method empty if you don't need it.
-        }
+                    }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

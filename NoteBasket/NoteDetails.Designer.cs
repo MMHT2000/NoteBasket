@@ -33,6 +33,7 @@
             this.admindashboard_label = new System.Windows.Forms.Label();
             this.logout_btn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,14 +41,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -103,6 +104,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
@@ -114,6 +116,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1240, 160);
             this.panel2.TabIndex = 19;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox2.Image = global::NoteBasket.Properties.Resources.NF;
+            this.pictureBox2.Location = new System.Drawing.Point(21, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(125, 125);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
             // 
             // label5
             // 
@@ -188,16 +200,6 @@
             this.panel3.Size = new System.Drawing.Size(1240, 404);
             this.panel3.TabIndex = 7;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.LightBlue;
-            this.label14.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(75, 250);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(0, 17);
-            this.label14.TabIndex = 13;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
@@ -209,15 +211,25 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // pictureBox2
+            // label14
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.SteelBlue;
-            this.pictureBox2.Image = global::NoteBasket.Properties.Resources.NF;
-            this.pictureBox2.Location = new System.Drawing.Point(21, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(125, 125);
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.LightBlue;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(75, 250);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(0, 17);
+            this.label14.TabIndex = 13;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(518, 114);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 31);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Ratings";
             // 
             // NoteDetails
             // 
@@ -231,14 +243,15 @@
             this.Name = "NoteDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Note Details";
+            this.Load += new System.EventHandler(this.NoteDetails_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -260,5 +273,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -23,25 +23,29 @@ namespace NoteBasket
         {
             try
             {
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string sql = @"
-                    SELECT Title, Description, FilePath, Category, SubscriptionLevel 
-                    FROM Notes 
-                    WHERE NoteID = @NoteID";
+                    string sql = @"
+        SELECT Title, Description, FilePath, Category, SubscriptionLevel 
+        FROM Notes 
+        WHERE NoteID = @NoteID";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                                                cmd.Parameters.AddWithValue("@NoteID", noteId);
+                        cmd.Parameters.AddWithValue("@NoteID", noteId);
 
-                                                con.Open();
+                        con.Open();
 
-                                                using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                                                label1.Text = reader["Title"].ToString();                                 label2.Text = reader["Description"].ToString();                                 label4.Text = reader["Category"].ToString();                                 label5.Text = reader["SubscriptionLevel"].ToString(); 
-                                                                string category = reader["Category"].ToString();
+                                label1.Text = reader["Title"].ToString();
+                                label2.Text = reader["Description"].ToString();
+                                label4.Text = reader["Category"].ToString();
+                                label5.Text = reader["SubscriptionLevel"].ToString();
+
+                                string category = reader["Category"].ToString();
                                 switch (category)
                                 {
                                     case "CSE":
@@ -80,13 +84,12 @@ namespace NoteBasket
                                     case "DS":
                                         pictureBox2.Image = Properties.Resources.DS;
                                         break;
-
-
                                     default:
-                                        pictureBox2.Image = Properties.Resources.NF;                                         break;
+                                        pictureBox2.Image = Properties.Resources.NF;
+                                        break;
                                 }
 
-                                                                string filePath = reader["FilePath"].ToString();
+                                string filePath = reader["FilePath"].ToString();
                                 string imagePath = Path.Combine(Application.StartupPath, filePath);
                                 if (File.Exists(imagePath))
                                 {
@@ -103,12 +106,33 @@ namespace NoteBasket
                             }
                         }
                     }
+
+                    // Calculate the average rating
+                    string ratingQuery = "SELECT AVG(CAST(Rating AS FLOAT)) FROM Ratings WHERE NoteID = @NoteID";
+                    using (SqlCommand ratingCmd = new SqlCommand(ratingQuery, con))
+                    {
+                        ratingCmd.Parameters.AddWithValue("@NoteID", noteId);
+
+                        // No need to open the connection again, as it's already open
+                        object avgRatingObj = ratingCmd.ExecuteScalar();
+
+                        if (avgRatingObj != DBNull.Value)
+                        {
+                            double avgRating = Convert.ToDouble(avgRatingObj);
+                            label8.Text = $"Rating: {avgRating:F2} Stars";
+                        }
+                        else
+                        {
+                            label8.Text = "Rating: N/A";
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                                MessageBox.Show("An error occurred while loading note details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred while loading note details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -126,6 +150,11 @@ namespace NoteBasket
             this.Close();
             User_Dashboard form3 = new User_Dashboard(userId);
             form3.Show();
+        }
+
+        private void NoteDetails_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

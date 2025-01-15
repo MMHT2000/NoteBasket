@@ -325,20 +325,21 @@ namespace NoteBasket
 
         private void NotePreview_Load(object sender, EventArgs e)
         {
-            // Code to execute when the form loads
-            // You can add any initialization logic here
+            
         }
 
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
-            // Code to execute when the update profile button is clicked
-            MessageBox.Show("Update Profile button clicked!");
+
+            Ratings_Review form13 = new Ratings_Review(userId, noteId);
+            form13.StartPosition = FormStartPosition.CenterParent;
+            form13.ShowDialog();
         }
 
         private void profilepicture_box_Click(object sender, EventArgs e)
         {
-            // Code to execute when the profile picture box is clicked
-            MessageBox.Show("Profile picture clicked!");
+            
+           
         }
 
     }

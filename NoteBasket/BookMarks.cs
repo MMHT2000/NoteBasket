@@ -40,8 +40,10 @@ namespace NoteBasket
 
                             while (reader.Read())
                             {
-                                int noteId = reader.GetInt32(2);                                 string noteTitle = reader.GetString(3);                                 DateTime bookmarkDate = reader.GetDateTime(1); 
-                                                                Panel dynamicPanel = new Panel
+                                int noteId = reader.GetInt32(2);                                 
+                                string noteTitle = reader.GetString(3);                                 
+                                DateTime bookmarkDate = reader.GetDateTime(1); 
+                                Panel dynamicPanel = new Panel
                                 {
                                     Size = new Size(540, 80),
                                     Location = new Point(10, yPosition),
@@ -50,7 +52,7 @@ namespace NoteBasket
 
                                 };
 
-                                                                Label detailsLabel = new Label
+                                Label detailsLabel = new Label
                                 {
                                     Text = $"You have bookmarked '{noteTitle}' on {bookmarkDate.ToShortDateString()}",
                                     AutoSize = false,
@@ -60,7 +62,7 @@ namespace NoteBasket
                                     ForeColor = Color.Black
                                 };
 
-                                                                dynamicPanel.Click += (s, e) =>
+                                dynamicPanel.Click += (s, e) =>
                                 {
                                     NoteDetails form11 = new NoteDetails(userId, noteId);
                                     this.Hide();
@@ -74,9 +76,9 @@ namespace NoteBasket
                                     form11.Show();
                                 };
 
-                                                                dynamicPanel.Controls.Add(detailsLabel);
+                                dynamicPanel.Controls.Add(detailsLabel);
 
-                                                                panel2.Controls.Add(dynamicPanel);
+                                panel2.Controls.Add(dynamicPanel);
 
                                 yPosition += 90;                             }
                         }
@@ -91,7 +93,8 @@ namespace NoteBasket
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-                    }
+                    
+        }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {

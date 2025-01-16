@@ -28,12 +28,12 @@ namespace NoteBasket
 
         private void resetpassword_btn_Click(object sender, EventArgs e)
         {
-                        string username = user_textbox.Text.Trim();
+            string username = user_textbox.Text.Trim();
             string email = email_textbox.Text.Trim();
             string password = password_textbox.Text.Trim();
             string confirmPassword = confirmpassword_textbox.Text.Trim();
 
-                        if (string.IsNullOrEmpty(username) ||
+            if (string.IsNullOrEmpty(username) ||
                 string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(password) ||
                 string.IsNullOrEmpty(confirmPassword))
@@ -42,7 +42,7 @@ namespace NoteBasket
                 return;
             }
 
-                        if (password != confirmPassword)
+            if (password != confirmPassword)
             {
                 MessageBox.Show("Password and Confirm Password do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -50,38 +50,38 @@ namespace NoteBasket
 
             try
             {
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Email = @Email";
+                    string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Email = @Email";
 
                     using (SqlCommand cmdCheck = new SqlCommand(checkQuery, con))
                     {
-                                                cmdCheck.Parameters.AddWithValue("@Username", username);
+                        cmdCheck.Parameters.AddWithValue("@Username", username);
                         cmdCheck.Parameters.AddWithValue("@Email", email);
 
-                                                con.Open();
+                        con.Open();
 
-                                                int matchCount = Convert.ToInt32(cmdCheck.ExecuteScalar());
+                        int matchCount = Convert.ToInt32(cmdCheck.ExecuteScalar());
 
                         if (matchCount == 0)
                         {
-                                                        MessageBox.Show("Email and Username do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Email and Username do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
 
-                                        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
                     string updateQuery = "UPDATE Users SET PasswordHash = @PasswordHash WHERE Username = @Username AND Email = @Email";
 
                     using (SqlCommand cmdUpdate = new SqlCommand(updateQuery, con))
                     {
-                                                cmdUpdate.Parameters.AddWithValue("@PasswordHash", hashedPassword);
+                        cmdUpdate.Parameters.AddWithValue("@PasswordHash", hashedPassword);
                         cmdUpdate.Parameters.AddWithValue("@Username", username);
                         cmdUpdate.Parameters.AddWithValue("@Email", email);
 
-                                                cmdUpdate.ExecuteNonQuery();
+                        cmdUpdate.ExecuteNonQuery();
 
-                                                MessageBox.Show("Password changed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Password changed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         this.Hide();
                         Login_Form form1 = new Login_Form();
@@ -91,7 +91,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

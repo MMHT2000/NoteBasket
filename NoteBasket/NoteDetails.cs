@@ -26,9 +26,9 @@ namespace NoteBasket
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string sql = @"
-        SELECT Title, Description, FilePath, Category, SubscriptionLevel 
-        FROM Notes 
-        WHERE NoteID = @NoteID";
+                        SELECT Title, Description, FilePath, Category, SubscriptionLevel 
+                        FROM Notes 
+                        WHERE NoteID = @NoteID";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -103,6 +103,7 @@ namespace NoteBasket
                             else
                             {
                                 MessageBox.Show("Note details not found. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                             }
                         }
                     }
@@ -136,7 +137,8 @@ namespace NoteBasket
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-                    }
+                    
+        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

@@ -215,6 +215,76 @@ namespace NoteBasket
                 return;
             }
 
+            // Database Connection String
+            string connectionString = @"data source=Mohaiminul\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI";
+
+            bool isSilverUser = false;
+            int userID = userId; // Replace with the logged-in user's ID
+            int noteID = noteId; // Replace with the actual NoteID related to the download
+            int downloadCount = 0;
+            bool isDuplicateDownload = false;
+            DateTime today = DateTime.Today;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Step 1: Check if the user is Silver
+                string getUserRoleQuery = "SELECT Role FROM Users WHERE UserID = @UserID";
+                using (SqlCommand command = new SqlCommand(getUserRoleQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    string role = (string)command.ExecuteScalar();
+                    isSilverUser = role.Equals("Silver", StringComparison.OrdinalIgnoreCase);
+                }
+
+                if (isSilverUser)
+                {
+                    // Step 2: Delete old logs if the date is not today
+                    string deleteOldLogsQuery = "DELETE FROM UserDailyActivity WHERE UserID = @UserID AND ActivityDate < @Today";
+                    using (SqlCommand command = new SqlCommand(deleteOldLogsQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserID", userID);
+                        command.Parameters.AddWithValue("@Today", today);
+                        command.ExecuteNonQuery();
+                    }
+
+                    // Step 3: Check if this NoteID has already been downloaded today
+                    string checkDuplicateQuery = "SELECT COUNT(*) FROM UserDailyActivity WHERE UserID = @UserID AND NoteID = @NoteID AND ActivityDate = @Today";
+                    using (SqlCommand command = new SqlCommand(checkDuplicateQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserID", userID);
+                        command.Parameters.AddWithValue("@NoteID", noteID);
+                        command.Parameters.AddWithValue("@Today", today);
+                        int duplicateCount = (int)command.ExecuteScalar();
+
+                        if (duplicateCount > 0)
+                        {
+                            isDuplicateDownload = true;
+                        }
+                    }
+
+                    // Step 4: If the download is not a duplicate, check today's download count
+                    if (!isDuplicateDownload)
+                    {
+                        string getDownloadCountQuery = "SELECT COUNT(*) FROM UserDailyActivity WHERE UserID = @UserID AND ActivityDate = @Today";
+                        using (SqlCommand command = new SqlCommand(getDownloadCountQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@UserID", userID);
+                            command.Parameters.AddWithValue("@Today", today);
+                            downloadCount = (int)command.ExecuteScalar();
+                        }
+
+                        // Step 5: If the user has reached the limit, block new downloads
+                        if (downloadCount >= 5)
+                        {
+                            MessageBox.Show("Your download limit for today is over. Please try again tomorrow or upgrade to Gold.", "Download Limit Reached", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                }
+            }
+
             SaveFileDialog saveFileDialog1 = new SaveFileDialog
             {
                 Filter = "JPEG Image|*.jpg|PNG Image|*.png|BMP Image|*.bmp|All Files|*.*",
@@ -250,12 +320,31 @@ namespace NoteBasket
 
                     pictureBox1.Image.Save(filePath, format);
                     MessageBox.Show("Image saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Log the download in the database for Silver users if it's not a duplicate
+                    if (isSilverUser && !isDuplicateDownload)
+                    {
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            string logDownloadQuery = "INSERT INTO UserDailyActivity (UserID, NoteID, ActivityDate) VALUES (@UserID, @NoteID, @Today)";
+                            using (SqlCommand command = new SqlCommand(logDownloadQuery, connection))
+                            {
+                                command.Parameters.AddWithValue("@UserID", userID);
+                                command.Parameters.AddWithValue("@NoteID", noteID);
+                                command.Parameters.AddWithValue("@Today", today);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"An error occurred while saving the image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

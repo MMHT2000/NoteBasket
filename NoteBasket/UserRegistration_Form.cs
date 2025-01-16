@@ -45,16 +45,16 @@ namespace NoteBasket
         {
             try
             {
-                                string name = name_textbox.Text.Trim();
+                string name = name_textbox.Text.Trim();
                 string username = username_textbox.Text.Trim();
                 string email = email_textbox.Text.Trim();
                 string dob = dob_picker.Value.ToString("yyyy-MM-dd");
                 string password = password_textbox.Text.Trim();
                 string confirmPassword = confirmpassword_textbox.Text.Trim();
 
-                                string gender = male_Btn.Checked ? "Male" : female_Btn.Checked ? "Female" : null;
+                string gender = male_Btn.Checked ? "Male" : female_Btn.Checked ? "Female" : null;
 
-                                if (string.IsNullOrEmpty(name) ||
+                if (string.IsNullOrEmpty(name) ||
                     string.IsNullOrEmpty(username) ||
                     string.IsNullOrEmpty(email) ||
                     string.IsNullOrEmpty(password) ||
@@ -65,13 +65,13 @@ namespace NoteBasket
                     return;
                 }
 
-                                if (password != confirmPassword)
+                if (password != confirmPassword)
                 {
                     MessageBox.Show("Password and Confirm Password do not match.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string checkUsernameQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
 
@@ -83,7 +83,7 @@ namespace NoteBasket
                         int userCount = (int)cmd.ExecuteScalar();
                         con.Close();
 
-                                                if (userCount > 0)
+                        if (userCount > 0)
                         {
                             MessageBox.Show("A user/NoteMaster with this username already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
@@ -91,29 +91,29 @@ namespace NoteBasket
                     }
                 }
 
-                                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-                                string role = "Free";
+                string role = "Free";
 
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string sql = "INSERT INTO Users (Username, PasswordHash, Name, Email, DOB, Gender, Role) " +
+                    string sql = "INSERT INTO Users (Username, PasswordHash, Name, Email, DOB, Gender, Role) " +
                                  "VALUES (@Username, @PasswordHash, @Name, @Email, @DOB, @Gender, @Role)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                                                cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword);
                         cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@DOB", dob);
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@Role", role);  
-                                                con.Open();
+                        con.Open();
 
-                                                cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
 
-                                                MessageBox.Show("Details inserted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Details inserted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         this.Hide();
                         Login_Form f1 = new Login_Form();
@@ -123,7 +123,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

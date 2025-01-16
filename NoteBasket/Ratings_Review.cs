@@ -63,7 +63,8 @@ namespace NoteBasket
             rating_image4.Image = Properties.Resources.rating_hollow;
             rating_image5.Image = Properties.Resources.rating_hollow;
 
-            selectedRating = 0;         }
+            selectedRating = 0;         
+        }
 
         private void UpdateRating(int rating)
         {
@@ -78,23 +79,28 @@ namespace NoteBasket
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            UpdateRating(1);         }
+            UpdateRating(1);         
+        }
 
         private void rating_image2_Click(object sender, EventArgs e)
         {
-            UpdateRating(2);         }
+            UpdateRating(2);         
+        }
 
         private void rating_image3_Click(object sender, EventArgs e)
         {
-            UpdateRating(3);         }
+            UpdateRating(3);         
+        }
 
         private void rating_image4_Click(object sender, EventArgs e)
         {
-            UpdateRating(4);         }
+            UpdateRating(4);         
+        }
 
         private void rating_image5_Click(object sender, EventArgs e)
         {
-            UpdateRating(5);         }
+            UpdateRating(5);         
+        }
 
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
@@ -140,7 +146,8 @@ namespace NoteBasket
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.Close();         }
+            this.Close();         
+        }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {

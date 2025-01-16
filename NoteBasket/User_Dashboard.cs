@@ -36,15 +36,15 @@ namespace NoteBasket
 
             try
             {
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string sql = "SELECT Role FROM Users WHERE UserID = @UserId";
+                    string sql = "SELECT Role FROM Users WHERE UserID = @UserId";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                                                cmd.Parameters.AddWithValue("@UserId", userId);
+                        cmd.Parameters.AddWithValue("@UserId", userId);
 
-                                                con.Open();
+                        con.Open();
 
                         string role;
 
@@ -74,35 +74,37 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
         }
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
-            string searchQuery = textBox2.Text.Trim();             LoadNotes(searchQuery);         }
+            string searchQuery = textBox2.Text.Trim();             
+            LoadNotes(searchQuery);         
+        }
 
         private void LoadUserData()
         {
             try
             {
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string sql = "SELECT Name, Username, Email, DOB, Gender, Role, SubscriptionStartDate, LoyaltyPoints, CreatedAt " +
+                    string sql = "SELECT Name, Username, Email, DOB, Gender, Role, SubscriptionStartDate, LoyaltyPoints, CreatedAt " +
                                  "FROM Users WHERE UserID = @UserId";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                                                cmd.Parameters.AddWithValue("@UserId", userId);
+                        cmd.Parameters.AddWithValue("@UserId", userId);
 
-                                                con.Open();
+                        con.Open();
 
-                                                using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                                                string name = reader["Name"].ToString();
+                                string name = reader["Name"].ToString();
                                 string username = reader["Username"].ToString();
                                 string email = reader["Email"].ToString();
                                 string dob = reader["DOB"] != DBNull.Value ? Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd") : "Not Available";
@@ -112,7 +114,7 @@ namespace NoteBasket
                                 int loyaltyPoints = Convert.ToInt32(reader["LoyaltyPoints"]);
                                 string accountCreationDate = Convert.ToDateTime(reader["CreatedAt"]).ToString("yyyy-MM-dd");
 
-                                                                name_label.Text = name;
+                                name_label.Text = name;
                                 username_label.Text = "@" + username;
                                 emaildynamic_label.Text = email;
                                 dobdynamic_label.Text = dob;
@@ -122,7 +124,7 @@ namespace NoteBasket
                                 loyaltydynamic_label.Text = loyaltyPoints.ToString();
                                 accountcreationdynamic_label.Text = accountCreationDate;
 
-                                                                if (gender == "Male")
+                                if (gender == "Male")
                                 {
 
                                     profilepicture_box.ImageLocation = Path.Combine(imagePath, "Iconarchive-Incognito-Animals-Giraffe-Avatar.128.png");
@@ -143,7 +145,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -151,16 +153,16 @@ namespace NoteBasket
         {
             try
             {
-                                foreach (Control control in panel6.Controls.OfType<Panel>().ToList())
+                foreach (Control control in panel6.Controls.OfType<Panel>().ToList())
                 {
                     panel6.Controls.Remove(control);
                 }
 
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string userRole = GetUserRole(userId);
+                    string userRole = GetUserRole(userId);
 
-                                        string allowedSubscriptionLevels = "";
+                    string allowedSubscriptionLevels = "";
                     switch (userRole)
                     {
                         case "Gold":
@@ -169,18 +171,19 @@ namespace NoteBasket
                         case "Silver":
                             allowedSubscriptionLevels = "'Free', 'Silver'";
                             break;
-                        default:                             allowedSubscriptionLevels = "'Free'";
+                        default:                             
+                            allowedSubscriptionLevels = "'Free'";
                             break;
                     }
 
-                                        string sql = @"
-SELECT NoteID, Title, FilePath, Category, SubscriptionLevel 
-FROM Notes 
-WHERE 
-    (@SearchQuery = '' OR Title LIKE '%' + @SearchQuery + '%' OR Category LIKE '%' + @SearchQuery + '%')
-    AND Status = 'Approved'";
+                    string sql = @"
+                    SELECT NoteID, Title, FilePath, Category, SubscriptionLevel 
+                    FROM Notes 
+                    WHERE 
+                        (@SearchQuery = '' OR Title LIKE '%' + @SearchQuery + '%' OR Category LIKE '%' + @SearchQuery + '%')
+                        AND Status = 'Approved'";
 
-                                        if (!string.IsNullOrEmpty(subscriptionLevel))
+                    if (!string.IsNullOrEmpty(subscriptionLevel))
                     {
                         sql += " AND SubscriptionLevel = @SubscriptionLevel";
                     }
@@ -214,8 +217,11 @@ WHERE
                             int yPosition = 60; 
                             while (reader.Read())
                             {
-                                int noteId = reader.GetInt32(0);                                 string title = reader.GetString(1);                                 string filePath = reader.GetString(2);                                 string category = reader.GetString(3); 
-                                                                Panel dynamicPanel = new Panel
+                                int noteId = reader.GetInt32(0);                                 
+                                string title = reader.GetString(1);                                 
+                                string filePath = reader.GetString(2);                                 
+                                string category = reader.GetString(3); 
+                                Panel dynamicPanel = new Panel
                                 {
                                     Size = new Size(520, 80),
                                     Location = new Point(10, yPosition),
@@ -223,7 +229,7 @@ WHERE
                                     BorderStyle = BorderStyle.FixedSingle
                                 };
 
-                                                                PictureBox dpictureBox = new PictureBox
+                                PictureBox dpictureBox = new PictureBox
                                 {
                                     Size = new Size(60, 60),
                                     Location = new Point(10, 10),
@@ -231,16 +237,17 @@ WHERE
                                     BorderStyle = BorderStyle.FixedSingle
                                 };
 
-                                                                string imagePath = Path.Combine(Application.StartupPath, filePath);
+                                string imagePath = Path.Combine(Application.StartupPath, filePath);
                                 if (File.Exists(imagePath))
                                 {
                                     dpictureBox.Image = Image.FromFile(imagePath);
                                 }
                                 else
                                 {
-                                    dpictureBox.Image = Properties.Resources.bookmark_filled;                                 }
+                                    dpictureBox.Image = Properties.Resources.bookmark_filled;                                 
+                                }
 
-                                                                Label titleLabel = new Label
+                                Label titleLabel = new Label
                                 {
                                     Text = title,
                                     AutoSize = false,
@@ -250,7 +257,7 @@ WHERE
                                     ForeColor = Color.Black
                                 };
 
-                                                                Label categoryLabel = new Label
+                                Label categoryLabel = new Label
                                 {
                                     Text = category,
                                     AutoSize = false,
@@ -260,7 +267,7 @@ WHERE
                                     ForeColor = Color.Gray
                                 };
 
-                                                                Button viewButton = new Button
+                                Button viewButton = new Button
                                 {
                                     Text = "View",
                                     Size = new Size(80, 30),
@@ -269,19 +276,19 @@ WHERE
                                     FlatStyle = FlatStyle.Popup
                                 };
 
-                                                                viewButton.Click += (s, e) =>
+                                viewButton.Click += (s, e) =>
                                 {
                                     NoteDetails form11 = new NoteDetails(userId, noteId);
                                     this.Hide();
                                     form11.Show();
                                 };
 
-                                                                dynamicPanel.Controls.Add(dpictureBox);
+                                dynamicPanel.Controls.Add(dpictureBox);
                                 dynamicPanel.Controls.Add(titleLabel);
                                 dynamicPanel.Controls.Add(categoryLabel);
                                 dynamicPanel.Controls.Add(viewButton);
 
-                                                                panel6.Controls.Add(dynamicPanel);
+                                panel6.Controls.Add(dynamicPanel);
 
                                 yPosition += 90;                             }
                         }
@@ -299,7 +306,7 @@ WHERE
 
         private string GetUserRole(int userId)
         {
-                        using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+            using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
             {
                 string sql = "SELECT Role FROM Users WHERE UserID = @UserID";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
@@ -308,19 +315,21 @@ WHERE
                     con.Open();
 
                     object result = cmd.ExecuteScalar();
-                    return result?.ToString() ?? "Free";                 }
+                    return result?.ToString() ?? "Free";                 
+                }
             }
         }
 
         private string GetAllowedSubscriptionLevels(string userRole)
         {
-                        switch (userRole)
+            switch (userRole)
             {
                 case "Gold":
                     return "'Free', 'Silver', 'Gold'";
                 case "Silver":
                     return "'Free', 'Silver'";
-                default:                     return "'Free'";
+                default:                     
+                    return "'Free'";
             }
         }
 
@@ -387,16 +396,19 @@ WHERE
         {
             if (form14Instance == null || form14Instance.IsDisposed)
             {
-                                Point panel6LocationOnScreen = panel6.PointToScreen(Point.Empty);
+                Point panel6LocationOnScreen = panel6.PointToScreen(Point.Empty);
 
-                                form14Instance = new BookMarks(userId)
+                form14Instance = new BookMarks(userId)
                 {
-                    StartPosition = FormStartPosition.Manual,                     Location = panel6LocationOnScreen                        };
+                    StartPosition = FormStartPosition.Manual,                     
+                    Location = panel6LocationOnScreen                        
+                };
                 form14Instance.Show();
             }
             else
             {
-                form14Instance.BringToFront();             }
+                form14Instance.BringToFront();             
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)

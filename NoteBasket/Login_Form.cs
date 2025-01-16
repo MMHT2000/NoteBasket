@@ -45,7 +45,7 @@ namespace NoteBasket
             string usernameOrEmail = user_textbox.Text.Trim();
             string password = password_textbox.Text.Trim();
 
-                        if (string.IsNullOrEmpty(usernameOrEmail) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(usernameOrEmail) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter both username/email and password.");
                 return;
@@ -53,63 +53,63 @@ namespace NoteBasket
 
             try
             {
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string sql = "SELECT UserID, Username, PasswordHash, Role " +
-                                 "FROM Users WHERE Username = @UsernameOrEmail OR Email = @UsernameOrEmail";
+                    string sql = "SELECT UserID, Username, PasswordHash, Role " +
+                    "FROM Users WHERE Username = @UsernameOrEmail OR Email = @UsernameOrEmail";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                                                cmd.Parameters.AddWithValue("@UsernameOrEmail", usernameOrEmail);
+                        cmd.Parameters.AddWithValue("@UsernameOrEmail", usernameOrEmail);
 
-                                                con.Open();
+                        con.Open();
 
-                                                using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                                                        if (reader.Read())
+                            if (reader.Read())
                             {
-                                                                int userId = Convert.ToInt32(reader["UserID"]);
+                                int userId = Convert.ToInt32(reader["UserID"]);
                                 string role = reader["Role"].ToString();
 
-                                                                string storedPasswordHash = reader["PasswordHash"].ToString();
+                                string storedPasswordHash = reader["PasswordHash"].ToString();
                                 if (BCrypt.Net.BCrypt.Verify(password, storedPasswordHash))
                                 {
-                                                                        switch (role)
+                                    switch (role)
                                     {
                                         case "Free":
                                         case "Silver":
                                         case "Gold":
-                                                                                        User_Dashboard form3 = new User_Dashboard(userId);
+                                        User_Dashboard form3 = new User_Dashboard(userId);
                                             form3.Show();
                                             break;
 
                                         case "Notemaster":
-                                                                                        NoteMaster_Dashboard form4 = new NoteMaster_Dashboard(userId);
+                                        NoteMaster_Dashboard form4 = new NoteMaster_Dashboard(userId);
                                             form4.Show();
                                             break;
 
                                         case "Admin":
-                                                                                        Admin_Dashboard form5 = new Admin_Dashboard(userId);
+                                        Admin_Dashboard form5 = new Admin_Dashboard(userId);
                                             form5.Show();
                                             break;
 
                                         default:
-                                                                                        MessageBox.Show("Unknown role. Please contact support.");
+                                        MessageBox.Show("Unknown role. Please contact support.");
                                             break;
                                     }
 
-                                                                        this.Hide();
+                                    this.Hide();
                                 }
                                 else
                                 {
-                                                                        MessageBox.Show("Incorrect password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Incorrect password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
                                 }
                             }
                             else
                             {
-                                                                MessageBox.Show("User not found. Please check your username/email and try again.");
+                                MessageBox.Show("User not found. Please check your username/email and try again.");
                             }
                         }
                     }
@@ -117,7 +117,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message);
             }
 
 
@@ -142,10 +142,12 @@ namespace NoteBasket
             ResetPassword f7 = new ResetPassword();
             f7.Show();
         }
-private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-{
-    Application.Exit();
-}
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            Application.Exit();
+        }
 
     }
 }

@@ -28,33 +28,34 @@ namespace NoteBasket
         {
             try
             {
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string sql = "SELECT Name, Username, Email, DOB, Gender, Role FROM Users WHERE UserID = @UserID";
+                    string sql = "SELECT Name, Username, Email, DOB, Gender, Role FROM Users WHERE UserID = @UserID";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                                                cmd.Parameters.AddWithValue("@UserID", userId);
+                        cmd.Parameters.AddWithValue("@UserID", userId);
 
-                                                con.Open();
+                        con.Open();
 
-                                                using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                                                name_textbox.Text = reader["Name"].ToString();
+                                name_textbox.Text = reader["Name"].ToString();
                                 username_textbox.Text = reader["Username"].ToString();
                                 email_textbox.Text = reader["Email"].ToString();
 
-                                                                if (reader["DOB"] != DBNull.Value)
+                                if (reader["DOB"] != DBNull.Value)
                                 {
                                     dob_picker.Value = Convert.ToDateTime(reader["DOB"]);
                                 }
                                 else
                                 {
-                                    dob_picker.Value = DateTime.Now;                                 }
+                                    dob_picker.Value = DateTime.Now;                                 
+                                }
 
-                                                                string gender = reader["Gender"].ToString();
+                                string gender = reader["Gender"].ToString();
                                 if (gender == "Male")
                                 {
                                     male_Btn.Checked = true;
@@ -77,7 +78,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                                MessageBox.Show("An error occurred while loading user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred while loading user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,13 +89,13 @@ namespace NoteBasket
 
         private void updateprofile_btn_Click(object sender, EventArgs e)
         {
-                        string name = name_textbox.Text.Trim();
+            string name = name_textbox.Text.Trim();
             string username = username_textbox.Text.Trim();
             string email = email_textbox.Text.Trim();
             string dob = dob_picker.Value.ToString("yyyy-MM-dd");
             string gender = male_Btn.Checked ? "Male" : "Female";
 
-                        if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email))
             {
                 MessageBox.Show("Please fill in all the fields.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -102,23 +103,23 @@ namespace NoteBasket
 
             try
             {
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string sql = "UPDATE Users SET Name = @Name, Username = @Username, Email = @Email, DOB = @DOB, Gender = @Gender WHERE UserID = @UserID";
+                    string sql = "UPDATE Users SET Name = @Name, Username = @Username, Email = @Email, DOB = @DOB, Gender = @Gender WHERE UserID = @UserID";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                                                cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@DOB", dob);
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@UserID", userId);  
-                                                con.Open();
+                        con.Open();
 
-                                                cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
 
-                                                MessageBox.Show("Profile updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Profile updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                     }
@@ -126,7 +127,7 @@ namespace NoteBasket
             }
             catch (Exception ex)
             {
-                                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -135,7 +136,7 @@ namespace NoteBasket
 
             try
             {
-                                string userRole = "";
+                string userRole = "";
 
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
@@ -146,12 +147,12 @@ namespace NoteBasket
                         cmd.Parameters.AddWithValue("@UserId", userId);
                         con.Open();
 
-                                                object result = cmd.ExecuteScalar();
+                        object result = cmd.ExecuteScalar();
                         userRole = result?.ToString();
                     }
                 }
 
-                                this.Close();
+                this.Close();
 
                 if (userRole == "Free" || userRole == "Silver" || userRole == "Gold")
                 {
@@ -188,38 +189,39 @@ namespace NoteBasket
 
         private void button1_Click(object sender, EventArgs e)
         {
-                        DialogResult result = MessageBox.Show(
+            DialogResult result = MessageBox.Show
+            (
                 "Are you sure you want to delete your account? This action cannot be undone.",
                 "Confirm Deletion",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
 
-                        if (result == DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
                 try
                 {
-                                        using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                     {
                         string sql = "DELETE FROM Users WHERE UserID = @UserID";
 
                         using (SqlCommand cmd = new SqlCommand(sql, con))
                         {
-                                                        cmd.Parameters.AddWithValue("@UserID", userId);
+                            cmd.Parameters.AddWithValue("@UserID", userId);
                             con.Open();
                             cmd.ExecuteNonQuery();
                         }
                     }
 
-                                        MessageBox.Show("Your account has been deleted successfully.", "Account Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Your account has been deleted successfully.", "Account Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                        Login_Form form1 = new Login_Form();
+                    Login_Form form1 = new Login_Form();
                     this.Hide();
                     form1.Show();
                 }
                 catch (Exception ex)
                 {
-                                        MessageBox.Show($"An error occurred while deleting your account: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"An error occurred while deleting your account: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

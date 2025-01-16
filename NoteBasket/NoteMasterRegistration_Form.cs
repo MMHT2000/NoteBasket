@@ -28,7 +28,7 @@ namespace NoteBasket
                 string password = password_textbox.Text.Trim();
                 string confirmPassword = confirmpassword_textbox.Text.Trim();
 
-                                if (string.IsNullOrEmpty(name) ||
+                if (string.IsNullOrEmpty(name) ||
                     string.IsNullOrEmpty(username) ||
                     string.IsNullOrEmpty(password) ||
                     string.IsNullOrEmpty(confirmPassword))
@@ -37,13 +37,13 @@ namespace NoteBasket
                     return;
                 }
 
-                                if (password != confirmPassword)
+                if (password != confirmPassword)
                 {
                     MessageBox.Show("Password and Confirm Password do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string checkUsernameQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
 
@@ -55,7 +55,7 @@ namespace NoteBasket
                         int userCount = (int)cmd.ExecuteScalar();
                         con.Close();
 
-                                                if (userCount > 0)
+                        if (userCount > 0)
                         {
                             MessageBox.Show("A user/NoteMaster with this username already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
@@ -63,32 +63,32 @@ namespace NoteBasket
                     }
                 }
 
-                                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-                                string role = "Notemaster";
+                string role = "Notemaster";
 
-                                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                                        string sql = "INSERT INTO Users (Username, PasswordHash, Name, Role) " +
+                    string sql = "INSERT INTO Users (Username, PasswordHash, Name, Role) " +
                                  "VALUES (@Username, @PasswordHash, @Name, @Role)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                                                cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword);
                         cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@Role", role);  
-                                                con.Open();
+                        con.Open();
 
-                                                cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
 
-                                                MessageBox.Show("Notemaster registered successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Notemaster registered successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message);
             }
 
 

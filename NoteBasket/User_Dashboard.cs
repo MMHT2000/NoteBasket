@@ -114,6 +114,15 @@ namespace NoteBasket
                                 int loyaltyPoints = Convert.ToInt32(reader["LoyaltyPoints"]);
                                 string accountCreationDate = Convert.ToDateTime(reader["CreatedAt"]).ToString("yyyy-MM-dd");
 
+                                // Check if SubscriptionEndDate is expired
+                                DateTime? subscriptionEndDate = reader["SubscriptionEndDate"] != DBNull.Value ? (DateTime?)reader["SubscriptionEndDate"] : null;
+                                if (subscriptionEndDate.HasValue && subscriptionEndDate.Value < DateTime.Today)
+                                {
+                                    // Update role to Free and clear SubscriptionEndDate
+                                    reader.Close();
+                                    UpdateRoleToFreeAndClearSubscription(userId, con);
+                                }
+
                                 name_label.Text = name;
                                 username_label.Text = "@" + username;
                                 emaildynamic_label.Text = email;
@@ -126,13 +135,11 @@ namespace NoteBasket
 
                                 if (gender == "Male")
                                 {
-
                                     profilepicture_box.ImageLocation = Path.Combine(imagePath, "Iconarchive-Incognito-Animals-Giraffe-Avatar.128.png");
                                 }
                                 else if (gender == "Female")
                                 {
                                     profilepicture_box.ImageLocation = Path.Combine(imagePath, "Hopstarter-Superhero-Avatar-Avengers-Giant-Man.128.png");
-
                                 }
                             }
                             else
@@ -146,6 +153,17 @@ namespace NoteBasket
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while retrieving user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdateRoleToFreeAndClearSubscription(int userId, SqlConnection con)
+        {
+            string updateSql = "UPDATE Users SET Role = 'Free', SubscriptionStartDate = NULL, SubscriptionEndDate = NULL WHERE UserID = @UserId";
+
+            using (SqlCommand cmd = new SqlCommand(updateSql, con))
+            {
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                cmd.ExecuteNonQuery();
             }
         }
 

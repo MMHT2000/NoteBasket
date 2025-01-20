@@ -31,6 +31,12 @@ namespace NoteBasket
         {
             if (int.TryParse(textBox1.Text, out int amount))
             {
+                if(amount != 49 && amount != 99)
+                {
+                    MessageBox.Show("Please enter a valid amount (49 or 99).");
+                    return;
+                }
+
                 // Establish a SQL connection
                 string connectionString = "data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI";
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -92,10 +98,12 @@ namespace NoteBasket
                                     if (previousRole == newRole)
                                     {
                                         MessageBox.Show($"Payment Successful! Your {newRole} subscription has been extended by 30 days.");
+                                        this.Close();
                                     }
                                     else
                                     {
                                         MessageBox.Show($"Payment Successful! You are upgraded to {newRole}.");
+                                        this.Close();
                                     }
                                 }
                                 else

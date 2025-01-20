@@ -24,8 +24,15 @@ namespace NoteBasket
             this.userId = userId;
 
             LoadUserData();
-            
+            LoadNotes();
+            textBox1.TextChanged += TextBox2_TextChanged;
 
+        }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            string searchQuery = textBox1.Text.Trim();
+            LoadNotes(searchQuery);
         }
 
         private void LoadUserData()
@@ -100,6 +107,146 @@ namespace NoteBasket
             }
 
         }
+
+        private void LoadNotes(string searchQuery = "", string subscriptionLevel = null)
+        {
+            try
+            {
+                // Clear existing controls from the panel
+                foreach (Control control in panel5.Controls.OfType<Panel>().ToList())
+                {
+                    panel5.Controls.Remove(control);
+                }
+
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    string sql = @"
+            SELECT NoteID, Title, FilePath, Category, SubscriptionLevel 
+            FROM Notes 
+            WHERE 
+                (@SearchQuery = '' OR Title LIKE '%' + @SearchQuery + '%' OR Category LIKE '%' + @SearchQuery + '%')
+                AND Status = 'Approved' 
+                AND UploadedBy = @UserId"; // Filter by UploadedBy
+
+                    // Add subscription level condition if provided
+                    if (!string.IsNullOrEmpty(subscriptionLevel))
+                    {
+                        sql += " AND SubscriptionLevel = @SubscriptionLevel";
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@SearchQuery", searchQuery);
+                        cmd.Parameters.AddWithValue("@UserId", userId);  // Use the global userId
+
+                        if (!string.IsNullOrEmpty(subscriptionLevel))
+                        {
+                            cmd.Parameters.AddWithValue("@SubscriptionLevel", subscriptionLevel);
+                        }
+
+                        con.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (!reader.HasRows)
+                            {
+                                if (!string.IsNullOrEmpty(searchQuery))
+                                {
+                                    MessageBox.Show("No notes found for the given search query.", "No Notes Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                return;
+                            }
+
+                            int yPosition = 60; // Position for dynamic controls
+                            while (reader.Read())
+                            {
+                                int noteId = reader.GetInt32(0); // NoteID
+                                string title = reader.GetString(1); // Title
+                                string filePath = reader.GetString(2); // FilePath
+                                string category = reader.GetString(3); // Category
+
+                                // Create a dynamic panel for each note
+                                Panel dynamicPanel = new Panel
+                                {
+                                    Size = new Size(520, 80),
+                                    Location = new Point(10, yPosition),
+                                    BackColor = Color.LightBlue,
+                                    BorderStyle = BorderStyle.FixedSingle
+                                };
+
+                                PictureBox dpictureBox = new PictureBox
+                                {
+                                    Size = new Size(60, 60),
+                                    Location = new Point(10, 10),
+                                    SizeMode = PictureBoxSizeMode.StretchImage,
+                                    BorderStyle = BorderStyle.FixedSingle
+                                };
+
+                                string imagePath = Path.Combine(Application.StartupPath, filePath);
+                                if (File.Exists(imagePath))
+                                {
+                                    dpictureBox.Image = Image.FromFile(imagePath);
+                                }
+                                else
+                                {
+                                    dpictureBox.Image = Properties.Resources.bookmark_filled; // Default image
+                                }
+
+                                Label titleLabel = new Label
+                                {
+                                    Text = title,
+                                    AutoSize = false,
+                                    Size = new Size(300, 20),
+                                    Location = new Point(80, 10),
+                                    Font = new Font("Arial", 10, FontStyle.Bold),
+                                    ForeColor = Color.Black
+                                };
+
+                                Label categoryLabel = new Label
+                                {
+                                    Text = category,
+                                    AutoSize = false,
+                                    Size = new Size(300, 20),
+                                    Location = new Point(80, 35),
+                                    Font = new Font("Arial", 9, FontStyle.Italic),
+                                    ForeColor = Color.Gray
+                                };
+
+                                Button viewButton = new Button
+                                {
+                                    Text = "Manage",
+                                    Size = new Size(80, 30),
+                                    Location = new Point(430, 25),
+                                    BackColor = Color.White,
+                                    FlatStyle = FlatStyle.Popup
+                                };
+
+                                viewButton.Click += (s, e) =>
+                                {
+                                    NoteDetails form11 = new NoteDetails(userId, noteId);
+                                    this.Hide();
+                                    form11.Show();
+                                };
+
+                                dynamicPanel.Controls.Add(dpictureBox);
+                                dynamicPanel.Controls.Add(titleLabel);
+                                dynamicPanel.Controls.Add(categoryLabel);
+                                dynamicPanel.Controls.Add(viewButton);
+
+                                panel5.Controls.Add(dynamicPanel);
+
+                                yPosition += 90; // Adjust position for the next panel
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading notes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void logout_btn_Click(object sender, EventArgs e)
         {

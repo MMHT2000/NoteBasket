@@ -53,9 +53,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -64,7 +64,6 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.profilepicture_box = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -370,9 +369,8 @@
             this.panel6.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panel6.Controls.Add(this.label8);
             this.panel6.Controls.Add(this.pictureBox1);
-            this.panel6.Controls.Add(this.vScrollBar2);
             this.panel6.Controls.Add(this.textBox2);
-            this.panel6.Location = new System.Drawing.Point(361, 124);
+            this.panel6.Location = new System.Drawing.Point(349, 124);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(563, 558);
             this.panel6.TabIndex = 10;
@@ -390,13 +388,6 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "Search for Notes";
             this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // vScrollBar2
-            // 
-            this.vScrollBar2.Location = new System.Drawing.Point(539, 0);
-            this.vScrollBar2.Name = "vScrollBar2";
-            this.vScrollBar2.Size = new System.Drawing.Size(24, 558);
-            this.vScrollBar2.TabIndex = 1;
             // 
             // textBox2
             // 
@@ -427,6 +418,20 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(333, 558);
             this.panel7.TabIndex = 9;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.Transparent;
+            this.button4.Location = new System.Drawing.Point(84, 419);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(157, 32);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "Subscribe";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
@@ -531,20 +536,6 @@
             this.button14.Text = "All Notes";
             this.button14.UseVisualStyleBackColor = false;
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Transparent;
-            this.button4.Location = new System.Drawing.Point(84, 419);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(157, 32);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Subscribe";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::NoteBasket.Properties.Resources.icons8_search_50;
@@ -631,7 +622,6 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.VScrollBar vScrollBar2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button2;

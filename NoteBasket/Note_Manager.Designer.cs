@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Note_Approval
+    partial class Note_Manager
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.returntodashboard_btn = new System.Windows.Forms.Button();
+            this.RegisterLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.button20 = new System.Windows.Forms.Button();
@@ -44,11 +47,11 @@
             this.label28 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
-            this.label26 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
@@ -56,8 +59,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
@@ -70,6 +71,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
@@ -78,14 +82,49 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.returntodashboard_btn = new System.Windows.Forms.Button();
-            this.RegisterLabel = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // returntodashboard_btn
+            // 
+            this.returntodashboard_btn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.returntodashboard_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.returntodashboard_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returntodashboard_btn.ForeColor = System.Drawing.Color.Transparent;
+            this.returntodashboard_btn.Location = new System.Drawing.Point(37, 27);
+            this.returntodashboard_btn.Name = "returntodashboard_btn";
+            this.returntodashboard_btn.Size = new System.Drawing.Size(157, 32);
+            this.returntodashboard_btn.TabIndex = 18;
+            this.returntodashboard_btn.Text = "Return to Dashboard";
+            this.returntodashboard_btn.UseVisualStyleBackColor = false;
+            this.returntodashboard_btn.Click += new System.EventHandler(this.returntodashboard_btn_Click);
+            // 
+            // RegisterLabel
+            // 
+            this.RegisterLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.RegisterLabel.AutoSize = true;
+            this.RegisterLabel.BackColor = System.Drawing.Color.Transparent;
+            this.RegisterLabel.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterLabel.ForeColor = System.Drawing.Color.DarkBlue;
+            this.RegisterLabel.Location = new System.Drawing.Point(527, 30);
+            this.RegisterLabel.Name = "RegisterLabel";
+            this.RegisterLabel.Size = new System.Drawing.Size(190, 32);
+            this.RegisterLabel.TabIndex = 11;
+            this.RegisterLabel.Text = "Manage Notes";
+            this.RegisterLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.RegisterLabel.Click += new System.EventHandler(this.RegisterLabel_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.returntodashboard_btn);
+            this.panel1.Controls.Add(this.RegisterLabel);
+            this.panel1.Location = new System.Drawing.Point(-1, -2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1266, 86);
+            this.panel1.TabIndex = 19;
             // 
             // label35
             // 
@@ -289,6 +328,18 @@
             this.label25.TabIndex = 51;
             this.label25.Text = "Approved";
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label26.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(445, 401);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(50, 14);
+            this.label26.TabIndex = 50;
+            this.label26.Text = "Manage";
+            // 
             // button15
             // 
             this.button15.BackColor = System.Drawing.SystemColors.InactiveBorder;
@@ -340,18 +391,6 @@
             this.button14.Text = "1.First Event";
             this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button14.UseVisualStyleBackColor = false;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label26.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.Red;
-            this.label26.Location = new System.Drawing.Point(445, 401);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(50, 14);
-            this.label26.TabIndex = 50;
-            this.label26.Text = "Manage";
             // 
             // label21
             // 
@@ -440,32 +479,6 @@
             this.label17.Size = new System.Drawing.Size(59, 14);
             this.label17.TabIndex = 39;
             this.label17.Text = "Approved";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(445, 285);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(50, 14);
-            this.label18.TabIndex = 38;
-            this.label18.Text = "Manage";
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button11.Enabled = false;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(38, 280);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(530, 23);
-            this.button11.TabIndex = 37;
-            this.button11.Text = "1.First Event";
-            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.UseVisualStyleBackColor = false;
             // 
             // label15
             // 
@@ -619,6 +632,92 @@
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.UseVisualStyleBackColor = false;
             // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel2.Controls.Add(this.label35);
+            this.panel2.Controls.Add(this.label36);
+            this.panel2.Controls.Add(this.button20);
+            this.panel2.Controls.Add(this.label33);
+            this.panel2.Controls.Add(this.label34);
+            this.panel2.Controls.Add(this.button19);
+            this.panel2.Controls.Add(this.label31);
+            this.panel2.Controls.Add(this.label32);
+            this.panel2.Controls.Add(this.button18);
+            this.panel2.Controls.Add(this.label29);
+            this.panel2.Controls.Add(this.label30);
+            this.panel2.Controls.Add(this.button17);
+            this.panel2.Controls.Add(this.label27);
+            this.panel2.Controls.Add(this.label28);
+            this.panel2.Controls.Add(this.button16);
+            this.panel2.Controls.Add(this.label25);
+            this.panel2.Controls.Add(this.label26);
+            this.panel2.Controls.Add(this.button15);
+            this.panel2.Controls.Add(this.label23);
+            this.panel2.Controls.Add(this.label24);
+            this.panel2.Controls.Add(this.button14);
+            this.panel2.Controls.Add(this.label21);
+            this.panel2.Controls.Add(this.label22);
+            this.panel2.Controls.Add(this.button13);
+            this.panel2.Controls.Add(this.label19);
+            this.panel2.Controls.Add(this.label20);
+            this.panel2.Controls.Add(this.button12);
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.label18);
+            this.panel2.Controls.Add(this.button11);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.button10);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.button9);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.button8);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.button7);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Location = new System.Drawing.Point(324, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(615, 582);
+            this.panel2.TabIndex = 20;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Red;
+            this.label18.Location = new System.Drawing.Point(445, 285);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(50, 14);
+            this.label18.TabIndex = 38;
+            this.label18.Text = "Manage";
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.button11.Enabled = false;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(38, 280);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(530, 23);
+            this.button11.TabIndex = 37;
+            this.button11.Text = "1.First Event";
+            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button11.UseVisualStyleBackColor = false;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -714,105 +813,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(530, 24);
             this.textBox1.TabIndex = 17;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.panel1.Controls.Add(this.returntodashboard_btn);
-            this.panel1.Controls.Add(this.RegisterLabel);
-            this.panel1.Location = new System.Drawing.Point(-1, -1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1266, 86);
-            this.panel1.TabIndex = 17;
-            // 
-            // returntodashboard_btn
-            // 
-            this.returntodashboard_btn.BackColor = System.Drawing.SystemColors.Highlight;
-            this.returntodashboard_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.returntodashboard_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returntodashboard_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.returntodashboard_btn.Location = new System.Drawing.Point(37, 27);
-            this.returntodashboard_btn.Name = "returntodashboard_btn";
-            this.returntodashboard_btn.Size = new System.Drawing.Size(157, 32);
-            this.returntodashboard_btn.TabIndex = 18;
-            this.returntodashboard_btn.Text = "Return to Dashboard";
-            this.returntodashboard_btn.UseVisualStyleBackColor = false;
-            this.returntodashboard_btn.Click += new System.EventHandler(this.returntodashboard_btn_Click);
-            // 
-            // RegisterLabel
-            // 
-            this.RegisterLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.RegisterLabel.AutoSize = true;
-            this.RegisterLabel.BackColor = System.Drawing.Color.Transparent;
-            this.RegisterLabel.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegisterLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.RegisterLabel.Location = new System.Drawing.Point(527, 30);
-            this.RegisterLabel.Name = "RegisterLabel";
-            this.RegisterLabel.Size = new System.Drawing.Size(190, 32);
-            this.RegisterLabel.TabIndex = 11;
-            this.RegisterLabel.Text = "Note Approval";
-            this.RegisterLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.AutoScroll = true;
-            this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.panel2.Controls.Add(this.label35);
-            this.panel2.Controls.Add(this.label36);
-            this.panel2.Controls.Add(this.button20);
-            this.panel2.Controls.Add(this.label33);
-            this.panel2.Controls.Add(this.label34);
-            this.panel2.Controls.Add(this.button19);
-            this.panel2.Controls.Add(this.label31);
-            this.panel2.Controls.Add(this.label32);
-            this.panel2.Controls.Add(this.button18);
-            this.panel2.Controls.Add(this.label29);
-            this.panel2.Controls.Add(this.label30);
-            this.panel2.Controls.Add(this.button17);
-            this.panel2.Controls.Add(this.label27);
-            this.panel2.Controls.Add(this.label28);
-            this.panel2.Controls.Add(this.button16);
-            this.panel2.Controls.Add(this.label25);
-            this.panel2.Controls.Add(this.label26);
-            this.panel2.Controls.Add(this.button15);
-            this.panel2.Controls.Add(this.label23);
-            this.panel2.Controls.Add(this.label24);
-            this.panel2.Controls.Add(this.button14);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Controls.Add(this.label22);
-            this.panel2.Controls.Add(this.button13);
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.button12);
-            this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.button11);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.button10);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.button9);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.button8);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.button7);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Location = new System.Drawing.Point(324, 101);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(615, 582);
-            this.panel2.TabIndex = 18;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button2
             // 
@@ -824,19 +825,18 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(480, 41);
             this.button2.TabIndex = 17;
-            this.button2.Text = "Pending Notes";
+            this.button2.Text = "All Notes";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // Note_Approval
+            // Note_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "Note_Approval";
-            this.Text = "Note Approval";
-            this.Load += new System.EventHandler(this.Note_Approval_Load);
+            this.Name = "Note_Manager";
+            this.Text = "Note_Manager";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -847,6 +847,9 @@
 
         #endregion
 
+        private System.Windows.Forms.Button returntodashboard_btn;
+        private System.Windows.Forms.Label RegisterLabel;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Button button20;
@@ -863,11 +866,11 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button button13;
@@ -875,8 +878,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button10;
@@ -889,6 +890,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button6;
@@ -897,10 +901,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label RegisterLabel;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button returntodashboard_btn;
     }
 }

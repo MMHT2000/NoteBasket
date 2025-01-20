@@ -83,6 +83,26 @@ namespace NoteBasket.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bkash_payment_logo {
+            get {
+                object obj = ResourceManager.GetObject("bkash_payment_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bkash_payment_logo__1_ {
+            get {
+                object obj = ResourceManager.GetObject("bkash_payment_logo (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bookmark_filled {
             get {
                 object obj = ResourceManager.GetObject("bookmark_filled", resourceCulture);
@@ -96,6 +116,16 @@ namespace NoteBasket.Properties {
         internal static System.Drawing.Bitmap bookmark_hollow {
             get {
                 object obj = ResourceManager.GetObject("bookmark_hollow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cart {
+            get {
+                object obj = ResourceManager.GetObject("cart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

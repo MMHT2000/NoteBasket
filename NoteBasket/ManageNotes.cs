@@ -30,7 +30,7 @@ namespace NoteBasket
             {
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    string query = "SELECT Title, Category, FilePath, UploadedBy FROM Notes WHERE NoteID = @NoteID";
+                    string query = "SELECT Title, Category, FilePath, UploadedBy, Status FROM Notes WHERE NoteID = @NoteID";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@NoteID", noteId);
@@ -54,6 +54,28 @@ namespace NoteBasket
                                 // Display uploader name
                                 int uploadedBy = Convert.ToInt32(reader["UploadedBy"]);
                                 label6.Text = GetUploaderName(uploadedBy);
+
+                                // Check the status and adjust visibility
+                                string status = reader["Status"].ToString();
+                                if (status == "Pending")
+                                {
+                                    label9.Visible = false;  // Show label9
+                                    label7.Visible = true; // Hide label7
+                                    label10.Visible = false; // Hide label10
+                                }
+                                else if (status == "Approved")
+                                {
+                                    label9.Visible = true; // Hide label9
+                                    label7.Visible = false;  // Show label7
+                                    label10.Visible = false; // Hide label10
+                                }
+                                else
+                                {
+                                    label9.Visible = false; // Hide label9
+                                    label7.Visible = true; // Hide label7
+                                    label8.Visible = false; // Show label8
+                                    label10.Visible = true; // Show label10
+                                }
                             }
                         }
                     }
@@ -63,6 +85,7 @@ namespace NoteBasket
             {
                 MessageBox.Show($"Error loading note details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private Image GetCategoryImage(string categoryName)
@@ -157,6 +180,87 @@ namespace NoteBasket
 
         private void label8_Click_1(object sender, EventArgs e)
         {
+            var confirmation = MessageBox.Show(
+    "Are you sure you want to reject this note?",
+    "Confirm Rejection",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Warning);
+
+            if (confirmation == DialogResult.Yes)
+            {
+                try
+                {
+                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    {
+                        string query = "UPDATE Notes SET Status = 'Rejected' WHERE NoteID = @NoteID";
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@NoteID", noteId);
+                            con.Open();
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Note rejected successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                    // Optionally close or refresh the form to reflect changes
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error rejecting note: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var confirmation = MessageBox.Show(
+                    "Are you sure you want to change the status of this note to Pending?",
+                    "Confirm Status Change",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmation == DialogResult.Yes)
+                {
+                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    {
+                        string query = "UPDATE Notes SET Status = 'Pending' WHERE NoteID = @NoteID";
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@NoteID", noteId);
+                            con.Open();
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Note status changed to Pending successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                    // Optionally refresh the form or close it
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error changing note status: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
             var confirmation = MessageBox.Show("Are you sure you want to delete this note?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
@@ -182,11 +286,6 @@ namespace NoteBasket
                     MessageBox.Show($"Error deleting note: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

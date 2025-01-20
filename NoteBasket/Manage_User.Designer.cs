@@ -242,6 +242,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Manage_User";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage_User";
             this.Load += new System.EventHandler(this.Manage_User_Load);
             this.panel2.ResumeLayout(false);

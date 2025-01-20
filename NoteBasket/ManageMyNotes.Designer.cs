@@ -1,6 +1,6 @@
 ﻿namespace NoteBasket
 {
-    partial class Note_Manager
+    partial class ManageMyNotes
     {
         /// <summary>
         /// Required designer variable.
@@ -108,13 +108,12 @@
             this.RegisterLabel.BackColor = System.Drawing.Color.Transparent;
             this.RegisterLabel.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.RegisterLabel.Location = new System.Drawing.Point(527, 30);
+            this.RegisterLabel.Location = new System.Drawing.Point(566, 30);
             this.RegisterLabel.Name = "RegisterLabel";
-            this.RegisterLabel.Size = new System.Drawing.Size(190, 32);
+            this.RegisterLabel.Size = new System.Drawing.Size(132, 32);
             this.RegisterLabel.TabIndex = 11;
-            this.RegisterLabel.Text = "Manage Notes";
+            this.RegisterLabel.Text = "My Notes";
             this.RegisterLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.RegisterLabel.Click += new System.EventHandler(this.RegisterLabel_Click);
             // 
             // panel1
             // 
@@ -160,7 +159,7 @@
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(530, 23);
             this.button20.TabIndex = 64;
-            this.button20.Text = "1.First Event";
+            this.button20.Text = "1. Note Title";
             this.button20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button20.UseVisualStyleBackColor = false;
             // 
@@ -198,7 +197,7 @@
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(530, 23);
             this.button19.TabIndex = 61;
-            this.button19.Text = "1.First Event";
+            this.button19.Text = "1. Note Title";
             this.button19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button19.UseVisualStyleBackColor = false;
             // 
@@ -236,7 +235,7 @@
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(530, 23);
             this.button18.TabIndex = 58;
-            this.button18.Text = "1.First Event";
+            this.button18.Text = "1. Note Title";
             this.button18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button18.UseVisualStyleBackColor = false;
             // 
@@ -274,7 +273,7 @@
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(530, 23);
             this.button17.TabIndex = 55;
-            this.button17.Text = "1.First Event";
+            this.button17.Text = "1. Note Title";
             this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button17.UseVisualStyleBackColor = false;
             // 
@@ -312,7 +311,7 @@
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(530, 23);
             this.button16.TabIndex = 52;
-            this.button16.Text = "1.First Event";
+            this.button16.Text = "1. Note Title";
             this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button16.UseVisualStyleBackColor = false;
             // 
@@ -350,7 +349,7 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(530, 23);
             this.button15.TabIndex = 49;
-            this.button15.Text = "1.First Event";
+            this.button15.Text = "1. Note Title";
             this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button15.UseVisualStyleBackColor = false;
             // 
@@ -388,7 +387,7 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(530, 23);
             this.button14.TabIndex = 46;
-            this.button14.Text = "1.First Event";
+            this.button14.Text = "1. Note Title";
             this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button14.UseVisualStyleBackColor = false;
             // 
@@ -426,7 +425,7 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(530, 23);
             this.button13.TabIndex = 43;
-            this.button13.Text = "1.First Event";
+            this.button13.Text = "1. Note Title";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.UseVisualStyleBackColor = false;
             // 
@@ -464,7 +463,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(530, 23);
             this.button12.TabIndex = 40;
-            this.button12.Text = "1.First Event";
+            this.button12.Text = "1. Note Title";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = false;
             // 
@@ -514,7 +513,7 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(530, 23);
             this.button10.TabIndex = 34;
-            this.button10.Text = "1.First Event";
+            this.button10.Text = "1. Note Title";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.UseVisualStyleBackColor = false;
             // 
@@ -552,7 +551,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(530, 23);
             this.button9.TabIndex = 31;
-            this.button9.Text = "1.First Event";
+            this.button9.Text = "1. Note Title";
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.UseVisualStyleBackColor = false;
             // 
@@ -590,7 +589,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(530, 23);
             this.button8.TabIndex = 28;
-            this.button8.Text = "1.First Event";
+            this.button8.Text = "1. Note Title";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button8.UseVisualStyleBackColor = false;
             // 
@@ -628,7 +627,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(530, 23);
             this.button7.TabIndex = 25;
-            this.button7.Text = "1.First Event";
+            this.button7.Text = "1. Note Title";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.UseVisualStyleBackColor = false;
             // 
@@ -714,7 +713,7 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(530, 23);
             this.button11.TabIndex = 37;
-            this.button11.Text = "1.First Event";
+            this.button11.Text = "1. Note Title";
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.UseVisualStyleBackColor = false;
             // 
@@ -752,7 +751,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(530, 23);
             this.button6.TabIndex = 22;
-            this.button6.Text = "1.First Event";
+            this.button6.Text = "1. Note Title";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.UseVisualStyleBackColor = false;
             // 
@@ -813,7 +812,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(530, 24);
             this.textBox1.TabIndex = 17;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button2
             // 
@@ -828,16 +826,17 @@
             this.button2.Text = "All Notes";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // Note_Manager
+            // ManageMyNotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "Note_Manager";
+            this.Name = "ManageMyNotes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Note_Manager";
+            this.Text = "ManageMyNotes";
+            this.Load += new System.EventHandler(this.ManageMyNotes_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

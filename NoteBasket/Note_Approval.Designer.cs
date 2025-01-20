@@ -835,6 +835,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "Note_Approval";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Note Approval";
             this.Load += new System.EventHandler(this.Note_Approval_Load);
             this.panel1.ResumeLayout(false);

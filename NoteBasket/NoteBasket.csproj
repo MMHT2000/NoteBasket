@@ -87,11 +87,23 @@
     <Compile Include="Bkash_Payment.Designer.cs">
       <DependentUpon>Bkash_Payment.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditNoteDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditNoteDetails.Designer.cs">
+      <DependentUpon>EditNoteDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageMyNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageMyNotes.Designer.cs">
+      <DependentUpon>ManageMyNotes.cs</DependentUpon>
     </Compile>
     <Compile Include="ManageNotes.cs">
       <SubType>Form</SubType>
@@ -212,8 +224,14 @@
     <EmbeddedResource Include="Bkash_Payment.resx">
       <DependentUpon>Bkash_Payment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditNoteDetails.resx">
+      <DependentUpon>EditNoteDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageMyNotes.resx">
+      <DependentUpon>ManageMyNotes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageNotes.resx">
       <DependentUpon>ManageNotes.cs</DependentUpon>

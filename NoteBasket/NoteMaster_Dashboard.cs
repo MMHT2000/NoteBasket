@@ -15,6 +15,7 @@ namespace NoteBasket
     public partial class NoteMaster_Dashboard : Form
     {
         private int userId;
+        private int noteId;
 
         string imagePath = Path.Combine(Application.StartupPath, "images");
 
@@ -223,9 +224,9 @@ namespace NoteBasket
 
                                 viewButton.Click += (s, e) =>
                                 {
-                                    NoteDetails form11 = new NoteDetails(userId, noteId);
-                                    this.Hide();
-                                    form11.Show();
+                                    this.Close();
+                                    EditNoteDetails editNoteDetailsForm = new EditNoteDetails(userId,noteId);
+                                    editNoteDetailsForm.Show();
                                 };
 
                                 dynamicPanel.Controls.Add(dpictureBox);
@@ -276,7 +277,41 @@ namespace NoteBasket
 
         }
 
-        
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LoadNotes(subscriptionLevel: "Free");
+        }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            LoadNotes(subscriptionLevel: "Silver");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            LoadNotes(subscriptionLevel: "Gold");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            LoadNotes();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            label8.Visible = false;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            label8.Visible = false;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ManageMyNotes manageMyNotesForm = new ManageMyNotes(userId);
+            manageMyNotesForm.Show();
+        }
     }
 }

@@ -91,7 +91,7 @@ namespace NoteBasket
             {
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    string sql = "SELECT Name, Username, Email, DOB, Gender, Role, SubscriptionStartDate, LoyaltyPoints, CreatedAt " +
+                    string sql = "SELECT Name, Username, Email, DOB, Gender, Role, SubscriptionEndDate, LoyaltyPoints, CreatedAt " +
                                  "FROM Users WHERE UserID = @UserId";
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
@@ -110,7 +110,7 @@ namespace NoteBasket
                                 string dob = reader["DOB"] != DBNull.Value ? Convert.ToDateTime(reader["DOB"]).ToString("yyyy-MM-dd") : "Not Available";
                                 string gender = reader["Gender"].ToString();
                                 string role = reader["Role"].ToString();
-                                string subscriptions = reader["SubscriptionStartDate"] != DBNull.Value ? Convert.ToDateTime(reader["SubscriptionStartDate"]).ToString("yyyy-MM-dd") : "Not Subscribed";
+                                string subscriptions = reader["SubscriptionEndDate"] != DBNull.Value ? Convert.ToDateTime(reader["SubscriptionEndDate"]).ToString("yyyy-MM-dd") : "Not Subscribed";
                                 int loyaltyPoints = Convert.ToInt32(reader["LoyaltyPoints"]);
                                 string accountCreationDate = Convert.ToDateTime(reader["CreatedAt"]).ToString("yyyy-MM-dd");
 
@@ -448,6 +448,13 @@ namespace NoteBasket
         private void button12_Click(object sender, EventArgs e)
         {
             LoadNotes(subscriptionLevel: "Gold");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Subscription_Tiers subscription_Tiers = new Subscription_Tiers(userId);
+            subscription_Tiers.Show();
         }
     }
 }

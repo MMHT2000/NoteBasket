@@ -81,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Bkash_Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bkash_Payment.Designer.cs">
+      <DependentUpon>Bkash_Payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,18 @@
     </Compile>
     <Compile Include="ManageNotes.Designer.cs">
       <DependentUpon>ManageNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payment_Confirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payment_Confirmation.Designer.cs">
+      <DependentUpon>Payment_Confirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subscription_Tiers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subscription_Tiers.Designer.cs">
+      <DependentUpon>Subscription_Tiers.cs</DependentUpon>
     </Compile>
     <Compile Include="UploadNote.cs">
       <SubType>Form</SubType>
@@ -179,11 +197,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Bkash_Payment.resx">
+      <DependentUpon>Bkash_Payment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageNotes.resx">
       <DependentUpon>ManageNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payment_Confirmation.resx">
+      <DependentUpon>Payment_Confirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subscription_Tiers.resx">
+      <DependentUpon>Subscription_Tiers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UploadNote.resx">
       <DependentUpon>UploadNote.cs</DependentUpon>
@@ -265,12 +292,15 @@
     <Content Include="images\*.webp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\cart.png" />
     <EmbeddedResource Include="Resources\ARCH.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\BBA.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Include="Resources\bkash_payment_logo.png" />
+    <None Include="Resources\bkash_payment_logo %281%29.png" />
     <Content Include="Resources\bookmark_filled.png" />
     <Content Include="Resources\bookmark_hollow.png" />
     <EmbeddedResource Include="Resources\CNCS.png">

@@ -30,6 +30,9 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.number_ofNotes = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.updateprofile_btn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,9 +52,6 @@
             this.bookmarkimage = new System.Windows.Forms.PictureBox();
             this.profilepicture_box = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.number_ofNotes = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkimage)).BeginInit();
@@ -85,6 +85,39 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(317, 552);
             this.panel3.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.LightBlue;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(10, 375);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 17);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Total Notes:";
+            // 
+            // number_ofNotes
+            // 
+            this.number_ofNotes.AutoSize = true;
+            this.number_ofNotes.BackColor = System.Drawing.Color.LightBlue;
+            this.number_ofNotes.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.number_ofNotes.Location = new System.Drawing.Point(103, 376);
+            this.number_ofNotes.Name = "number_ofNotes";
+            this.number_ofNotes.Size = new System.Drawing.Size(43, 17);
+            this.number_ofNotes.TabIndex = 32;
+            this.number_ofNotes.Text = "Notes";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(122, 60);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "NoteMaster";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // updateprofile_btn
             // 
@@ -267,9 +300,11 @@
             // profilepicture_box
             // 
             this.profilepicture_box.BackColor = System.Drawing.Color.SteelBlue;
+            this.profilepicture_box.Image = global::NoteBasket.Properties.Resources.DefaultProfile;
             this.profilepicture_box.Location = new System.Drawing.Point(94, 87);
             this.profilepicture_box.Name = "profilepicture_box";
             this.profilepicture_box.Size = new System.Drawing.Size(128, 128);
+            this.profilepicture_box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilepicture_box.TabIndex = 26;
             this.profilepicture_box.TabStop = false;
             this.profilepicture_box.Click += new System.EventHandler(this.profilepicture_box_Click);
@@ -283,39 +318,6 @@
             this.pictureBox3.TabIndex = 30;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(122, 60);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "NoteMaster";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.LightBlue;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(10, 375);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 17);
-            this.label5.TabIndex = 33;
-            this.label5.Text = "Total Notes:";
-            // 
-            // number_ofNotes
-            // 
-            this.number_ofNotes.AutoSize = true;
-            this.number_ofNotes.BackColor = System.Drawing.Color.LightBlue;
-            this.number_ofNotes.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number_ofNotes.Location = new System.Drawing.Point(103, 376);
-            this.number_ofNotes.Name = "number_ofNotes";
-            this.number_ofNotes.Size = new System.Drawing.Size(43, 17);
-            this.number_ofNotes.TabIndex = 32;
-            this.number_ofNotes.Text = "Notes";
             // 
             // NotePreview
             // 

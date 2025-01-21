@@ -100,5 +100,10 @@ namespace NoteBasket
         {
             this.Close();
         }
+
+        private void BookMarks_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

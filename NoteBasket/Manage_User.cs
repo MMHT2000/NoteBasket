@@ -52,7 +52,7 @@ namespace NoteBasket
                                 }
                                 else
                                 {
-                                    dob_picker.Value = DateTime.Now; // Default value if DOB is not available
+                                    dob_picker.Value = DateTime.Now;
                                 }
 
                                 string gender = reader["Gender"].ToString();
@@ -156,11 +156,11 @@ namespace NoteBasket
                         }
                     }
 
-                    MessageBox.Show("Your account has been deleted successfully.", "Account Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("The account has been deleted successfully.", "Account Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    Login_Form form1 = new Login_Form();
+                    Admin_Dashboard admin_Dashboard = new Admin_Dashboard(18);
                     this.Hide();
-                    form1.Show();
+                    admin_Dashboard.Show();
                 }
                 catch (Exception ex)
                 {

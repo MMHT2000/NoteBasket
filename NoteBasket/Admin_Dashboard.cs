@@ -113,7 +113,7 @@ namespace NoteBasket
         {
             try
             {
-                // Clear existing controls from the panel
+                
                 foreach (Control control in panel5.Controls.OfType<Panel>().ToList())
                 {
                     panel5.Controls.Remove(control);
@@ -121,15 +121,15 @@ namespace NoteBasket
 
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
-                    // Build the WHERE clause based on roles if provided
+                    
                     string roleCondition = roles != null && roles.Length > 0 ? "AND Role IN ('" + string.Join("', '", roles) + "')" : "";
 
                     string sql = @"
-            SELECT UserID, Name, Username, Email, Gender 
-            FROM Users 
-            WHERE 
-                (@SearchQuery = '' OR Name LIKE '%' + @SearchQuery + '%' OR Username LIKE '%' + @SearchQuery + '%') 
-                AND Role != 'Admin' " + roleCondition;
+                    SELECT UserID, Name, Username, Email, Gender 
+                    FROM Users 
+                     WHERE 
+                    (@SearchQuery = '' OR Name LIKE '%' + @SearchQuery + '%' OR Username LIKE '%' + @SearchQuery + '%') 
+                    AND Role != 'Admin' " + roleCondition;
 
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
@@ -148,25 +148,25 @@ namespace NoteBasket
                                 return;
                             }
 
-                            int yPosition = 60; // Initial position for dynamic controls
+                            int yPosition = 60; 
                             while (reader.Read())
                             {
-                                int userId = reader.GetInt32(0); // UserID
-                                string name = reader.GetString(1); // Name
-                                string username = reader.GetString(2); // Username
-                                string email = reader.IsDBNull(3) ? "Not Available" : reader.GetString(3); // Email
-                                string gender = reader.IsDBNull(4) ? "Not Available" : reader.GetString(4); // Gender
+                                int userId = reader.GetInt32(0); 
+                                string name = reader.GetString(1); 
+                                string username = reader.GetString(2); 
+                                string email = reader.IsDBNull(3) ? "Not Available" : reader.GetString(3); 
+                                string gender = reader.IsDBNull(4) ? "Not Available" : reader.GetString(4); 
 
-                                // Create a dynamic panel
+                              
                                 Panel dynamicPanel = new Panel
                                 {
-                                    Size = new Size(520, 80),
+                                    Size = new Size(525, 80),
                                     Location = new Point(10, yPosition),
                                     BackColor = Color.LightBlue,
                                     BorderStyle = BorderStyle.FixedSingle
                                 };
 
-                                // Name Label
+                               
                                 Label nameLabel = new Label
                                 {
                                     Text = $"Name: {name}",
@@ -177,7 +177,7 @@ namespace NoteBasket
                                     ForeColor = Color.Black
                                 };
 
-                                // Username Label
+                               
                                 Label usernameLabel = new Label
                                 {
                                     Text = $"Username: {username}",
@@ -188,7 +188,7 @@ namespace NoteBasket
                                     ForeColor = Color.Black
                                 };
 
-                                // Gender Label
+                                
                                 Label genderLabel = new Label
                                 {
                                     Text = $"Gender: {gender}",
@@ -199,7 +199,7 @@ namespace NoteBasket
                                     ForeColor = Color.DarkBlue
                                 };
 
-                                // Email Label
+                                
                                 Label emailLabel = new Label
                                 {
                                     Text = $"Email: {email}",
@@ -210,7 +210,7 @@ namespace NoteBasket
                                     ForeColor = Color.DarkGreen
                                 };
 
-                                // View Button
+                               
                                 Button viewButton = new Button
                                 {
                                     Text = "Manage",
@@ -220,7 +220,7 @@ namespace NoteBasket
                                     FlatStyle = FlatStyle.Popup
                                 };
 
-                                // On button click, open Manage_User form
+                                
                                 viewButton.Click += (s, e) =>
                                 {
                                     Manage_User manageUserForm = new Manage_User(userId);
@@ -228,17 +228,17 @@ namespace NoteBasket
                                     manageUserForm.Show();
                                 };
 
-                                // Add controls to the dynamic panel
+                               
                                 dynamicPanel.Controls.Add(nameLabel);
                                 dynamicPanel.Controls.Add(usernameLabel);
                                 dynamicPanel.Controls.Add(genderLabel);
                                 dynamicPanel.Controls.Add(emailLabel);
                                 dynamicPanel.Controls.Add(viewButton);
 
-                                // Add the dynamic panel to the parent panel
+                                
                                 panel5.Controls.Add(dynamicPanel);
 
-                                yPosition += 90; // Adjust position for the next panel
+                                yPosition += 90; 
                             }
                         }
                     }

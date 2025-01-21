@@ -141,6 +141,8 @@ namespace NoteBasket
                                 {
                                     profilepicture_box.ImageLocation = Path.Combine(imagePath, "Hopstarter-Superhero-Avatar-Avengers-Giant-Man.128.png");
                                 }
+
+
                             }
                             else
                             {
@@ -241,7 +243,7 @@ namespace NoteBasket
                                 string category = reader.GetString(3); 
                                 Panel dynamicPanel = new Panel
                                 {
-                                    Size = new Size(520, 80),
+                                    Size = new Size(525, 80),
                                     Location = new Point(10, yPosition),
                                     BackColor = Color.LightBlue,
                                     BorderStyle = BorderStyle.FixedSingle
@@ -473,6 +475,11 @@ namespace NoteBasket
             this.Hide();
             Subscription_Tiers subscription_Tiers = new Subscription_Tiers(userId);
             subscription_Tiers.Show();
+        }
+
+        private void name_label_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

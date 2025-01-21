@@ -108,13 +108,13 @@ namespace NoteBasket
                         }
                     }
 
-                    // Calculate the average rating
+                    
                     string ratingQuery = "SELECT AVG(CAST(Rating AS FLOAT)) FROM Ratings WHERE NoteID = @NoteID";
                     using (SqlCommand ratingCmd = new SqlCommand(ratingQuery, con))
                     {
                         ratingCmd.Parameters.AddWithValue("@NoteID", noteId);
 
-                        // No need to open the connection again, as it's already open
+                        
                         object avgRatingObj = ratingCmd.ExecuteScalar();
 
                         if (avgRatingObj != DBNull.Value)

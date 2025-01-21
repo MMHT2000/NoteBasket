@@ -37,14 +37,14 @@ namespace NoteBasket
                     return;
                 }
 
-                // Establish a SQL connection
+                
                 string connectionString = "data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    // Open the connection
+                   
                     connection.Open();
 
-                    // Create the SQL query
+                   
                     string updateQuery = @"
                 DECLARE @CurrentRole NVARCHAR(50);
                 SELECT @CurrentRole = [Role] FROM [NoteBasketDB].[dbo].[Users] WHERE [UserID] = @UserID;
@@ -79,12 +79,12 @@ namespace NoteBasket
 
                     using (SqlCommand command = new SqlCommand(updateQuery, connection))
                     {
-                        // Set parameters
+                        
                         command.Parameters.AddWithValue("@Amount", amount);
                         command.Parameters.AddWithValue("@Today", DateTime.Now);
-                        command.Parameters.AddWithValue("@UserID", userId); // Use the passed userId
+                        command.Parameters.AddWithValue("@UserID", userId);
 
-                        // Execute the command and retrieve the previous role
+                        
                         try
                         {
                             using (SqlDataReader reader = command.ExecuteReader())
@@ -94,7 +94,7 @@ namespace NoteBasket
                                     string previousRole = reader["PreviousRole"].ToString();
                                     string newRole = amount == 49 ? "Silver" : "Gold";
 
-                                    // Determine the appropriate message
+                                    
                                     if (previousRole == newRole)
                                     {
                                         MessageBox.Show($"Payment Successful! Your {newRole} subscription has been extended by 30 days.");
@@ -114,7 +114,7 @@ namespace NoteBasket
                         }
                         catch (SqlException ex)
                         {
-                            // Handle the exception if the RAISERROR triggers
+                            
                             MessageBox.Show(ex.Message); 
                         }
                     }
@@ -122,7 +122,7 @@ namespace NoteBasket
             }
             else
             {
-                // Invalid numeric input
+                
                 MessageBox.Show("Please enter a valid numeric value in the amount field.");
             }
         }

@@ -29,7 +29,7 @@ namespace NoteBasket
 
         private void ManageMyNotes_Load(object sender, EventArgs e)
         {
-            // Remove existing controls from the panel except specific ones
+            
             panel2.Controls.OfType<Control>()
                 .Where(c => c != label2 && c != textBox1 && c != button2)
                 .ToList()
@@ -42,7 +42,7 @@ namespace NoteBasket
                     string searchQuery = textBox1.Text.Trim();
                     string query = "SELECT NoteID, Title, Status FROM Notes WHERE UploadedBy = @UploadedBy";
 
-                    // Add a search condition if there is a search query
+                    
                     if (!string.IsNullOrEmpty(searchQuery))
                     {
                         query += " AND Title LIKE @SearchText";
@@ -50,7 +50,7 @@ namespace NoteBasket
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        // Add the UploadedBy parameter
+                        
                         cmd.Parameters.AddWithValue("@UploadedBy", userId);
 
                         if (!string.IsNullOrEmpty(searchQuery))
@@ -61,14 +61,14 @@ namespace NoteBasket
                         con.Open();
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            int y = 106; // Initial Y position for dynamic controls
+                            int y = 106; 
                             while (reader.Read())
                             {
                                 int noteId = Convert.ToInt32(reader["NoteID"]);
                                 string title = reader["Title"].ToString();
                                 string status = reader["Status"].ToString();
 
-                                // Create a dynamic panel
+                                
                                 Panel notePanel = new Panel
                                 {
                                     Size = new Size(530, 25),
@@ -77,7 +77,7 @@ namespace NoteBasket
                                     BorderStyle = BorderStyle.FixedSingle
                                 };
 
-                                // Title label
+                                
                                 Label titleLabel = new Label
                                 {
                                     Text = title,
@@ -87,7 +87,7 @@ namespace NoteBasket
                                     ForeColor = Color.Black
                                 };
 
-                                // Status label
+                                
                                 Label statusLabel = new Label
                                 {
                                     Text = status,
@@ -98,7 +98,7 @@ namespace NoteBasket
                                     status == "Rejected" ? Color.Red : Color.Goldenrod
                                 };
 
-                                // Manage label (clickable)
+                                
                                 Label manageLabel = new Label
                                 {
                                     Text = "Delete",
@@ -107,19 +107,19 @@ namespace NoteBasket
                                     Location = new Point(390, 5),
                                     ForeColor = Color.Red,
                                     Cursor = Cursors.Hand,
-                                    Tag = noteId // Store the NoteID in the Tag property
+                                    Tag = noteId 
                                 };
                                 manageLabel.Click += ManageLabel_Click;
 
-                                // Add controls to the panel
+                                
                                 notePanel.Controls.Add(titleLabel);
                                 notePanel.Controls.Add(statusLabel);
                                 notePanel.Controls.Add(manageLabel);
 
-                                // Add the dynamic panel to the parent panel
+                                
                                 panel2.Controls.Add(notePanel);
 
-                                y += 30; // Adjust Y position for the next panel
+                                y += 30; 
                             }
                         }
                     }
@@ -134,9 +134,9 @@ namespace NoteBasket
         {
             try
             {
-                // Get the NoteID from the Tag property of the clicked label
+                
                 int noteId = Convert.ToInt32(((Label)sender).Tag);
-                // Ask for confirmation before deleting
+                
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this note?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
@@ -150,7 +150,7 @@ namespace NoteBasket
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    // Reload the notes after deletion
+                    
                     ManageMyNotes_Load(this, EventArgs.Empty);
 
                     MessageBox.Show("Note deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

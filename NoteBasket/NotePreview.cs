@@ -155,15 +155,30 @@ namespace NoteBasket
                             {
                                 username_label.Text = reader["Username"].ToString();
                                 emaildynamic_label.Text = reader["Email"].ToString();
+                                
 
                                 if (reader["DOB"] != DBNull.Value)
                                     dobdynamic_label.Text = Convert.ToDateTime(reader["DOB"]).ToShortDateString();
 
                                 genderdynamiclabel.Text = reader["Gender"].ToString();
                                 roledynamic_label.Text = reader["Role"].ToString();
+                                string gender = reader["Gender"].ToString();
+
+                                if (gender == "Male")
+                                {
+                                    profilepicture_box.Image = Properties.Resources.Male;
+                                }
+                                else if (gender == "Female")
+                                {
+                                    profilepicture_box.Image = Properties.Resources.Female;
+                                }
+                                else
+                                {
+                                    profilepicture_box.Image = Properties.Resources.DefaultProfile;
+                                }
 
                                 if (reader["CreatedAt"] != DBNull.Value)
-                                    accountcreationdynamic_label.Text = Convert.ToDateTime(reader["CreatedAt"]).ToShortDateString();
+                                accountcreationdynamic_label.Text = Convert.ToDateTime(reader["CreatedAt"]).ToShortDateString();
                             }
                         }
                     }
@@ -215,12 +230,12 @@ namespace NoteBasket
                 return;
             }
 
-            // Database Connection String
+            
             string connectionString = @"data source=Mohaiminul\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI";
 
             bool isSilverUser = false;
-            int userID = userId; // Replace with the logged-in user's ID
-            int noteID = noteId; // Replace with the actual NoteID related to the download
+            int userID = userId; 
+            int noteID = noteId; 
             int downloadCount = 0;
             bool isDuplicateDownload = false;
             DateTime today = DateTime.Today;
@@ -229,7 +244,7 @@ namespace NoteBasket
             {
                 connection.Open();
 
-                // Step 1: Check if the user is Silver
+                
                 string getUserRoleQuery = "SELECT Role FROM Users WHERE UserID = @UserID";
                 using (SqlCommand command = new SqlCommand(getUserRoleQuery, connection))
                 {
@@ -240,7 +255,7 @@ namespace NoteBasket
 
                 if (isSilverUser)
                 {
-                    // Step 2: Delete old logs if the date is not today
+                    
                     string deleteOldLogsQuery = "DELETE FROM UserDailyActivity WHERE UserID = @UserID AND ActivityDate < @Today";
                     using (SqlCommand command = new SqlCommand(deleteOldLogsQuery, connection))
                     {
@@ -249,7 +264,7 @@ namespace NoteBasket
                         command.ExecuteNonQuery();
                     }
 
-                    // Step 3: Check if this NoteID has already been downloaded today
+                    
                     string checkDuplicateQuery = "SELECT COUNT(*) FROM UserDailyActivity WHERE UserID = @UserID AND NoteID = @NoteID AND ActivityDate = @Today";
                     using (SqlCommand command = new SqlCommand(checkDuplicateQuery, connection))
                     {
@@ -264,7 +279,7 @@ namespace NoteBasket
                         }
                     }
 
-                    // Step 4: If the download is not a duplicate, check today's download count
+                    
                     if (!isDuplicateDownload)
                     {
                         string getDownloadCountQuery = "SELECT COUNT(*) FROM UserDailyActivity WHERE UserID = @UserID AND ActivityDate = @Today";
@@ -275,7 +290,7 @@ namespace NoteBasket
                             downloadCount = (int)command.ExecuteScalar();
                         }
 
-                        // Step 5: If the user has reached the limit, block new downloads
+                        
                         if (downloadCount >= 5)
                         {
                             MessageBox.Show("Your download limit for today is over. Please try again tomorrow or upgrade to Gold.", "Download Limit Reached", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -321,7 +336,7 @@ namespace NoteBasket
                     pictureBox1.Image.Save(filePath, format);
                     MessageBox.Show("Image saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Log the download in the database for Silver users if it's not a duplicate
+                    
                     if (isSilverUser && !isDuplicateDownload)
                     {
                         using (SqlConnection connection = new SqlConnection(connectionString))

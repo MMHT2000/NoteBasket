@@ -113,7 +113,7 @@ namespace NoteBasket
         {
             try
             {
-                // Clear existing controls from the panel
+                
                 foreach (Control control in panel5.Controls.OfType<Panel>().ToList())
                 {
                     panel5.Controls.Remove(control);
@@ -122,14 +122,14 @@ namespace NoteBasket
                 using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
                 {
                     string sql = @"
-            SELECT NoteID, Title, FilePath, Category, SubscriptionLevel 
-            FROM Notes 
-            WHERE 
-                (@SearchQuery = '' OR Title LIKE '%' + @SearchQuery + '%' OR Category LIKE '%' + @SearchQuery + '%')
-                AND Status = 'Approved' 
-                AND UploadedBy = @UserId"; // Filter by UploadedBy
+                    SELECT NoteID, Title, FilePath, Category, SubscriptionLevel 
+                    FROM Notes 
+                    WHERE 
+                    (@SearchQuery = '' OR Title LIKE '%' + @SearchQuery + '%' OR Category LIKE '%' + @SearchQuery + '%')
+                    AND Status = 'Approved' 
+                    AND UploadedBy = @UserId"; 
 
-                    // Add subscription level condition if provided
+                    
                     if (!string.IsNullOrEmpty(subscriptionLevel))
                     {
                         sql += " AND SubscriptionLevel = @SubscriptionLevel";
@@ -138,7 +138,7 @@ namespace NoteBasket
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@SearchQuery", searchQuery);
-                        cmd.Parameters.AddWithValue("@UserId", userId);  // Use the global userId
+                        cmd.Parameters.AddWithValue("@UserId", userId);  
 
                         if (!string.IsNullOrEmpty(subscriptionLevel))
                         {
@@ -158,15 +158,15 @@ namespace NoteBasket
                                 return;
                             }
 
-                            int yPosition = 60; // Position for dynamic controls
+                            int yPosition = 60;
                             while (reader.Read())
                             {
-                                int noteId = reader.GetInt32(0); // NoteID
-                                string title = reader.GetString(1); // Title
-                                string filePath = reader.GetString(2); // FilePath
-                                string category = reader.GetString(3); // Category
+                                int noteId = reader.GetInt32(0);
+                                string title = reader.GetString(1); 
+                                string filePath = reader.GetString(2); 
+                                string category = reader.GetString(3); 
 
-                                // Create a dynamic panel for each note
+                                
                                 Panel dynamicPanel = new Panel
                                 {
                                     Size = new Size(520, 80),
@@ -190,7 +190,7 @@ namespace NoteBasket
                                 }
                                 else
                                 {
-                                    dpictureBox.Image = Properties.Resources.bookmark_filled; // Default image
+                                    dpictureBox.Image = Properties.Resources.bookmark_filled; 
                                 }
 
                                 Label titleLabel = new Label
@@ -236,7 +236,7 @@ namespace NoteBasket
 
                                 panel5.Controls.Add(dynamicPanel);
 
-                                yPosition += 90; // Adjust position for the next panel
+                                yPosition += 90;
                             }
                         }
                     }

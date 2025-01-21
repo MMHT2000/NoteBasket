@@ -40,41 +40,41 @@ namespace NoteBasket
                         {
                             if (reader.Read())
                             {
-                                label2.Text = reader["Title"].ToString(); // Note Title
-                                label4.Text = reader["Category"].ToString(); // Note Category
+                                label2.Text = reader["Title"].ToString(); 
+                                label4.Text = reader["Category"].ToString();
 
-                                // Set category image in pictureBox2
+                                
                                 string categoryName = reader["Category"].ToString();
                                 pictureBox2.Image = GetCategoryImage(categoryName);
 
-                                // Set note image in pictureBox3 using FilePath
+                                
                                 string filePath = reader["FilePath"].ToString();
                                 pictureBox3.Image = GetNoteImage(filePath);
 
-                                // Display uploader name
+                                
                                 int uploadedBy = Convert.ToInt32(reader["UploadedBy"]);
                                 label6.Text = GetUploaderName(uploadedBy);
 
-                                // Check the status and adjust visibility
+                                
                                 string status = reader["Status"].ToString();
                                 if (status == "Pending")
                                 {
-                                    label9.Visible = false;  // Show label9
-                                    label7.Visible = true; // Hide label7
-                                    label10.Visible = false; // Hide label10
+                                    label9.Visible = false;  
+                                    label7.Visible = true; 
+                                    label10.Visible = false;
                                 }
                                 else if (status == "Approved")
                                 {
-                                    label9.Visible = true; // Hide label9
-                                    label7.Visible = false;  // Show label7
-                                    label10.Visible = false; // Hide label10
+                                    label9.Visible = true; 
+                                    label7.Visible = false; 
+                                    label10.Visible = false;
                                 }
                                 else
                                 {
-                                    label9.Visible = false; // Hide label9
-                                    label7.Visible = true; // Hide label7
-                                    label8.Visible = false; // Show label8
-                                    label10.Visible = true; // Show label10
+                                    label9.Visible = false; 
+                                    label7.Visible = true; 
+                                    label8.Visible = false;
+                                    label10.Visible = true;
                                 }
                             }
                         }
@@ -90,7 +90,7 @@ namespace NoteBasket
 
         private Image GetCategoryImage(string categoryName)
         {
-            // Dynamically fetch an image from the resources based on category name
+            
             try
             {
                 return (Image)Properties.Resources.ResourceManager.GetObject(categoryName) ?? Properties.Resources.NF;
@@ -103,7 +103,7 @@ namespace NoteBasket
 
         private Image GetNoteImage(string filePath)
         {
-            // Load image from FilePath or show a default placeholder
+          
             try
             {
                 if (!string.IsNullOrWhiteSpace(filePath) && File.Exists(filePath))
@@ -203,7 +203,7 @@ namespace NoteBasket
                         }
                     }
 
-                    // Optionally close or refresh the form to reflect changes
+                    
                     this.Close();
                 }
                 catch (Exception ex)
@@ -249,7 +249,7 @@ namespace NoteBasket
                         }
                     }
 
-                    // Optionally refresh the form or close it
+                   
                     this.Close();
                 }
             }

@@ -20,7 +20,7 @@ namespace NoteBasket
             InitializeComponent();
             this.userId = userId;
 
-                        LoadUserData();
+            LoadUserData();
 
         }
 

@@ -153,6 +153,16 @@ namespace NoteBasket.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DefaultProfile {
+            get {
+                object obj = ResourceManager.GetObject("DefaultProfile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DS {
             get {
                 object obj = ResourceManager.GetObject("DS", resourceCulture);
@@ -186,6 +196,16 @@ namespace NoteBasket.Properties {
         internal static System.Drawing.Bitmap ENGLISH {
             get {
                 object obj = ResourceManager.GetObject("ENGLISH", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Female {
+            get {
+                object obj = ResourceManager.GetObject("Female", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -236,6 +256,16 @@ namespace NoteBasket.Properties {
         internal static System.Drawing.Bitmap LAW {
             get {
                 object obj = ResourceManager.GetObject("LAW", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Male {
+            get {
+                object obj = ResourceManager.GetObject("Male", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

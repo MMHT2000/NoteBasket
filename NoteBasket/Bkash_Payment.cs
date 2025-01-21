@@ -28,13 +28,13 @@ namespace NoteBasket
         {
             string phoneNumber = textBox1.Text;
 
-            // Check if the phone number is exactly 11 digits and starts with valid prefixes
+            
             if (phoneNumber.Length == 11 &&
                 (phoneNumber.StartsWith("013") || phoneNumber.StartsWith("014") || phoneNumber.StartsWith("015") ||
                  phoneNumber.StartsWith("016") || phoneNumber.StartsWith("017") || phoneNumber.StartsWith("018") ||
                  phoneNumber.StartsWith("019")))
             {
-                // If valid, open the Payment_Confirmation form
+                
                 this.Close();
                 Payment_Confirmation paymentConfirmation = new Payment_Confirmation(userId, amount);
                 paymentConfirmation.StartPosition = FormStartPosition.CenterParent;
@@ -42,7 +42,7 @@ namespace NoteBasket
             }
             else
             {
-                // If invalid, show an error message
+                
                 MessageBox.Show("Invalid phone number. Please enter a valid Bangladeshi phone number.",
                                 "Invalid Input",
                                 MessageBoxButtons.OK,
@@ -73,7 +73,7 @@ namespace NoteBasket
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
                 {
                     FileName = url,
-                    UseShellExecute = true // Ensures the URL opens in the default browser
+                    UseShellExecute = true 
                 });
             }
             catch (Exception ex)

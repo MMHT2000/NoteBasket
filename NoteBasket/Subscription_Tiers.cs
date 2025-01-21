@@ -28,7 +28,7 @@ namespace NoteBasket
 
         private void OpenBkashPaymentForm()
         {
-            // Pass userId and amount to the Bkash_Payment form
+            
             Bkash_Payment bkash_Payment = new Bkash_Payment(userId, amount);
             bkash_Payment.StartPosition = FormStartPosition.CenterParent;
             bkash_Payment.ShowDialog();

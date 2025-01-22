@@ -26,7 +26,7 @@ namespace NoteBasket
         {
             try
             {
-                // Clear existing controls from the panel
+                
                 foreach (Control control in panel5.Controls.OfType<Panel>().ToList())
                 {
                     panel5.Controls.Remove(control);

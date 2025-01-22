@@ -32,7 +32,7 @@ namespace NoteBasket
         {
             try
             {
-                // Clear all dynamic panels from panel5
+                
                 foreach (Control control in panel5.Controls.OfType<Panel>().ToList())
                 {
                     panel5.Controls.Remove(control);
@@ -57,7 +57,7 @@ namespace NoteBasket
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            int yPosition = 10; // Initial Y position for dynamic panels
+                            int yPosition = 10; 
 
                             while (reader.Read())
                             {
@@ -66,7 +66,7 @@ namespace NoteBasket
                                 string reportedBy = reader["Name"].ToString();
                                 DateTime reportDate = Convert.ToDateTime(reader["ReportDate"]);
 
-                                // Create a dynamic panel
+                                
                                 Panel dynamicPanel = new Panel
                                 {
                                     Size = new Size(520, 80),
@@ -75,7 +75,7 @@ namespace NoteBasket
                                     BorderStyle = BorderStyle.FixedSingle
                                 };
 
-                                // Create a label for the report details
+                                
                                 Label detailsLabel = new Label
                                 {
                                     Text = $"{noteTitle} was reported by {reportedBy} on {reportDate}",
@@ -86,7 +86,7 @@ namespace NoteBasket
                                     ForeColor = Color.Black
                                 };
 
-                                // Create a "View" button
+                                
                                 Button viewButton = new Button
                                 {
                                     Text = "View",
@@ -96,7 +96,7 @@ namespace NoteBasket
                                     FlatStyle = FlatStyle.Popup
                                 };
 
-                                // Attach event to open NoteDetails form
+                                
                                 viewButton.Click += (s, e) =>
                                 {
                                     this.Close();
@@ -104,7 +104,7 @@ namespace NoteBasket
                                     noteDetailsForm.Show();
                                 };
 
-                                // Create a "Delete" button
+                                
                                 Button deleteButton = new Button
                                 {
                                     Text = "Delete",
@@ -115,7 +115,7 @@ namespace NoteBasket
                                     ForeColor = Color.White
                                 };
 
-                                // Attach event to delete the note from the database
+                                
                                 deleteButton.Click += (s, e) =>
                                 {
                                     var confirmation = MessageBox.Show(
@@ -155,10 +155,10 @@ namespace NoteBasket
                                 dynamicPanel.Controls.Add(viewButton);
                                 dynamicPanel.Controls.Add(deleteButton);
 
-                                // Add the panel to panel5
+                                
                                 panel5.Controls.Add(dynamicPanel);
 
-                                yPosition += 90; // Adjust Y position for the next panel
+                                yPosition += 90; 
                             }
                         }
                     }

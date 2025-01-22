@@ -10,6 +10,7 @@ namespace NoteBasket
     {
         private int userId;
         private int noteId;
+        private string role;
 
         public NoteDetails(int userId, int noteId)
         {
@@ -17,6 +18,51 @@ namespace NoteBasket
             this.userId = userId;
             this.noteId = noteId;
             LoadNoteDetails();
+            RoleCheck();
+        }
+
+        private void RoleCheck()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    string query = "SELECT Role FROM Users WHERE UserID = @UserID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", userId); 
+
+                        con.Open();
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            string fetchedRole = result.ToString();
+
+                            
+                            if (fetchedRole == "Admin")
+                            {
+                                button1.Visible = false;
+                                button2.Visible = true;
+                            }
+                            else
+                            {
+                                button1.Visible = true;
+                                button2.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Role not found for the user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while checking the role: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadNoteDetails()
@@ -147,16 +193,83 @@ namespace NoteBasket
             f12.ShowDialog();
         }
 
+        private void GetRole(int userId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    string query = "SELECT Role FROM Users WHERE UserID = @UserID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", userId);
+
+                        con.Open();
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            role = result.ToString(); 
+                        }
+                        else
+                        {
+                            MessageBox.Show("Role not found for the specified user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            role = "Unknown"; 
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while retrieving the role: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                role = "Error"; 
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
-            User_Dashboard form3 = new User_Dashboard(userId);
-            form3.Show();
+            
+            GetRole(userId);
+
+            if (role == "Free" || role == "Silver" || role == "Gold")
+            {
+                this.Close();
+                User_Dashboard f12 = new User_Dashboard(userId);
+                f12.Show();
+            }
+            else if (role == "Admin")
+            {
+                this.Close();
+                Admin_Dashboard f12 = new Admin_Dashboard(userId);
+                f12.Show();
+            }
+            else if (role == "NoteMaster")
+            {
+                this.Close();
+                NoteMaster_Dashboard f12 = new NoteMaster_Dashboard(userId);
+                f12.Show();
+            }
+            else
+            {
+                MessageBox.Show("Role not found. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
 
         private void NoteDetails_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Admin_Dashboard f12 = new Admin_Dashboard(userId);
+            f12.Show();
+        }
+
+        
     }
 }

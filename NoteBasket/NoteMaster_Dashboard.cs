@@ -313,5 +313,12 @@ namespace NoteBasket
             ManageMyNotes manageMyNotesForm = new ManageMyNotes(userId);
             manageMyNotesForm.Show();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            UserReviews userReviewsForm = new UserReviews(userId);
+            userReviewsForm.Show();
+        }
     }
 }

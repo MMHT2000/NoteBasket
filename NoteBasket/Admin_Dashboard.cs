@@ -310,5 +310,13 @@ namespace NoteBasket
         {
             LoadUsers(roles: new string[] { "Free", "Silver", "Gold", "Notemaster" });
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Reported_Notes reportedNotesForm = new Reported_Notes(userId);
+            reportedNotesForm.Show();
+
+        }
     }
 }

@@ -129,6 +129,12 @@
     <Compile Include="Payment_Confirmation.Designer.cs">
       <DependentUpon>Payment_Confirmation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reported Notes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reported Notes.Designer.cs">
+      <DependentUpon>Reported Notes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subscription_Tiers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,12 @@
     </Compile>
     <Compile Include="UserRegistration_Form.Designer.cs">
       <DependentUpon>UserRegistration_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserReviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserReviews.Designer.cs">
+      <DependentUpon>UserReviews.cs</DependentUpon>
     </Compile>
     <Compile Include="User_Dashboard.cs">
       <SubType>Form</SubType>
@@ -245,6 +257,9 @@
     <EmbeddedResource Include="Payment_Confirmation.resx">
       <DependentUpon>Payment_Confirmation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reported Notes.resx">
+      <DependentUpon>Reported Notes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subscription_Tiers.resx">
       <DependentUpon>Subscription_Tiers.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserRegistration_Form.resx">
       <DependentUpon>UserRegistration_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserReviews.resx">
+      <DependentUpon>UserReviews.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Dashboard.resx">
       <DependentUpon>User_Dashboard.cs</DependentUpon>

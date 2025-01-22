@@ -33,7 +33,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.number_ofNotes = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.bookmarkimage = new System.Windows.Forms.PictureBox();
             this.updateprofile_btn = new System.Windows.Forms.Button();
+            this.profilepicture_box = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,17 +48,16 @@
             this.dobdynamic_label = new System.Windows.Forms.Label();
             this.emaildynamic_label = new System.Windows.Forms.Label();
             this.username_label = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.backtosignin_btn = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.bookmarkimage = new System.Windows.Forms.PictureBox();
-            this.profilepicture_box = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkimage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -119,6 +120,17 @@
             this.button1.Text = "NoteMaster";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // bookmarkimage
+            // 
+            this.bookmarkimage.Image = global::NoteBasket.Properties.Resources.bookmark_hollow;
+            this.bookmarkimage.InitialImage = null;
+            this.bookmarkimage.Location = new System.Drawing.Point(13, 35);
+            this.bookmarkimage.Name = "bookmarkimage";
+            this.bookmarkimage.Size = new System.Drawing.Size(50, 50);
+            this.bookmarkimage.TabIndex = 29;
+            this.bookmarkimage.TabStop = false;
+            this.bookmarkimage.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // updateprofile_btn
             // 
             this.updateprofile_btn.BackColor = System.Drawing.SystemColors.Highlight;
@@ -132,6 +144,18 @@
             this.updateprofile_btn.Text = "Give Feedback";
             this.updateprofile_btn.UseVisualStyleBackColor = false;
             this.updateprofile_btn.Click += new System.EventHandler(this.updateprofile_btn_Click);
+            // 
+            // profilepicture_box
+            // 
+            this.profilepicture_box.BackColor = System.Drawing.Color.SteelBlue;
+            this.profilepicture_box.Image = global::NoteBasket.Properties.Resources.DefaultProfile;
+            this.profilepicture_box.Location = new System.Drawing.Point(94, 87);
+            this.profilepicture_box.Name = "profilepicture_box";
+            this.profilepicture_box.Size = new System.Drawing.Size(128, 128);
+            this.profilepicture_box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilepicture_box.TabIndex = 26;
+            this.profilepicture_box.TabStop = false;
+            this.profilepicture_box.Click += new System.EventHandler(this.profilepicture_box_Click);
             // 
             // label7
             // 
@@ -264,6 +288,16 @@
             this.username_label.TabIndex = 2;
             this.username_label.Text = "@username";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::NoteBasket.Properties.Resources.icons8_close_window_48;
+            this.pictureBox3.Location = new System.Drawing.Point(259, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(50, 48);
+            this.pictureBox3.TabIndex = 30;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // backtosignin_btn
             // 
             this.backtosignin_btn.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -286,44 +320,26 @@
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
-            // bookmarkimage
+            // button2
             // 
-            this.bookmarkimage.Image = global::NoteBasket.Properties.Resources.bookmark_hollow;
-            this.bookmarkimage.InitialImage = null;
-            this.bookmarkimage.Location = new System.Drawing.Point(13, 35);
-            this.bookmarkimage.Name = "bookmarkimage";
-            this.bookmarkimage.Size = new System.Drawing.Size(50, 50);
-            this.bookmarkimage.TabIndex = 29;
-            this.bookmarkimage.TabStop = false;
-            this.bookmarkimage.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // profilepicture_box
-            // 
-            this.profilepicture_box.BackColor = System.Drawing.Color.SteelBlue;
-            this.profilepicture_box.Image = global::NoteBasket.Properties.Resources.DefaultProfile;
-            this.profilepicture_box.Location = new System.Drawing.Point(94, 87);
-            this.profilepicture_box.Name = "profilepicture_box";
-            this.profilepicture_box.Size = new System.Drawing.Size(128, 128);
-            this.profilepicture_box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.profilepicture_box.TabIndex = 26;
-            this.profilepicture_box.TabStop = false;
-            this.profilepicture_box.Click += new System.EventHandler(this.profilepicture_box_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::NoteBasket.Properties.Resources.icons8_close_window_48;
-            this.pictureBox3.Location = new System.Drawing.Point(259, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 48);
-            this.pictureBox3.TabIndex = 30;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Transparent;
+            this.button2.Location = new System.Drawing.Point(28, 21);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(62, 24);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Report";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // NotePreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 576);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.backtosignin_btn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
@@ -334,10 +350,10 @@
             this.Load += new System.EventHandler(this.NotePreview_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookmarkimage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilepicture_box)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,5 +383,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label number_ofNotes;
+        private System.Windows.Forms.Button button2;
     }
 }

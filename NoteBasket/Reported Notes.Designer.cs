@@ -30,8 +30,8 @@
         {
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.admindashboard_label = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.admindashboard_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,17 +54,6 @@
             this.panel1.Size = new System.Drawing.Size(1264, 108);
             this.panel1.TabIndex = 11;
             // 
-            // admindashboard_label
-            // 
-            this.admindashboard_label.AutoSize = true;
-            this.admindashboard_label.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.admindashboard_label.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.admindashboard_label.Location = new System.Drawing.Point(517, 38);
-            this.admindashboard_label.Name = "admindashboard_label";
-            this.admindashboard_label.Size = new System.Drawing.Size(205, 32);
-            this.admindashboard_label.TabIndex = 4;
-            this.admindashboard_label.Text = "Reported Notes";
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.Highlight;
@@ -77,6 +66,18 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "Return to DashBoard";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // admindashboard_label
+            // 
+            this.admindashboard_label.AutoSize = true;
+            this.admindashboard_label.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.admindashboard_label.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.admindashboard_label.Location = new System.Drawing.Point(517, 38);
+            this.admindashboard_label.Name = "admindashboard_label";
+            this.admindashboard_label.Size = new System.Drawing.Size(205, 32);
+            this.admindashboard_label.TabIndex = 4;
+            this.admindashboard_label.Text = "Reported Notes";
             // 
             // Reported_Notes
             // 

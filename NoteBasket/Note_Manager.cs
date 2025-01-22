@@ -66,7 +66,6 @@ namespace NoteBasket
                                 string title = reader["Title"].ToString();
                                 string status = reader["Status"].ToString();
 
-                                
                                 Panel notePanel = new Panel
                                 {
                                     Size = new Size(530, 25),
@@ -75,7 +74,6 @@ namespace NoteBasket
                                     BorderStyle = BorderStyle.FixedSingle
                                 };
 
-                                
                                 Label titleLabel = new Label
                                 {
                                     Text = title,
@@ -85,7 +83,6 @@ namespace NoteBasket
                                     ForeColor = Color.Black
                                 };
 
-                                
                                 Label statusLabel = new Label
                                 {
                                     Text = status,
@@ -93,10 +90,9 @@ namespace NoteBasket
                                     AutoSize = true,
                                     Location = new Point(470, 5),
                                     ForeColor = status == "Approved" ? Color.Green :
-                                    status == "Rejected" ? Color.Red : Color.Goldenrod
+                                               status == "Rejected" ? Color.Red : Color.Goldenrod
                                 };
 
-                                
                                 Label manageLabel = new Label
                                 {
                                     Text = "Manage",
@@ -109,15 +105,13 @@ namespace NoteBasket
                                 };
                                 manageLabel.Click += ManageLabel_Click;
 
-                               
                                 notePanel.Controls.Add(titleLabel);
                                 notePanel.Controls.Add(statusLabel);
                                 notePanel.Controls.Add(manageLabel);
 
-                                
                                 panel2.Controls.Add(notePanel);
 
-                                
+                                y += notePanel.Height + 5; 
                             }
                         }
                     }

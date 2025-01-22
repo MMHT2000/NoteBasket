@@ -266,7 +266,7 @@ namespace NoteBasket
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-            Admin_Dashboard f12 = new Admin_Dashboard(userId);
+            Reported_Notes f12 = new Reported_Notes(userId);
             f12.Show();
         }
 

@@ -171,5 +171,11 @@ namespace NoteBasket
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Admin_Dashboard adminDashboard = new Admin_Dashboard(userId);
+            adminDashboard.Show();
+        }
     }
 }

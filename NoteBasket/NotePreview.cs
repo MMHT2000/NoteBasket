@@ -73,6 +73,7 @@ namespace NoteBasket
                         string role = cmd.ExecuteScalar()?.ToString();
 
                         backtosignin_btn.Visible = role != "Free";
+                        button2.Visible = role != "Admin";
                     }
                 }
             }
@@ -446,5 +447,57 @@ namespace NoteBasket
            
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                {
+                    
+                    string checkQuery = @"
+                SELECT COUNT(*) 
+                FROM Reports 
+                WHERE UserID = @UserID AND NoteID = @NoteID";
+
+                    using (SqlCommand checkCmd = new SqlCommand(checkQuery, con))
+                    {
+                        
+                        checkCmd.Parameters.AddWithValue("@UserID", userId);
+                        checkCmd.Parameters.AddWithValue("@NoteID", noteId);
+
+                        con.Open();
+
+                        int reportCount = (int)checkCmd.ExecuteScalar(); 
+
+                        if (reportCount > 0)
+                        {
+                            
+                            MessageBox.Show("You have already reported this note.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
+                    }
+
+                    
+                    string insertQuery = @"
+                INSERT INTO Reports (UserID, NoteID, ReportDate)
+                VALUES (@UserID, @NoteID, GETDATE())";
+
+                    using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
+                    {
+                        
+                        insertCmd.Parameters.AddWithValue("@UserID", userId);
+                        insertCmd.Parameters.AddWithValue("@NoteID", noteId);
+
+                        insertCmd.ExecuteNonQuery(); 
+
+                        MessageBox.Show("Report submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while submitting the report: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

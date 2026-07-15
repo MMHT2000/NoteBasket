@@ -1,114 +1,125 @@
 # NoteBasket
 
-## Project Overview
+NoteBasket is a C# Windows Forms course project for managing and sharing academic notes. The application was built as part of a university C# course and demonstrates desktop UI development, role-based navigation, SQL Server database operations, authentication, and basic subscription/payment simulation.
 
-**NoteBasket** is a premium note-sharing platform designed to offer students access to high-quality study materials through a subscription-based model. Users can choose from three subscription levels: **Free**, **Silver**, and **Gold**. Only Admins and NoteMasters are authorized to upload notes, while users can access them based on their subscription level.
+## Project Summary
 
----
+The system is designed for students who want to browse study materials and for approved contributors who can upload notes. It uses separate dashboards for regular users, NoteMasters, and admins.
 
-## Key Features
+## Main Features
 
-### General User Types
-- **Free**: View-only access to free notes.
-- **Silver**: Access to free and silver-tier notes; ability to download.
-- **Gold**: Full access to all notes, including exclusive gold-tier content.
-
-### Admin & NoteMaster Roles
-- **Admins**:
-  - Manage users and subscription levels.
-  - Approve or reject uploaded notes.
-- **NoteMasters**:
-  - Upload notes and categorize them.
-  - Anyone can apply to become a NoteMaster, but admins decide whether to approve the application.
-
-### Payment Simulation
-- A mock payment gateway simulates the subscription upgrade process.
-- Users can upgrade to Silver or Gold by simulating a payment.
-
-### Features to Implement
-1. **Note Rating and Review System**: Allow users to rate and review notes. Ratings and reviews will be stored in the database, with average ratings displayed.
-2. **Notes Bookmarking**: Students can bookmark notes they wish to revisit later.
-3. **Loyalty Points**: Award users points for app usage, which can later be redeemed for subscription upgrades.
-4. **Search and Filter Functionality**: Enable users to:
-   - Search for notes by keywords, categories, and tags.
-   - Filter notes by category, rating, etc.
-5. **Subscription Expiration Notifications**: Notify users when their subscription is about to expire via on-screen notifications.
-6. **Download History and Activity Tracking**:
-   - Track user activities such as downloads, views, and ratings.
-   - Display these activities on the user’s profile.
-7. **Admin Dashboard for Analytics**:
-   - Provide admins with insights such as the number of users, popular notes, and active subscriptions.
-8. **Notes Categorization and Tagging**:
-   - Allow NoteMasters to tag and categorize notes when uploading.
-   - Enable users to filter notes by tags or categories.
-9. **Payment Simulation for Subscription Upgrades**:
-   - Simulate a mock payment gateway for upgrading subscriptions to Silver/Gold tiers.
-
----
-
-## Database Structure
-
-### Tables
-1. **Users**: Stores user information, including subscription level.
-2. **Notes**: Stores uploaded notes by Admins and NoteMasters.
-3. **Subscription**: Tracks user subscriptions and expiration dates.
-4. **Ratings**: Stores user ratings and reviews for notes.
-5. **UserActivity**: Tracks user activities (downloads, views, ratings).
-6. **Tags**: Stores tags for categorizing notes.
-7. **NoteTags**: Links notes to their respective tags.
-
----
+- User registration, login, password reset, and password change
+- Password hashing with `BCrypt.Net-Next`
+- Role-based access for `Free`, `Silver`, `Gold`, `NoteMaster`, and `Admin` users
+- User profile view and edit support
+- Note upload with title, description, category, file path, and subscription level
+- Note approval workflow for pending, approved, and rejected notes
+- Note browsing and preview
+- Download limit/activity tracking for regular users
+- Bookmarking notes
+- Rating and review system
+- Note reporting and admin-side reported note management
+- Subscription tier upgrade flow with a mock bKash-style payment screen
+- Admin tools for managing users, notes, and NoteMaster requests
 
 ## Technology Stack
 
-- **Front-End**: Windows Forms for the User Interface.
-- **Back-End**: C# for database interaction and application logic.
-- **Database**: MS SQL for user and note management.
+- Language: C#
+- UI: Windows Forms
+- Framework: .NET Framework 4.7.2
+- Database: Microsoft SQL Server
+- Data Access: ADO.NET / `System.Data.SqlClient`
+- Package Manager: NuGet packages.config
+- Main dependency: `BCrypt.Net-Next`
 
----
+## Repository Structure
+
+```text
+NoteBasket/
+├── NoteBasket.sln
+├── README.md
+├── images/
+└── NoteBasket/
+    ├── Program.cs
+    ├── App.config
+    ├── NoteBasket.csproj
+    ├── packages.config
+    ├── *_Dashboard.cs
+    ├── Login_Form.cs
+    ├── UserRegistration_Form.cs
+    ├── UploadNote.cs
+    ├── NotePreview.cs
+    ├── Ratings_Review.cs
+    ├── BookMarks.cs
+    ├── Resources/
+    └── images/
+```
+
+## Database Notes
+
+The application expects a SQL Server database named `NoteBasketDB`. The current source code uses a local SQL Server Express connection string similar to:
+
+```text
+data source=Mohaiminul\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI
+```
+
+Before running the project on another machine, update the connection string values in the `.cs` files to match your local SQL Server instance.
+
+The database tables referenced by the application include:
+
+- `Users`
+- `Notes`
+- `Ratings`
+- `Bookmarks`
+- `Reports`
+- `UserDailyActivity`
 
 ## Getting Started
 
-### Prerequisites
-- Microsoft Visual Studio (latest version recommended)
-- .NET Framework
-- Microsoft SQL Server
+1. Clone the repository.
 
-### Installation
-1. Clone the repository:
    ```bash
    git clone https://github.com/mmHT2000/NoteBasket.git
    ```
-2. Open the project in Visual Studio.
-3. Configure the database connection(Change the Database source).
-4. Import the SQL file as Import Data Tier Application is MS SQL Server.
-5. Build and run the application.
 
-### Usage
-1. Register as a user and log in.
-2. Explore available notes based on your subscription level.
-3. Upgrade your subscription using the mock payment simulation.
-4. Admins and NoteMasters can upload, manage, and categorize notes.
-5. Rate, review, and bookmark notes as needed.
+2. Open `NoteBasket.sln` in Visual Studio.
 
----
+3. Restore NuGet packages if Visual Studio does not restore them automatically.
 
-## Contribution
+4. Create or restore the `NoteBasketDB` database in Microsoft SQL Server.
 
-We welcome contributions to enhance NoteBasket! If you'd like to contribute:
-1. Fork the repository.
-2. Create a new branch (`feature/your-feature`).
-3. Commit your changes and push them.
-4. Open a pull request.
+5. Update the SQL Server connection string in the source files for your machine.
 
----
+6. Build and run the project.
 
-## License
+The application starts from `Program.cs` and opens the login form first.
 
-This project is licensed under the MIT License - see the [LICENSE](https://en.wikipedia.org/wiki/MIT_License) file for details.
+## Usage
 
----
+1. Register a user account or sign in with an existing account.
+2. Browse notes from the dashboard based on the current role/subscription level.
+3. Upload notes as a NoteMaster or admin.
+4. Approve, reject, edit, or delete notes from the relevant management screens.
+5. Rate, review, bookmark, download, or report notes.
+6. Upgrade a user subscription through the simulated payment flow.
 
-## Contact
+## Academic Context
 
-For questions or support, please contact [mohaiminul.acc@gmail.com](mailto:mohaiminul.acc@gmail.com).
+This repository is a university C# course project. It focuses on practicing:
+
+- Windows Forms application design
+- Event-driven programming
+- CRUD operations with SQL Server
+- Authentication and role-based workflows
+- Multi-form navigation
+- Basic desktop application architecture
+
+## Known Setup Requirement
+
+The database connection is currently hard-coded in multiple forms. For a production-style version, the connection string should be moved into `App.config` or a shared configuration/helper class.
+
+## Author
+
+Md. Mohaiminul Haque
+
+For questions or support, contact [mohaiminul.acc@gmail.com](mailto:mohaiminul.acc@gmail.com).

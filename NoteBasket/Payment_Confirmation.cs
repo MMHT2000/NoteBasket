@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,8 +38,7 @@ namespace NoteBasket
                 }
 
                 
-                string connectionString = "data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI";
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = DatabaseConfig.CreateConnection())
                 {
                    
                     connection.Open();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,7 +40,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "SELECT Name, Username, Email, DOB, Gender, Role, SubscriptionStartDate, LoyaltyPoints, CreatedAt " +
                                  "FROM Users WHERE UserID = @UserId";
@@ -119,7 +119,7 @@ namespace NoteBasket
                     panel5.Controls.Remove(control);
                 }
 
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = @"
                     SELECT NoteID, Title, FilePath, Category, SubscriptionLevel 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,7 +28,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "SELECT Name, Username, Email, DOB, Gender, Role FROM Users WHERE UserID = @UserID";
 
@@ -103,7 +103,7 @@ namespace NoteBasket
 
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "UPDATE Users SET Name = @Name, Username = @Username, Email = @Email, DOB = @DOB, Gender = @Gender WHERE UserID = @UserID";
 
@@ -138,7 +138,7 @@ namespace NoteBasket
             {
                 string userRole = "";
 
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string query = "SELECT Role FROM Users WHERE UserID = @UserId";
 
@@ -201,7 +201,7 @@ namespace NoteBasket
             {
                 try
                 {
-                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    using (SqlConnection con = DatabaseConfig.CreateConnection())
                     {
                         string sql = "DELETE FROM Users WHERE UserID = @UserID";
 

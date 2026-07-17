@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,7 +38,7 @@ namespace NoteBasket
                     panel5.Controls.Remove(control);
                 }
 
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string query = @"
     SELECT 
@@ -128,7 +128,7 @@ namespace NoteBasket
                                     {
                                         try
                                         {
-                                            using (SqlConnection deleteCon = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                                            using (SqlConnection deleteCon = DatabaseConfig.CreateConnection())
                                             {
                                                 string deleteQuery = "DELETE FROM Notes WHERE NoteID = @NoteID";
                                                 using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, deleteCon))

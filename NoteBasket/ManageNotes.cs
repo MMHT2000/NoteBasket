@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
@@ -28,7 +28,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string query = "SELECT Title, Category, FilePath, UploadedBy, Status FROM Notes WHERE NoteID = @NoteID";
                     using (SqlCommand cmd = new SqlCommand(query, con))
@@ -125,7 +125,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string query = "SELECT Username FROM Users WHERE UserID = @UserID";
                     using (SqlCommand cmd = new SqlCommand(query, con))
@@ -155,7 +155,7 @@ namespace NoteBasket
 
                 if (confirmation == DialogResult.Yes)
                 {
-                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    using (SqlConnection con = DatabaseConfig.CreateConnection())
                     {
                         string query = "UPDATE Notes SET Status = 'Approved' WHERE NoteID = @NoteID";
                         using (SqlCommand cmd = new SqlCommand(query, con))
@@ -190,7 +190,7 @@ namespace NoteBasket
             {
                 try
                 {
-                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    using (SqlConnection con = DatabaseConfig.CreateConnection())
                     {
                         string query = "UPDATE Notes SET Status = 'Rejected' WHERE NoteID = @NoteID";
                         using (SqlCommand cmd = new SqlCommand(query, con))
@@ -236,7 +236,7 @@ namespace NoteBasket
 
                 if (confirmation == DialogResult.Yes)
                 {
-                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    using (SqlConnection con = DatabaseConfig.CreateConnection())
                     {
                         string query = "UPDATE Notes SET Status = 'Pending' WHERE NoteID = @NoteID";
                         using (SqlCommand cmd = new SqlCommand(query, con))
@@ -266,7 +266,7 @@ namespace NoteBasket
             {
                 try
                 {
-                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    using (SqlConnection con = DatabaseConfig.CreateConnection())
                     {
                         string query = "DELETE FROM Notes WHERE NoteID = @NoteID";
                         using (SqlCommand cmd = new SqlCommand(query, con))

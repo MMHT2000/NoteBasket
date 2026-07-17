@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
@@ -25,7 +25,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string query = "SELECT Role FROM Users WHERE UserID = @UserID";
 
@@ -69,7 +69,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = @"
                         SELECT Title, Description, FilePath, Category, SubscriptionLevel 
@@ -197,7 +197,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string query = "SELECT Role FROM Users WHERE UserID = @UserID";
 

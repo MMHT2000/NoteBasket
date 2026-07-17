@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
@@ -26,7 +26,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "SELECT COUNT(*) FROM Bookmarks WHERE UserID = @UserID AND NoteID = @NoteID";
 
@@ -61,7 +61,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "SELECT Role FROM Users WHERE UserID = @UserID";
 
@@ -87,7 +87,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "SELECT Title, Description, FilePath, UploadedBy FROM Notes WHERE NoteID = @NoteID";
 
@@ -137,7 +137,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = @"
                         SELECT 
@@ -197,7 +197,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "SELECT COUNT(*) FROM Notes WHERE UploadedBy = @UploadedBy AND Status = 'Approved'";
 
@@ -232,8 +232,6 @@ namespace NoteBasket
             }
 
             
-            string connectionString = @"data source=Mohaiminul\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI";
-
             bool isSilverUser = false;
             int userID = userId; 
             int noteID = noteId; 
@@ -241,7 +239,7 @@ namespace NoteBasket
             bool isDuplicateDownload = false;
             DateTime today = DateTime.Today;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = DatabaseConfig.CreateConnection())
             {
                 connection.Open();
 
@@ -340,7 +338,7 @@ namespace NoteBasket
                     
                     if (isSilverUser && !isDuplicateDownload)
                     {
-                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        using (SqlConnection connection = DatabaseConfig.CreateConnection())
                         {
                             connection.Open();
                             string logDownloadQuery = "INSERT INTO UserDailyActivity (UserID, NoteID, ActivityDate) VALUES (@UserID, @NoteID, @Today)";
@@ -379,7 +377,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "INSERT INTO Bookmarks (UserID, NoteID, BookmarkDate) VALUES (@UserID, @NoteID, @BookmarkDate)";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
@@ -406,7 +404,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "DELETE FROM Bookmarks WHERE UserID = @UserID AND NoteID = @NoteID";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
@@ -451,7 +449,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     
                     string checkQuery = @"

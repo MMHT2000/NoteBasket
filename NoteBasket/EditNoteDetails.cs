@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -28,7 +28,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "SELECT Title, Description, FilePath, Category, SubscriptionLevel FROM Notes WHERE NoteID = @NoteID";
 
@@ -126,7 +126,7 @@ namespace NoteBasket
                 }
 
                 
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     
                     string sql = "UPDATE Notes SET Title = @Title, Description = @Description, Filepath = @Filepath, " +
@@ -193,7 +193,7 @@ namespace NoteBasket
                 if (result == DialogResult.Yes)
                 {
                     
-                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    using (SqlConnection con = DatabaseConfig.CreateConnection())
                     {
                         
                         string sql = "DELETE FROM Notes WHERE NoteID = @NoteID";  

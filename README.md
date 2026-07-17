@@ -57,13 +57,13 @@ NoteBasket/
 
 ## Database Notes
 
-The application expects a SQL Server database named `NoteBasketDB`. The current source code uses a local SQL Server Express connection string similar to:
+The application expects a SQL Server database named `NoteBasketDB`. The connection string is configured in `NoteBasket/App.config`:
 
 ```text
 data source=Mohaiminul\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI
 ```
 
-Before running the project on another machine, update the connection string values in the `.cs` files to match your local SQL Server instance.
+Before running the project on another machine, update the `NoteBasketDB` connection string in `NoteBasket/App.config` to match your local SQL Server instance.
 
 The database tables referenced by the application include:
 
@@ -88,7 +88,7 @@ The database tables referenced by the application include:
 
 4. Create or restore the `NoteBasketDB` database in Microsoft SQL Server.
 
-5. Update the SQL Server connection string in the source files for your machine.
+5. Update the SQL Server connection string in `NoteBasket/App.config` for your machine.
 
 6. Build and run the project.
 
@@ -114,9 +114,9 @@ This repository is a university C# course project. It focuses on practicing:
 - Multi-form navigation
 - Basic desktop application architecture
 
-## Known Setup Requirement
+## Configuration
 
-The database connection is currently hard-coded in multiple forms. For a production-style version, the connection string should be moved into `App.config` or a shared configuration/helper class.
+Database access is centralized through `DatabaseConfig`, which reads the `NoteBasketDB` connection string from `NoteBasket/App.config`.
 
 ## Author
 

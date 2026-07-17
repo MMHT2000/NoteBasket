@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,7 +37,7 @@ namespace NoteBasket
 
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string searchQuery = textBox1.Text.Trim();
                     string query = "SELECT NoteID, Title, Status FROM Notes WHERE UploadedBy = @UploadedBy";
@@ -140,7 +140,7 @@ namespace NoteBasket
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this note?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                    using (SqlConnection con = DatabaseConfig.CreateConnection())
                     {
                         string sql = "DELETE FROM Notes WHERE NoteID = @NoteID";
                         using (SqlCommand cmd = new SqlCommand(sql, con))

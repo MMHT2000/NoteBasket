@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
@@ -21,7 +21,7 @@ namespace NoteBasket
             try
             {
                 panel2.Controls.Clear(); 
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = @"
                         SELECT b.BookmarkID, b.BookmarkDate, n.NoteID, n.Title

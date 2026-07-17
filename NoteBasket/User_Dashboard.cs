@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,7 +36,7 @@ namespace NoteBasket
 
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "SELECT Role FROM Users WHERE UserID = @UserId";
 
@@ -89,7 +89,7 @@ namespace NoteBasket
         {
             try
             {
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string sql = "SELECT Name, Username, Email, DOB, Gender, Role, SubscriptionEndDate, LoyaltyPoints, CreatedAt " +
                                  "FROM Users WHERE UserID = @UserId";
@@ -178,7 +178,7 @@ namespace NoteBasket
                     panel6.Controls.Remove(control);
                 }
 
-                using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+                using (SqlConnection con = DatabaseConfig.CreateConnection())
                 {
                     string userRole = GetUserRole(userId);
 
@@ -326,7 +326,7 @@ namespace NoteBasket
 
         private string GetUserRole(int userId)
         {
-            using (SqlConnection con = new SqlConnection("data source=Mohaiminul\\SQLEXPRESS; database=NoteBasketDB; integrated security=SSPI"))
+            using (SqlConnection con = DatabaseConfig.CreateConnection())
             {
                 string sql = "SELECT Role FROM Users WHERE UserID = @UserID";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
